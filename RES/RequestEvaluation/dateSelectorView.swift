@@ -31,6 +31,16 @@ class dateSelectorView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
+        self.additionalSafeAreaInsets = .init(top: 30, left: 0, bottom: 0, right: 0)
+        logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+            ApplicationState.sharedState.LoggedIn = false
+        })
+    }
+    
+    @objc func logoutNow(){
+        wipeMemory()
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+        self.present(loginViewController!, animated: true, completion: nil)
     }
     
     @IBAction func PMorAM(_ sender: Any) {
@@ -78,9 +88,9 @@ class dateSelectorView: UIViewController {
 
     @IBAction func finalButton(_ sender: Any) {
         let date = self.monthLabel.text! + "-" + self.dayLabel.text! + "-" + self.yearLabel.text!
-         let time = "-"+self.timeLabel.text! + ":" + self.minuteLabel.text! + self.AMorPM!
+         let time = "-" + self.timeLabel.text! + ":" + self.minuteLabel.text! + self.AMorPM!
          let dateFinal = date + time
-         evaluationData.date = dateFinal
+         evaluationData.shared.date = dateFinal
     }
     
 }

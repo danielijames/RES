@@ -31,6 +31,7 @@ class techdateSelectorView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func PMorAM(_ sender: Any) {

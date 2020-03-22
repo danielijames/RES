@@ -28,16 +28,18 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
         switch self.typeOfUser {
         case "Student":
-            for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
-                evaluationData.userName = username
+//            for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
+                evaluationData.shared.userName = username
                 performSegue(withIdentifier: "studentSegue", sender: self)
-            }
-            
+                ApplicationState.sharedState.LoggedIn = true
+//            }
+//
         default:
-            for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
-                evaluationData.userName = username
+//            for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
+//                evaluationData.userName = username
                 performSegue(withIdentifier: "facultySegue", sender: self)
-            }
+                ApplicationState.sharedState.LoggedIn = true
+//            }
         }
     }
     
@@ -52,14 +54,22 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         self.retrieveData(path: "Residents")
         self.retrieveDataFaculty(path: "Faculty")
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
-   }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
         self.Login.layer.cornerRadius = 10
         navigationController?.navigationBar.tintColor = .white
     }
     
+//    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.setNavigationBarHidden(true, animated: true)
+//    }
+//    
     func retrieveData(path: String) {
     let ref = Database.database().reference()
         
@@ -91,16 +101,5 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         }
     
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        switch self.segmentController.selectedSegmentIndex {
-//            
-//        case 0:
-//            let destinationVC = segue.destination as! filterViewController
-//            destinationVC.evalData = self.evalData
-//        default:
-//            let destinationVC = segue.destination as! facultyfilterController
-//            destinationVC.evalData = self.evalData
-//        }
-    }
+
 }

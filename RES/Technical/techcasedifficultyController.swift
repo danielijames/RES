@@ -16,6 +16,7 @@ class techcasedifficultyController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Technical/CaseDifficulty")
+            self.navigationController?.navigationBar.isHidden = false
         }
 
         override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,6 +43,10 @@ class techcasedifficultyController: UITableViewController {
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             evaluationData.caseDifficulty = casedifficultyArray[indexPath.row]
+        }
+    
+        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 200
         }
     
 

@@ -9,16 +9,41 @@
 import UIKit
 
 class filterViewController: UIViewController {
-    var evalData: evaluationData?
+    weak var evalData: evaluationData?
+    var button = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+            ApplicationState.sharedState.LoggedIn = false
+        })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        navigationController?.navigationBar.tintColor = .white
+    @objc func popController(){
+        self.navigationController?.popToRootViewController(animated: true)
+        ApplicationState.sharedState.LoggedIn = false
     }
+    
+    @objc func logoutNow(){
+        print("buttonTapped")
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+        dismiss(animated: true) {
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
+        
+    }
+    
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        self.navigationController?.navigationBar.isHidden = false
+//        self.navigationController?.isToolbarHidden = false
+//    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.isToolbarHidden = true
+//    }
 
 }

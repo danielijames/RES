@@ -17,6 +17,7 @@ class techevalResidentsController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Residents")
+            self.navigationController?.navigationBar.isHidden = false
         }
 
         override func numberOfSections(in tableView: UITableView) -> Int {

@@ -18,6 +18,7 @@ class techevalprocedureController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Operation")
+            self.navigationController?.navigationBar.isHidden = false
         }
 
         override func numberOfSections(in tableView: UITableView) -> Int {
