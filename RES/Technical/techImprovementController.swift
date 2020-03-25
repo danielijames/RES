@@ -10,15 +10,29 @@ import UIKit
 import FirebaseDatabase
 
 class techImprovementController: UITableViewController {
-
-        
         var XYZ_Array = [String]()
 
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Technical/Improvement")
-            self.navigationController?.navigationBar.isHidden = false
-        }
+            navBarSetup(title: "Improvements?")
+                logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                    ApplicationState.sharedState.LoggedIn = false
+                    
+                })
+            BackButton(vc: self, selector: #selector(popController), closure: nil)
+                }
+                
+                @objc func popController(){
+                    self.navigationController?.popViewController(animated: true)
+                    ApplicationState.sharedState.LoggedIn = false
+                }
+            
+            @objc func logoutNow(){
+                wipeMemory()
+                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+                self.present(loginViewController!, animated: true, completion: nil)
+            }
 
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
@@ -43,19 +57,30 @@ class techImprovementController: UITableViewController {
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            evaluationData.improvements.append(XYZ_Array[indexPath.row])
+//             tableView.cellForRow(at: indexPath)?.isSelected.toggle()
+            
+            if tableView.cellForRow(at: indexPath)?.isSelected == true{
+                gradingTechnicalData.shared.improvements.insert(XYZ_Array[indexPath.row])
+                tableView.cellForRow(at: indexPath)?.isHighlighted = true
+                tableView.reloadData()
+            } else {
+                tableView.cellForRow(at: indexPath)?.isHighlighted = false
+                gradingTechnicalData.shared.improvements.remove(XYZ_Array[indexPath.row])
+                tableView.reloadData()
+            }
+
         }
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        evaluationData.improvements.removeAll { (str) -> Bool in
-            if str == XYZ_Array[indexPath.row] {
-                return true
-            }
-        return false}
-    }
+//    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        gradingTechnicalData.shared.improvements.removeAll { (str) -> Bool in
+//            if str == XYZ_Array[indexPath.row] {
+//                return true
+//            }
+//        return false}
+//    }
     
         override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 200
+            return 50
         }
     
 

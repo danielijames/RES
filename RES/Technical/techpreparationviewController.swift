@@ -16,8 +16,24 @@ class techpreparationviewController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Technical/Preparation")
-            self.navigationController?.navigationBar.isHidden = false
-        }
+            navBarSetup(title: "Pick Prep.")
+                logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                    ApplicationState.sharedState.LoggedIn = false
+                    
+                })
+            BackButton(vc: self, selector: #selector(popController), closure: nil)
+                }
+                
+                @objc func popController(){
+                    self.navigationController?.popViewController(animated: true)
+                    ApplicationState.sharedState.LoggedIn = false
+                }
+            
+            @objc func logoutNow(){
+                wipeMemory()
+                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+                self.present(loginViewController!, animated: true, completion: nil)
+            }
 
         override func numberOfSections(in tableView: UITableView) -> Int {
             // #warning Incomplete implementation, return the number of sections
@@ -42,7 +58,7 @@ class techpreparationviewController: UITableViewController {
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            evaluationData.procedureEvaluated = preparationArray[indexPath.row]
+            gradingTechnicalData.shared.procedureEvaluated = preparationArray[indexPath.row]
         }
     
         override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

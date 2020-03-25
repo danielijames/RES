@@ -28,18 +28,18 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
         switch self.typeOfUser {
         case "Student":
-//            for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
+            for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
                 performSegue(withIdentifier: "studentSegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
-//            }
+            }
 //
         default:
-//            for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
-//                evaluationData.userName = username
+            for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
+                evaluationData.shared.userName = username
                 performSegue(withIdentifier: "facultySegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
-//            }
+            }
         }
     }
     
@@ -58,17 +58,16 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        navigationController?.setNavigationBarHidden(false, animated: true)
+//        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.Login.layer.cornerRadius = 10
-        navigationController?.navigationBar.tintColor = .white
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 //    
     func retrieveData(path: String) {
     let ref = Database.database().reference()

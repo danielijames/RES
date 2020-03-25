@@ -18,7 +18,25 @@ class techevalprocedureController: UITableViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Operation")
-            self.navigationController?.navigationBar.isHidden = false
+            
+            navBarSetup(title: "Procedure")
+            
+            logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                ApplicationState.sharedState.LoggedIn = false
+                
+            })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
+            }
+            
+            @objc func popController(){
+                self.navigationController?.popViewController(animated: true)
+                ApplicationState.sharedState.LoggedIn = false
+            }
+        
+        @objc func logoutNow(){
+            wipeMemory()
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+            self.present(loginViewController!, animated: true, completion: nil)
         }
 
         override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,7 +62,7 @@ class techevalprocedureController: UITableViewController {
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            evaluationData.procedureEvaluated = proceduresArray[indexPath.row]
+            gradingTechnicalData.shared.procedureEvaluated = proceduresArray[indexPath.row]
         }
     
 

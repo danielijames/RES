@@ -31,8 +31,26 @@ class techdateSelectorView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
-        self.navigationController?.navigationBar.isHidden = false
-    }
+        
+        navBarSetup(title: "Pick Date")
+        
+            logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                ApplicationState.sharedState.LoggedIn = false
+                
+            })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
+            }
+            
+            @objc func popController(){
+                self.navigationController?.popViewController(animated: true)
+                ApplicationState.sharedState.LoggedIn = false
+            }
+        
+        @objc func logoutNow(){
+            wipeMemory()
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
     
     @IBAction func PMorAM(_ sender: Any) {
     self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
@@ -81,7 +99,7 @@ class techdateSelectorView: UIViewController {
         let date = self.monthLabel.text! + "-" + self.dayLabel.text! + "-" + self.yearLabel.text!
          let time = "-"+self.timeLabel.text! + ":" + self.minuteLabel.text! + self.AMorPM!
          let dateFinal = date + time
-        evaluationData.facultydateselected = dateFinal
+        gradingTechnicalData.shared.facultydateselected = dateFinal
     }
     
 }

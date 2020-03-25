@@ -9,24 +9,50 @@
 import UIKit
 
 class facultyfilterController: UIViewController {
+    
+    
+    @IBOutlet weak var clinicalButton: UIButton! {
+           didSet{
+            clinicalButton.layer.cornerRadius = 10
+           }
+       }
+    @IBOutlet weak var techButton: UIButton! {
+        didSet{
+            techButton.layer.cornerRadius = 10
+        }
+    }
+    
     var evalData: evaluationData?
+    
+    
+    @IBAction func techSegue(_ sender: Any) {
+        performSegue(withIdentifier: "techSegue", sender: self)
+    }
+    
+    @IBAction func clinicalSegue(_ sender: Any) {
+        performSegue(withIdentifier: "clinicalSegue", sender: self)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-
-        // Do any additional setup after loading the view.
-    }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        navBarSetup(title: "What Type of Evaluation?")
+        
+            logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                ApplicationState.sharedState.LoggedIn = false
+                
+            })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
+            }
+            
+            @objc func popController(){
+                self.navigationController?.popViewController(animated: true)
+                ApplicationState.sharedState.LoggedIn = false
+            }
+        
+        @objc func logoutNow(){
+            wipeMemory()
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
+            self.present(loginViewController!, animated: true, completion: nil)
+        }
 }

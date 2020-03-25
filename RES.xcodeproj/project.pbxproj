@@ -11,6 +11,8 @@
 		E306428E24266B9A00D40A78 /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306428D24266B9A00D40A78 /* ApplicationState.swift */; };
 		E30642912426B1FB00D40A78 /* UIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642902426B1FB00D40A78 /* UIComponents.swift */; };
 		E3064293242772EA00D40A78 /* MemoryCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064292242772EA00D40A78 /* MemoryCleaner.swift */; };
+		E3064295242B091000D40A78 /* gradingTechnicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064294242B091000D40A78 /* gradingTechnicalData.swift */; };
+		E3064297242B099C00D40A78 /* gradingClinicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064296242B099C00D40A78 /* gradingClinicalData.swift */; };
 		E30CF808238F479A00CC7E04 /* firebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF807238F479A00CC7E04 /* firebaseFunctions.swift */; };
 		E30CF80C238F5D0F00CC7E04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E30CF80B238F5D0F00CC7E04 /* GoogleService-Info.plist */; };
 		E30CF80E238F69BD00CC7E04 /* attendeeNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF80D238F69BD00CC7E04 /* attendeeNameController.swift */; };
@@ -48,6 +50,8 @@
 		E306428D24266B9A00D40A78 /* ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		E30642902426B1FB00D40A78 /* UIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponents.swift; sourceTree = "<group>"; };
 		E3064292242772EA00D40A78 /* MemoryCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCleaner.swift; sourceTree = "<group>"; };
+		E3064294242B091000D40A78 /* gradingTechnicalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradingTechnicalData.swift; sourceTree = "<group>"; };
+		E3064296242B099C00D40A78 /* gradingClinicalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradingClinicalData.swift; sourceTree = "<group>"; };
 		E30CF807238F479A00CC7E04 /* firebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firebaseFunctions.swift; sourceTree = "<group>"; };
 		E30CF80B238F5D0F00CC7E04 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E30CF80D238F69BD00CC7E04 /* attendeeNameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = attendeeNameController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				E322B6E1236FAF17008C2B1F /* evaluationData.swift */,
+				E3064294242B091000D40A78 /* gradingTechnicalData.swift */,
+				E3064296242B099C00D40A78 /* gradingClinicalData.swift */,
 				E30CF807238F479A00CC7E04 /* firebaseFunctions.swift */,
 			);
 			path = DataModel;
@@ -389,6 +395,7 @@
 			files = (
 				E3A1389923A4008F008BF160 /* techImprovementController.swift in Sources */,
 				E30CF80E238F69BD00CC7E04 /* attendeeNameController.swift in Sources */,
+				E3064295242B091000D40A78 /* gradingTechnicalData.swift in Sources */,
 				E3F61D7B235AE371007F48D5 /* filterViewController.swift in Sources */,
 				E3A1389323A3FBE7008BF160 /* techpreparationviewController.swift in Sources */,
 				E38A2484239AFD8000F8B077 /* RequestsCell.swift in Sources */,
@@ -400,6 +407,7 @@
 				E3A1389723A3FEDE008BF160 /* techscoreController.swift in Sources */,
 				E380201D23A1BC48008A0B4C /* facultyfilterController.swift in Sources */,
 				E3A1389123A3F482008BF160 /* techcasedifficultyController.swift in Sources */,
+				E3064297242B099C00D40A78 /* gradingClinicalData.swift in Sources */,
 				E30642912426B1FB00D40A78 /* UIComponents.swift in Sources */,
 				E380202223A2E344008A0B4C /* techevalResidentsController.swift in Sources */,
 				E30CF810238F6BBA00CC7E04 /* procedureController.swift in Sources */,

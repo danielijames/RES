@@ -14,17 +14,12 @@ class filterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+       navBarSetup(title: "Request or Review Evaluations")
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
         })
-        BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
-    
-    @objc func popController(){
-        self.navigationController?.popToRootViewController(animated: true)
-        ApplicationState.sharedState.LoggedIn = false
-    }
+
     
     @objc func logoutNow(){
         print("buttonTapped")

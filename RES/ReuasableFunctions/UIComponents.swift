@@ -26,5 +26,13 @@ extension UIViewController {
         bbview.tintColor = .black
         vc.navigationItem.leftBarButtonItem = bbview
     }
+    
+    func navBarSetup(title: String){
+    self.navigationController?.navigationBar.isHidden = false
+        self.navigationItem.titleView?.tintColor = .black
+        self.navigationItem.title = title
+    }
 
 }
+
+

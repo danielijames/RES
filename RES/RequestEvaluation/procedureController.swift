@@ -12,7 +12,13 @@ class procedureController: UITableViewController {
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
         })
-    }
+    BackButton(vc: self, selector: #selector(popController), closure: nil)
+        }
+        
+        @objc func popController(){
+            self.navigationController?.popViewController(animated: true)
+            ApplicationState.sharedState.LoggedIn = false
+        }
     
     @objc func logoutNow(){
         wipeMemory()
