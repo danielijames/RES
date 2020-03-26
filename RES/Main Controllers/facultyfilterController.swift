@@ -27,10 +27,12 @@ class facultyfilterController: UIViewController {
     
     @IBAction func techSegue(_ sender: Any) {
         performSegue(withIdentifier: "techSegue", sender: self)
+        gradingTechnicalData.shared.evalType = "Technical"
     }
     
     @IBAction func clinicalSegue(_ sender: Any) {
         performSegue(withIdentifier: "clinicalSegue", sender: self)
+        gradingClinicalData.shared.evalType = "Clinical"
     }
     
     
@@ -52,7 +54,6 @@ class facultyfilterController: UIViewController {
         
         @objc func logoutNow(){
             wipeMemory()
-            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
-            self.present(loginViewController!, animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
 }

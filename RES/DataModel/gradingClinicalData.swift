@@ -20,11 +20,9 @@ class gradingClinicalData {
       
       //criterion
       var selectedEval: (student: String?, date: String?)
-      var caseDifficulty: String?
-      var preparation: String?
-      var percentPerformed: String?
-      var scoreGiven: String?
-      var improvements = [String?]()
+      var evalType: String?
+      var setting: String?
+      var areasforimprovements = Set<String?>()
       var additionalComments: String?
       var graded: Bool?
       var evalSet = [[(student: String, date: String)](),[(student: String, date: String)]()]

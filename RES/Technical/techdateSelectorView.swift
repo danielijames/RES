@@ -48,8 +48,7 @@ class techdateSelectorView: UIViewController {
         
         @objc func logoutNow(){
             wipeMemory()
-            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
-            self.present(loginViewController!, animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
         }
     
     @IBAction func PMorAM(_ sender: Any) {

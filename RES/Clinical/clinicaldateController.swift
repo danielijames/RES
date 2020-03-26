@@ -1,18 +1,18 @@
 //
-//  dateSelectorView.swift
+//  clinicaldateController.swift
 //  RES
 //
-//  Created by Daniel James on 11/27/19.
-//  Copyright © 2019 CUIP. All rights reserved.
+//  Created by Daniel James on 3/26/20.
+//  Copyright © 2020 CUIP. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class dateSelectorView: UIViewController {
+class clinicaldateController: UIViewController {
     @IBOutlet weak var dateButton: UIButton!
     
     var date: String?
-    var evalData: evaluationData?
     var AMorPM: String?
 
     @IBOutlet weak var monthLabel: UILabel!
@@ -31,22 +31,25 @@ class dateSelectorView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
-        self.additionalSafeAreaInsets = .init(top: 30, left: 0, bottom: 0, right: 0)
-        logoutButton(vc: self, selector: #selector(logoutNow), closure: {
-            ApplicationState.sharedState.LoggedIn = false
-        })
-    BackButton(vc: self, selector: #selector(popController), closure: nil)
-        }
         
-        @objc func popController(){
-            self.navigationController?.popViewController(animated: true)
-            ApplicationState.sharedState.LoggedIn = false
+        navBarSetup(title: "Pick Date")
+        
+            logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                ApplicationState.sharedState.LoggedIn = false
+                
+            })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
+            }
+            
+            @objc func popController(){
+                self.navigationController?.popViewController(animated: true)
+                ApplicationState.sharedState.LoggedIn = false
+            }
+        
+        @objc func logoutNow(){
+            wipeMemory()
+            self.navigationController?.popToRootViewController(animated: true)
         }
-    
-    @objc func logoutNow(){
-        wipeMemory()
-        self.navigationController?.popToRootViewController(animated: true)
-    }
     
     @IBAction func PMorAM(_ sender: Any) {
     self.AMorPM = pmSelector.selectedSegmentIndex == 0 ? "PM" : "AM"
@@ -93,9 +96,9 @@ class dateSelectorView: UIViewController {
 
     @IBAction func finalButton(_ sender: Any) {
         let date = self.monthLabel.text! + "-" + self.dayLabel.text! + "-" + self.yearLabel.text!
-         let time = "-" + self.timeLabel.text! + ":" + self.minuteLabel.text! + self.AMorPM!
+         let time = "-"+self.timeLabel.text! + ":" + self.minuteLabel.text! + self.AMorPM!
          let dateFinal = date + time
-         evaluationData.shared.date = dateFinal
+        gradingClinicalData.shared.facultydateselected = dateFinal
     }
     
 }

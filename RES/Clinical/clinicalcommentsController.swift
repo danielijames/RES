@@ -1,15 +1,15 @@
 //
-//  techcommentsController.swift
+//  clinicalcommentsController.swift
 //  RES
 //
-//  Created by Daniel James on 12/13/19.
-//  Copyright © 2019 CUIP. All rights reserved.
+//  Created by Daniel James on 3/26/20.
+//  Copyright © 2020 CUIP. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import FirebaseDatabase
 
-class techcommentsController: UIViewController {
+class clinicalcommentsController: UIViewController {
     
     let ref = Database.database().reference()
     @IBOutlet weak var commentsText: UITextView!

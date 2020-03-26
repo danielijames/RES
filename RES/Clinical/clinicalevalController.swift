@@ -1,25 +1,24 @@
 //
-//  techevalprocedureController.swift
+//  clinicalevalController.swift
 //  RES
 //
-//  Created by Daniel James on 12/13/19.
-//  Copyright © 2019 CUIP. All rights reserved.
+//  Created by Daniel James on 3/25/20.
+//  Copyright © 2020 CUIP. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import FirebaseDatabase
 
-class techevalprocedureController: UITableViewController {
-    
-        
-        var proceduresArray = [String]()
+class clinicalevalResidentsController: UITableViewController {
 
+        
+        var residentsArray = [String]()
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.retrieveData(path: "Operation")
+            self.retrieveData(path: "Residents")
             
-            navBarSetup(title: "Procedure")
+            navBarSetup(title: "Pick Resident")
             
             logoutButton(vc: self, selector: #selector(logoutNow), closure: {
                 ApplicationState.sharedState.LoggedIn = false
@@ -44,7 +43,7 @@ class techevalprocedureController: UITableViewController {
         }
 
         override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return proceduresArray.count
+            return residentsArray.count
         }
         
         override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -55,15 +54,15 @@ class techevalprocedureController: UITableViewController {
         }
         
         override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "procedureNames", for: indexPath)
-            cell.textLabel?.text = proceduresArray[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "residentsNames", for: indexPath)
+            cell.textLabel?.text = residentsArray[indexPath.row]
             return cell
         }
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            gradingTechnicalData.shared.procedureEvaluated = proceduresArray[indexPath.row]
+            gradingClinicalData.shared.residentEvaluated = residentsArray[indexPath.row]
         }
-    
+        
 
         func retrieveData(path: String) {
         let ref = Database.database().reference()
@@ -71,7 +70,7 @@ class techevalprocedureController: UITableViewController {
             guard let value = data.value as? [String: Any] else { return }
             
             for each in value {
-                self.proceduresArray.append(each.key)
+                self.residentsArray.append(each.key)
 
                 }
             self.tableView.reloadData()}

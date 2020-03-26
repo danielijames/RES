@@ -55,9 +55,7 @@ class finalEvaluationController: UIViewController {
     
     @objc func logoutNow(){
         wipeMemory()
-        if let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController") {
-            self.present(loginViewController, animated: true, completion: nil)
-        }
+       self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func finalSubmittal(_ sender: Any) {

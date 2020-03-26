@@ -23,22 +23,7 @@ class filterViewController: UIViewController {
     
     @objc func logoutNow(){
         print("buttonTapped")
-        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
-        dismiss(animated: true) {
-            self.present(loginViewController!, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
         }
         
-    }
-    
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        self.navigationController?.navigationBar.isHidden = false
-//        self.navigationController?.isToolbarHidden = false
-//    }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.isToolbarHidden = true
-//    }
-
 }

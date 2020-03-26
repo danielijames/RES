@@ -21,6 +21,7 @@ class gradingTechnicalData {
       
       //criterion
       var selectedEval: (student: String?, date: String?)
+      var evalType: String?
       var caseDifficulty: String?
       var preparation: String?
       var percentPerformed: String?

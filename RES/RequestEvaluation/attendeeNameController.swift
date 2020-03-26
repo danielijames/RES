@@ -31,8 +31,7 @@ class attendeeNameController: UITableViewController {
     
     @objc func logoutNow(){
         wipeMemory()
-        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "loginViewController")
-        self.present(loginViewController!, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
