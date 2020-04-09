@@ -33,7 +33,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 performSegue(withIdentifier: "studentSegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
             }
-//
+        //
         default:
             for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
@@ -43,7 +43,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-
+    
     @IBAction func segmentedController(_ sender: Any) {
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
     }
@@ -56,21 +56,18 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-//        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.Login.layer.cornerRadius = 10
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
     }
-//    
+    
     func retrieveData(path: String) {
-    let ref = Database.database().reference()
+        let ref = Database.database().reference()
         
         DispatchQueue.main.async {
             ref.child(path).observe(.value) { (data) in
@@ -84,21 +81,21 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func retrieveDataFaculty(path: String) {
-    let ref = Database.database().reference()
+        let ref = Database.database().reference()
         
         DispatchQueue.main.async {
             ref.child(path).observe(.value) { (data) in
-              guard let value = data.value as? [String: Dictionary<String, Any>] else { return }
+                guard let value = data.value as? [String: Dictionary<String, Any>] else { return }
                 
                 for each in value {
-                     guard let password = each.value["Password"] else {return}
-                     self.loginInfoFaculty.append((username: each.key, password: password))
-//                    print(self.loginInfoFaculty)
-                 }
+                    guard let password = each.value["Password"] else {return}
+                    self.loginInfoFaculty.append((username: each.key, password: password))
+                    //                    print(self.loginInfoFaculty)
+                }
             }
             
         }
-    
+        
     }
-
+    
 }

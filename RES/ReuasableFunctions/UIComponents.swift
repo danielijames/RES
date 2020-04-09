@@ -15,17 +15,24 @@ extension UIViewController {
 
     }
     
+    
     func logoutButton(vc: UIViewController, selector: Selector, closure: (()->Void)?){
         let bgview = UIBarButtonItem.init(title: "Logout", style: .done, target: self, action: selector)
         bgview.tintColor = .red
         vc.navigationItem.rightBarButtonItem = bgview
     }
     
+
+    
     func BackButton(vc: UIViewController, selector: Selector, closure: (()->Void)?){
         let bbview = UIBarButtonItem.init(title: "Back", style: .done, target: self, action: selector)
         bbview.tintColor = .black
         vc.navigationItem.leftBarButtonItem = bbview
     }
+    
+    
+    
+    
     
     func navBarSetup(title: String){
     self.navigationController?.navigationBar.isHidden = false

@@ -10,24 +10,25 @@ import Foundation
 import FirebaseDatabase
 
 private enum buttonAndLabel: String{
-    case i1 = "Tying"
-    case i2 = "Suturing"
-    case i3 = "Economy of Motion"
-    case i4 = "Laparascopic Skill"
-    case i5 = "Knowledge of Procedure"
-    case i6 = "Confidence"
-    case i7 = "Preparation"
+    case i1 = "Private Office"
+    case i2 = "Orange Clinic"
+    case i3 = "Trauma Clinic"
+    case i4 = "Rounds"
+    case i5 = "ED/Floor"
 }
 
-class clinicalAreasForImprovementController: UIViewController {
+class clinicalsettingController: UIViewController {
     var XYZ_Array = [String]()
     var buttonArray = [UIButton]()
+    
     
     @IBOutlet weak var i1: UIButton!{
         didSet{
             i1.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
             i1.titleLabel?.text = buttonAndLabel.i1.rawValue
-            i1.frame.size = .init(width: 60, height: 60)
+            i1.frame.size = .init(width: 200, height: 60)
+            i1.layer.cornerRadius = 10
+            i1.backgroundColor = .clear
             buttonArray.append(i1)
         }
     }
@@ -36,7 +37,9 @@ class clinicalAreasForImprovementController: UIViewController {
         didSet{
             i2.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
             i2.titleLabel?.text = buttonAndLabel.i2.rawValue
-            i2.frame.size = .init(width: 60, height: 60)
+            i2.frame.size = .init(width: 200, height: 60)
+            i2.layer.cornerRadius = 10
+            i2.backgroundColor = .clear
             buttonArray.append(i2)
         }
     }
@@ -45,8 +48,10 @@ class clinicalAreasForImprovementController: UIViewController {
         didSet{
             i3.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
             i3.titleLabel?.text = buttonAndLabel.i3.rawValue
-        i3.frame.size = .init(width: 60, height: 60)
-    buttonArray.append(i3)
+            i3.frame.size = .init(width: 200, height: 60)
+            i3.layer.cornerRadius = 10
+            i3.backgroundColor = .clear
+            buttonArray.append(i3)
         }
     }
     @IBOutlet weak var i4: UIButton!
@@ -54,7 +59,9 @@ class clinicalAreasForImprovementController: UIViewController {
         didSet{
             i4.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
             i4.titleLabel?.text = buttonAndLabel.i4.rawValue
-            i4.frame.size = .init(width: 60, height: 60)
+            i4.frame.size = .init(width: 200, height: 60)
+            i4.layer.cornerRadius = 10
+            i4.backgroundColor = .clear
             buttonArray.append(i4)
         }
     }
@@ -63,28 +70,29 @@ class clinicalAreasForImprovementController: UIViewController {
         didSet{
             i5.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
             i5.titleLabel?.text = buttonAndLabel.i5.rawValue
-            i5.frame.size = .init(width: 60, height: 60)
+            i5.frame.size = .init(width: 200, height: 60)
+            i5.layer.cornerRadius = 10
+            i5.backgroundColor = .clear
             buttonArray.append(i5)
         }
     }
 
     @objc func imageTap(sender: UIButton){
-        
-        if sender.currentImage == UIImage(systemName: "circle"){
-            sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            gradingClinicalData.shared.areasforimprovements.insert(sender.titleLabel?.text)
-            sender.tintColor = .green
-            
-        } else {
-            sender.setImage(UIImage(systemName: "circle"), for: .normal)
-            sender.tintColor = .black
-            gradingClinicalData.shared.areasforimprovements.remove(sender.titleLabel?.text)
+        switch sender.backgroundColor {
+        case UIColor.clear:
+            performSegue(withIdentifier: "clinicalTwo", sender: self)
+            sender.backgroundColor = .systemGreen
+            gradingClinicalData.shared.setting = sender.titleLabel?.text
+        default:
+            sender.backgroundColor = UIColor.clear
+            gradingClinicalData.shared.setting = nil
         }
     }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             self.retrieveData(path: "Technical/Improvement")
-            navBarSetup(title: "Areas For Improvement")
+            navBarSetup(title: "Setting?")
                 logoutButton(vc: self, selector: #selector(logoutNow), closure: {
                     ApplicationState.sharedState.LoggedIn = false
                     
@@ -112,7 +120,4 @@ class clinicalAreasForImprovementController: UIViewController {
             }
         }
     }
-
-    
-    
 }
