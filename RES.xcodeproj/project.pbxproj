@@ -33,6 +33,8 @@
 		E30CF814238F72CD00CC7E04 /* finalEvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */; };
 		E30CF81B239025C400CC7E04 /* reviewGradedEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF81A239025C400CC7E04 /* reviewGradedEval.swift */; };
 		E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322B6E1236FAF17008C2B1F /* evaluationData.swift */; };
+		E35CCBCB24400CDB006E8323 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCA24400CDB006E8323 /* Sizes.swift */; };
+		E35CCBCD24401658006E8323 /* VariadicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCC24401658006E8323 /* VariadicView.swift */; };
 		E380201D23A1BC48008A0B4C /* facultyfilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380201C23A1BC48008A0B4C /* facultyfilterController.swift */; };
 		E380202023A29FA4008A0B4C /* gradeEvalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380201F23A29FA4008A0B4C /* gradeEvalsCell.swift */; };
 		E380202223A2E344008A0B4C /* techevalResidentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380202123A2E344008A0B4C /* techevalResidentsController.swift */; };
@@ -84,6 +86,8 @@
 		E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalEvaluationController.swift; sourceTree = "<group>"; };
 		E30CF81A239025C400CC7E04 /* reviewGradedEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewGradedEval.swift; sourceTree = "<group>"; };
 		E322B6E1236FAF17008C2B1F /* evaluationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = evaluationData.swift; sourceTree = "<group>"; };
+		E35CCBCA24400CDB006E8323 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
+		E35CCBCC24401658006E8323 /* VariadicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariadicView.swift; sourceTree = "<group>"; };
 		E380201C23A1BC48008A0B4C /* facultyfilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facultyfilterController.swift; sourceTree = "<group>"; };
 		E380201F23A29FA4008A0B4C /* gradeEvalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradeEvalsCell.swift; sourceTree = "<group>"; };
 		E380202123A2E344008A0B4C /* techevalResidentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = techevalResidentsController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			children = (
 				E30642902426B1FB00D40A78 /* UIComponents.swift */,
 				E3064292242772EA00D40A78 /* MemoryCleaner.swift */,
+				E35CCBCA24400CDB006E8323 /* Sizes.swift */,
+				E35CCBCC24401658006E8323 /* VariadicView.swift */,
 			);
 			path = ReuasableFunctions;
 			sourceTree = "<group>";
@@ -467,8 +473,10 @@
 				E3F61D56235A1915007F48D5 /* AppDelegate.swift in Sources */,
 				E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */,
 				E306429E242C62C300D40A78 /* clinicaldateController.swift in Sources */,
+				E35CCBCD24401658006E8323 /* VariadicView.swift in Sources */,
 				E30642A8242C6B7700D40A78 /* clinicalHistoryController.swift in Sources */,
 				E3064293242772EA00D40A78 /* MemoryCleaner.swift in Sources */,
+				E35CCBCB24400CDB006E8323 /* Sizes.swift in Sources */,
 				E3F61D58235A1915007F48D5 /* SceneDelegate.swift in Sources */,
 				E380202023A29FA4008A0B4C /* gradeEvalsCell.swift in Sources */,
 				E30642B2242C6BF500D40A78 /* clinicalScoreController.swift in Sources */,

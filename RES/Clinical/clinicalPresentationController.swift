@@ -7,24 +7,70 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
-class clinicalPresentationController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class clinicalPresentationController: UIViewController, ViewDelegate {
+        let screenView = VariadicView()
+        
+        override func loadView() {
+            view = screenView
+        }
+        
+        var Array = [String]()
+        
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            self.retrieveData(path: "Faculty/Clinical/Presentation")
+            
+            screenView.delegate = self
+            screenView.table.delegate = screenView
+            screenView.table.dataSource = screenView
+            
+            navBarSetup(title: "Presentation")
+            
+            logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+                ApplicationState.sharedState.LoggedIn = false
+                
+            })
+            BackButton(vc: self, selector: #selector(popController), closure: nil)
+        }
+        
+        
+        @objc func popController(){
+            self.navigationController?.popViewController(animated: true)
+            ApplicationState.sharedState.LoggedIn = false
+        }
+        
+        
+        @objc func logoutNow(){
+            wipeMemory()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        func retrieveData(path: String) {
+            let ref = Database.database().reference()
+            ref.child(path).observe(.value) { (data) in
+                guard let value = data.value as? [String: Any] else { return }
+                
+                for each in value {
+                    self.Array.append(each.key)
+                }
+                self.screenView.table.reloadData()
+            }
+        }
+        
+        func getTitle() -> String! {
+            return "Select Presentation Result"
+        }
+        
+        func getContentArray() -> Array<String> {
+            return self.Array
+        }
+        
+        func continueToNextScreen(indexPath: IndexPath) {
+            gradingClinicalData.shared.presentation = Array[indexPath.row]
+            self.navigationController?.pushViewController(clinicalScoreController(), animated: true)
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}

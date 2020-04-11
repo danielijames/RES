@@ -22,6 +22,14 @@ class gradingClinicalData {
       var selectedEval: (student: String?, date: String?)
       var evalType: String?
       var setting: String?
+      var timing: String?
+      var attire: String?
+      var history: String?
+      var physicalExam: String?
+      var plan: String?
+      var diagnosis: String?
+      var presentation: String?
+      var score: String?
       var areasforimprovements = Set<String?>()
       var additionalComments: String?
       var graded: Bool?
