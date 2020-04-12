@@ -19,14 +19,20 @@ class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
     weak var delegate: ViewDelegate?
     let table = UITableView()
     
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createTableView()
     }
     
-    required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         createTableView()
     }
+    
+    
     
     func createTableView(){
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")

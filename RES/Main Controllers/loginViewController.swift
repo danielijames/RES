@@ -76,10 +76,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
+
     func retrieveData(path: String) {
         let ref = Database.database().reference()
         
@@ -111,20 +108,37 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         errorLabel.isHidden = true
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseIn, animations: {
-            self.view.frame.origin = .init(x: 0, y: -170)
-        }, completion: nil)
+        let framePosition = self.view.frame.origin.y
+        
+        switch (textField.isTouchInside, framePosition) {
+            
+        case (true, .zero):
+            UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseIn, animations: {
+                self.view.frame.origin = .init(x: 0, y: -170)
+            }, completion: nil)
+            
+        default:
+            break
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
+        let framePosition = self.view.frame.origin.y
+        
+        if framePosition != .zero {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.frame.origin = .init(x: 0, y: 0)
+            }, completion: nil)
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         errorLabel.isHidden = true
-        if self.view.frame.origin.y != .zero {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.view.frame.origin = .zero
-        }, completion: nil)
-
-        }
     }
+    
 }
