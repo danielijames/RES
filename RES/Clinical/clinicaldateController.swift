@@ -56,7 +56,10 @@ class clinicaldateController: UIViewController {
     
 
     @IBAction func finalButton(_ sender: Any) {
-        gradingClinicalData.shared.facultydateselected = self.date
+        
+        let dateCorrected = self.date?.prefix(16)
+        
+        gradingClinicalData.shared.facultydateselected = String(dateCorrected!)
         self.navigationController?.pushViewController(clinicalTimelinessController(), animated: true)
     }
     

@@ -26,4 +26,7 @@ class filterViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
         }
         
+    @IBAction func requestEval(_ sender: Any) {
+        self.navigationController?.pushViewController(attendeeNameController(), animated: true)
+    }
 }

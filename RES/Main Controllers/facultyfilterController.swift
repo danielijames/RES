@@ -26,12 +26,12 @@ class facultyfilterController: UIViewController {
     
     
     @IBAction func techSegue(_ sender: Any) {
-        performSegue(withIdentifier: "techSegue", sender: self)
+        self.navigationController?.pushViewController(techevalResidentsController(), animated: true)
         gradingTechnicalData.shared.evalType = "Technical"
     }
     
     @IBAction func clinicalSegue(_ sender: Any) {
-        performSegue(withIdentifier: "clinicalSegue", sender: self)
+        self.navigationController?.pushViewController(clinicalevalResidentsController(), animated: true)
         gradingClinicalData.shared.evalType = "Clinical"
     }
     

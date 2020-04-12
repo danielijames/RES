@@ -15,6 +15,8 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var Login: UIButton!
     @IBOutlet weak var usernameBox: UITextField!
     @IBOutlet weak var loginBox: UITextField!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     var typeOfUser = ""
     let defaults = UserDefaults.standard
@@ -30,16 +32,21 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         case "Student":
             for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
-                performSegue(withIdentifier: "studentSegue", sender: self)
+                
+                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "filterViewController")
+                self.navigationController?.pushViewController(controller, animated: true)
                 ApplicationState.sharedState.LoggedIn = true
+                return
             }
-        //
+            errorLabel.isHidden = false
         default:
             for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
                 performSegue(withIdentifier: "facultySegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
+                return
             }
+            errorLabel.isHidden = false
         }
     }
     
@@ -50,6 +57,8 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        usernameBox.delegate = self
+        loginBox.delegate = self
         print("override view did load")
         self.retrieveData(path: "Residents")
         self.retrieveDataFaculty(path: "Faculty")
@@ -60,10 +69,15 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.Login.layer.cornerRadius = 10
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setToolbarHidden(true, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func retrieveData(path: String) {
@@ -90,7 +104,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 for each in value {
                     guard let password = each.value["Password"] else {return}
                     self.loginInfoFaculty.append((username: each.key, password: password))
-                    //                    print(self.loginInfoFaculty)
                 }
             }
             
@@ -98,4 +111,20 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        errorLabel.isHidden = true
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseIn, animations: {
+            self.view.frame.origin = .init(x: 0, y: -170)
+        }, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        errorLabel.isHidden = true
+        if self.view.frame.origin.y != .zero {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.view.frame.origin = .zero
+        }, completion: nil)
+
+        }
+    }
 }

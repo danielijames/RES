@@ -11,111 +11,96 @@ import FirebaseDatabase
 
 
 
-class techImprovementController: UIViewController {
-    var XYZ_Array = [String]()
-    @IBOutlet weak var i1: UIButton!{
-        didSet{
-            i1.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i1.titleLabel?.text = XYZ_Array[0]
-            i1.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i2: UIButton!
-    {
-        didSet{
-            i2.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i2.titleLabel?.text = XYZ_Array[1]
-            i2.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i3: UIButton!
-    {
-        didSet{
-            i3.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i3.titleLabel?.text = XYZ_Array[2]
-            i3.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i4: UIButton!
-    {
-        didSet{
-            i4.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i4.titleLabel?.text = XYZ_Array[3]
-            i4.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i5: UIButton!
-    {
-        didSet{
-            i5.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i5.titleLabel?.text = XYZ_Array[4]
-            i5.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i6: UIButton!
-    {
-        didSet{
-            i6.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i6.titleLabel?.text = XYZ_Array[5]
-            i6.frame.size = .init(width: 60, height: 60)
-        }
-    }
-    @IBOutlet weak var i7: UIButton!
-    {
-        didSet{
-            i7.addTarget(self, action: #selector(imageTap), for: .touchUpInside)
-            i7.titleLabel?.text = XYZ_Array[6]
-            i7.frame.size = .init(width: 60, height: 60)
-        }
+class techImprovementController: UIViewController, ViewDelegate {
+    
+    let screenView = VariadicView()
+    
+    
+    override func loadView() {
+        view = screenView
     }
     
-    @objc func imageTap(sender: UIButton){
-        
-        if sender.currentImage == UIImage(systemName: "circle"){
-            sender.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            gradingTechnicalData.shared.improvements.insert(sender.titleLabel?.text)
-            
-            sender.tintColor = .green
-            
-        } else {
-            sender.setImage(UIImage(systemName: "circle"), for: .normal)
-            sender.tintColor = .black
-            
-            gradingTechnicalData.shared.improvements.remove(sender.titleLabel?.text)
-        }
+    
+    var Array = [String]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setToolbarHidden(false, animated: true)
     }
-        override func viewDidLoad() {
-            super.viewDidLoad()
-            self.retrieveData(path: "Technical/Improvement")
-            navBarSetup(title: "Improvements?")
-                logoutButton(vc: self, selector: #selector(logoutNow), closure: {
-                    ApplicationState.sharedState.LoggedIn = false
-                    
-                })
-            BackButton(vc: self, selector: #selector(popController), closure: nil)
-        }
-                
-                @objc func popController(){
-                    self.navigationController?.popViewController(animated: true)
-                    ApplicationState.sharedState.LoggedIn = false
-                }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.retrieveData(path: "Technical/Improvement")
+        
+        screenView.delegate = self
+        screenView.table.delegate = screenView
+        screenView.table.dataSource = screenView
+        
+        navBarSetup(title: "Improvements")
+        
+        logoutButton(vc: self, selector: #selector(logoutNow), closure: {
+            ApplicationState.sharedState.LoggedIn = false
             
-            @objc func logoutNow(){
-                wipeMemory()
-                self.navigationController?.popToRootViewController(animated: true)
-            }
- 
-
-        func retrieveData(path: String) {
+        })
+        BackButton(vc: self, selector: #selector(popController), closure: nil)
+    }
+    
+    
+    @objc func popController(){
+        gradingTechnicalData.shared.improvements.removeAll()
+        self.navigationController?.popViewController(animated: true)
+        ApplicationState.sharedState.LoggedIn = false
+    }
+    
+    
+    @objc func logoutNow(){
+        wipeMemory()
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    func retrieveData(path: String) {
         let ref = Database.database().reference()
         ref.child(path).observe(.value) { (data) in
             guard let value = data.value as? [String: Any] else { return }
+            
             for each in value {
-                self.XYZ_Array.append(each.key)
+                self.Array.append(each.key)
             }
+            self.screenView.table.reloadData()
         }
     }
+    
+    @IBAction func `continue`(_ sender: Any) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "techComments")
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func getTitle() -> String! {
+        return "Improvements Needed?"
+    }
+    
+    func getContentArray() -> Array<String> {
+        return self.Array
+    }
+    
+    func continueToNextScreen(indexPath: IndexPath) {
 
-    
-    
+        screenView.table.deselectRow(at: indexPath, animated: true)
+        
+        switch screenView.table.cellForRow(at: indexPath)?.accessoryType {
+        case .checkmark:
+            screenView.table.cellForRow(at: indexPath)?.backgroundColor = UIColor.white
+            screenView.table.cellForRow(at: indexPath)?.accessoryType = .none
+            screenView.table.reloadData()
+            gradingTechnicalData.shared.improvements.remove(Array[indexPath.row])
+        default:
+            screenView.table.cellForRow(at: indexPath)?.backgroundColor = UIColor.systemYellow
+            screenView.table.cellForRow(at: indexPath)?.accessoryType = .checkmark
+           screenView.table.reloadData()
+            gradingTechnicalData.shared.improvements.insert(Array[indexPath.row])
+        }
+    }
 }

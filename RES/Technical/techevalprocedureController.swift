@@ -9,16 +9,29 @@
 import UIKit
 import FirebaseDatabase
 
-class techevalprocedureController: UITableViewController {
+class techevalprocedureController: UIViewController, ViewDelegate {
+    
+    let screenView = VariadicView()
     
     
-    var proceduresArray = [String]()
+    override func loadView() {
+        view = screenView
+    }
+    
+    
+    var Array = [String]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.retrieveData(path: "Operation")
-        navBarSetup(title: "Procedure")
+        
+        screenView.delegate = self
+        screenView.table.delegate = screenView
+        screenView.table.dataSource = screenView
+        
+        navBarSetup(title: "Pick Resident")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -27,41 +40,16 @@ class techevalprocedureController: UITableViewController {
         BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
     
+    
     @objc func popController(){
         self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
-
-
+    
+    
     @objc func logoutNow(){
         wipeMemory()
         self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return proceduresArray.count
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
-    }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "For Which Resident?"
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "procedureNames", for: indexPath)
-        cell.textLabel?.text = proceduresArray[indexPath.row]
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        gradingTechnicalData.shared.procedureEvaluated = proceduresArray[indexPath.row]
     }
     
     
@@ -71,10 +59,25 @@ class techevalprocedureController: UITableViewController {
             guard let value = data.value as? [String: Any] else { return }
             
             for each in value {
-                self.proceduresArray.append(each.key)
-                
+                self.Array.append(each.key)
             }
-            self.tableView.reloadData()}
+            self.screenView.table.reloadData()
+        }
     }
     
+    
+    func getTitle() -> String! {
+        return "Which Procedure?"
+    }
+    
+    func getContentArray() -> Array<String> {
+        return self.Array
+    }
+    
+    func continueToNextScreen(indexPath: IndexPath) {
+        gradingTechnicalData.shared.procedureEvaluated = Array[indexPath.row]
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "techDate")
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }

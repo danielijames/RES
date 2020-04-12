@@ -13,7 +13,7 @@
 		E3064293242772EA00D40A78 /* MemoryCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064292242772EA00D40A78 /* MemoryCleaner.swift */; };
 		E3064295242B091000D40A78 /* gradingTechnicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064294242B091000D40A78 /* gradingTechnicalData.swift */; };
 		E3064297242B099C00D40A78 /* gradingClinicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064296242B099C00D40A78 /* gradingClinicalData.swift */; };
-		E306429A242C59B000D40A78 /* clinicalevalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064299242C59B000D40A78 /* clinicalevalController.swift */; };
+		E306429A242C59B000D40A78 /* clinicalevalResidentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3064299242C59B000D40A78 /* clinicalevalResidentsController.swift */; };
 		E306429C242C5BCE00D40A78 /* clinicalsettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306429B242C5BCE00D40A78 /* clinicalsettingController.swift */; };
 		E306429E242C62C300D40A78 /* clinicaldateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E306429D242C62C300D40A78 /* clinicaldateController.swift */; };
 		E30642A2242C67A300D40A78 /* clinicalcommentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A1242C67A300D40A78 /* clinicalcommentsController.swift */; };
@@ -66,7 +66,7 @@
 		E3064292242772EA00D40A78 /* MemoryCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCleaner.swift; sourceTree = "<group>"; };
 		E3064294242B091000D40A78 /* gradingTechnicalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradingTechnicalData.swift; sourceTree = "<group>"; };
 		E3064296242B099C00D40A78 /* gradingClinicalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradingClinicalData.swift; sourceTree = "<group>"; };
-		E3064299242C59B000D40A78 /* clinicalevalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalevalController.swift; sourceTree = "<group>"; };
+		E3064299242C59B000D40A78 /* clinicalevalResidentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalevalResidentsController.swift; sourceTree = "<group>"; };
 		E306429B242C5BCE00D40A78 /* clinicalsettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalsettingController.swift; sourceTree = "<group>"; };
 		E306429D242C62C300D40A78 /* clinicaldateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicaldateController.swift; sourceTree = "<group>"; };
 		E30642A1242C67A300D40A78 /* clinicalcommentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalcommentsController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		E3064298242C58F600D40A78 /* Clinical */ = {
 			isa = PBXGroup;
 			children = (
-				E3064299242C59B000D40A78 /* clinicalevalController.swift */,
+				E3064299242C59B000D40A78 /* clinicalevalResidentsController.swift */,
 				E306429B242C5BCE00D40A78 /* clinicalsettingController.swift */,
 				E306429D242C62C300D40A78 /* clinicaldateController.swift */,
 				E30642A3242C6A6600D40A78 /* clinicalTimelinessController.swift */,
@@ -445,7 +445,7 @@
 			files = (
 				E3A1389923A4008F008BF160 /* techImprovementController.swift in Sources */,
 				E30CF80E238F69BD00CC7E04 /* attendeeNameController.swift in Sources */,
-				E306429A242C59B000D40A78 /* clinicalevalController.swift in Sources */,
+				E306429A242C59B000D40A78 /* clinicalevalResidentsController.swift in Sources */,
 				E3064295242B091000D40A78 /* gradingTechnicalData.swift in Sources */,
 				E3F61D7B235AE371007F48D5 /* filterViewController.swift in Sources */,
 				E3A1389323A3FBE7008BF160 /* techpreparationviewController.swift in Sources */,
