@@ -29,4 +29,11 @@ class filterViewController: UIViewController {
     @IBAction func requestEval(_ sender: Any) {
         self.navigationController?.pushViewController(attendeeNameController(), animated: true)
     }
+    
+    @IBAction func reviewEval(_ sender: Any) {
+        
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "graphViewController")
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
 }

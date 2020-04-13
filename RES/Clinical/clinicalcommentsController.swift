@@ -25,6 +25,14 @@ class clinicalcommentsController: UIViewController {
         BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setToolbarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setToolbarHidden(true, animated: true)
+    }
+    
     @objc func popController(){
         self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false

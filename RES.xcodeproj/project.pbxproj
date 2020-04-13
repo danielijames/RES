@@ -31,14 +31,15 @@
 		E30CF810238F6BBA00CC7E04 /* procedureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF80F238F6BBA00CC7E04 /* procedureController.swift */; };
 		E30CF812238F6EA400CC7E04 /* dateSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF811238F6EA400CC7E04 /* dateSelectorView.swift */; };
 		E30CF814238F72CD00CC7E04 /* finalEvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */; };
-		E30CF81B239025C400CC7E04 /* reviewGradedEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF81A239025C400CC7E04 /* reviewGradedEval.swift */; };
 		E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322B6E1236FAF17008C2B1F /* evaluationData.swift */; };
+		E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AB2443724A00F9FBAF /* GraphView.swift */; };
+		E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AD244372B500F9FBAF /* graphViewContoller.swift */; };
+		E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B32443EFBE00F9FBAF /* CellView.swift */; };
 		E35CCBCB24400CDB006E8323 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCA24400CDB006E8323 /* Sizes.swift */; };
 		E35CCBCD24401658006E8323 /* VariadicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCC24401658006E8323 /* VariadicView.swift */; };
 		E380201D23A1BC48008A0B4C /* facultyfilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380201C23A1BC48008A0B4C /* facultyfilterController.swift */; };
 		E380202023A29FA4008A0B4C /* gradeEvalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380201F23A29FA4008A0B4C /* gradeEvalsCell.swift */; };
 		E380202223A2E344008A0B4C /* techevalResidentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380202123A2E344008A0B4C /* techevalResidentsController.swift */; };
-		E38A2484239AFD8000F8B077 /* RequestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A2483239AFD8000F8B077 /* RequestsCell.swift */; };
 		E38A2487239B35B600F8B077 /* techevalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38A2486239B35B600F8B077 /* techevalController.swift */; };
 		E3A1388B23A3E8F1008BF160 /* techevalprocedureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1388A23A3E8F1008BF160 /* techevalprocedureController.swift */; };
 		E3A1388D23A3EE8E008BF160 /* techdateSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A1388C23A3EE8E008BF160 /* techdateSelectorView.swift */; };
@@ -84,14 +85,15 @@
 		E30CF80F238F6BBA00CC7E04 /* procedureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = procedureController.swift; sourceTree = "<group>"; };
 		E30CF811238F6EA400CC7E04 /* dateSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateSelectorView.swift; sourceTree = "<group>"; };
 		E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalEvaluationController.swift; sourceTree = "<group>"; };
-		E30CF81A239025C400CC7E04 /* reviewGradedEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewGradedEval.swift; sourceTree = "<group>"; };
 		E322B6E1236FAF17008C2B1F /* evaluationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = evaluationData.swift; sourceTree = "<group>"; };
+		E345A0AB2443724A00F9FBAF /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		E345A0AD244372B500F9FBAF /* graphViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphViewContoller.swift; sourceTree = "<group>"; };
+		E345A0B32443EFBE00F9FBAF /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		E35CCBCA24400CDB006E8323 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		E35CCBCC24401658006E8323 /* VariadicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariadicView.swift; sourceTree = "<group>"; };
 		E380201C23A1BC48008A0B4C /* facultyfilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facultyfilterController.swift; sourceTree = "<group>"; };
 		E380201F23A29FA4008A0B4C /* gradeEvalsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradeEvalsCell.swift; sourceTree = "<group>"; };
 		E380202123A2E344008A0B4C /* techevalResidentsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = techevalResidentsController.swift; sourceTree = "<group>"; };
-		E38A2483239AFD8000F8B077 /* RequestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsCell.swift; sourceTree = "<group>"; };
 		E38A2486239B35B600F8B077 /* techevalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = techevalController.swift; sourceTree = "<group>"; };
 		E3A1388A23A3E8F1008BF160 /* techevalprocedureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = techevalprocedureController.swift; sourceTree = "<group>"; };
 		E3A1388C23A3EE8E008BF160 /* techdateSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = techdateSelectorView.swift; sourceTree = "<group>"; };
@@ -174,8 +176,9 @@
 		E30CF8152390249F00CC7E04 /* reviewEvaluation */ = {
 			isa = PBXGroup;
 			children = (
-				E30CF81A239025C400CC7E04 /* reviewGradedEval.swift */,
-				E38A2483239AFD8000F8B077 /* RequestsCell.swift */,
+				E345A0AB2443724A00F9FBAF /* GraphView.swift */,
+				E345A0B32443EFBE00F9FBAF /* CellView.swift */,
+				E345A0AD244372B500F9FBAF /* graphViewContoller.swift */,
 			);
 			path = reviewEvaluation;
 			sourceTree = "<group>";
@@ -443,17 +446,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */,
 				E3A1389923A4008F008BF160 /* techImprovementController.swift in Sources */,
 				E30CF80E238F69BD00CC7E04 /* attendeeNameController.swift in Sources */,
 				E306429A242C59B000D40A78 /* clinicalevalResidentsController.swift in Sources */,
 				E3064295242B091000D40A78 /* gradingTechnicalData.swift in Sources */,
 				E3F61D7B235AE371007F48D5 /* filterViewController.swift in Sources */,
 				E3A1389323A3FBE7008BF160 /* techpreparationviewController.swift in Sources */,
-				E38A2484239AFD8000F8B077 /* RequestsCell.swift in Sources */,
 				E38A2487239B35B600F8B077 /* techevalController.swift in Sources */,
 				E30CF808238F479A00CC7E04 /* firebaseFunctions.swift in Sources */,
 				E306428E24266B9A00D40A78 /* ApplicationState.swift in Sources */,
-				E30CF81B239025C400CC7E04 /* reviewGradedEval.swift in Sources */,
 				E3A1388B23A3E8F1008BF160 /* techevalprocedureController.swift in Sources */,
 				E306429C242C5BCE00D40A78 /* clinicalsettingController.swift in Sources */,
 				E3A1389723A3FEDE008BF160 /* techscoreController.swift in Sources */,
@@ -461,6 +463,7 @@
 				E3A1389123A3F482008BF160 /* techcasedifficultyController.swift in Sources */,
 				E3064297242B099C00D40A78 /* gradingClinicalData.swift in Sources */,
 				E30642912426B1FB00D40A78 /* UIComponents.swift in Sources */,
+				E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */,
 				E380202223A2E344008A0B4C /* techevalResidentsController.swift in Sources */,
 				E30CF810238F6BBA00CC7E04 /* procedureController.swift in Sources */,
 				E30642A6242C6B1000D40A78 /* clinicalAttireController.swift in Sources */,
@@ -468,6 +471,7 @@
 				E30642B0242C6BE000D40A78 /* clinicalPresentationController.swift in Sources */,
 				E30642A4242C6A6600D40A78 /* clinicalTimelinessController.swift in Sources */,
 				E30642AE242C6BC500D40A78 /* clinicalDiagnosisController.swift in Sources */,
+				E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */,
 				E3A1388D23A3EE8E008BF160 /* techdateSelectorView.swift in Sources */,
 				E30642AA242C6B8D00D40A78 /* clicicalPhysicalExamController.swift in Sources */,
 				E3F61D56235A1915007F48D5 /* AppDelegate.swift in Sources */,
