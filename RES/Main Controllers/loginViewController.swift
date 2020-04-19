@@ -62,6 +62,18 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if defaults.object(forKey: "BadgeNumberCounter") == nil {
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: .badge) { (granted, error) in
+                if error != nil {
+                    self.defaults.set(true, forKey: "BadgeNumberCounter")
+                    return
+                }
+                self.defaults.set(false, forKey: "BadgeNumberCounter")
+            }
+        }
+        
         self.view.isUserInteractionEnabled = false
         super.view.addSubview(loading)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {

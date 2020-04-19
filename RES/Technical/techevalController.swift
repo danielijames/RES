@@ -26,7 +26,7 @@ class techevalController: UITableViewController {
     var gradedRequests: (student: String, date: String)?
     var data: DataSnapshot?
     var retrievedData: [JSONData]?
-    
+    let defaults = UserDefaults.standard
     var keys: Dictionary<String, Any>.Keys!
     
     override func viewDidLoad() {
@@ -139,6 +139,8 @@ class techevalController: UITableViewController {
                 self.keys = value.keys
  
             self.data = data
+            self.defaults.set(Int(data.childrenCount), forKey: "BadgeCount")
+            UIApplication.shared.applicationIconBadgeNumber = Int(data.childrenCount)
             self.decodeData()
             self.tableView.reloadData()
         }

@@ -69,12 +69,16 @@ class clinicalcommentsController: UIViewController {
            self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
         
            
-           let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
+           let alert = UIAlertController(title: "Evaluation Submitted", message: "Congratulations on submitting an evaluation!", preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
                
            self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
            }))
 
+        
+            let defaults = UserDefaults.standard
+            let count: Int = defaults.value(forKey: "BadgeCount") as! Int
+            UIApplication.shared.applicationIconBadgeNumber = (count - 1)
            self.present(alert, animated: true)
     }
 
@@ -105,10 +109,13 @@ class clinicalcommentsController: UIViewController {
            
            let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
            alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
-               
+            
            self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
            }))
 
+           let defaults = UserDefaults.standard
+           let count: Int = defaults.value(forKey: "BadgeCount") as! Int
+           UIApplication.shared.applicationIconBadgeNumber = (count - 1)
            self.present(alert, animated: true)
 
 

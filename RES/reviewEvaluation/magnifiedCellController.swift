@@ -43,7 +43,7 @@ class magnifiedCellController: UIViewController {
                ref.child(path).observe(.value) { (data) in
                 print(data)
                 let dataString = "\(data)"
-                let dataStringAdjusted = "\(dataString.dropFirst(30).dropLast(3))"
+                let dataStringAdjusted = "\(dataString.dropFirst(28).dropLast(3))"
                 self.screenView.infoLabel.text = dataStringAdjusted
            }
          }
