@@ -35,6 +35,10 @@
 		E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AB2443724A00F9FBAF /* GraphView.swift */; };
 		E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AD244372B500F9FBAF /* graphViewContoller.swift */; };
 		E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B32443EFBE00F9FBAF /* CellView.swift */; };
+		E345A0B624449CFA00F9FBAF /* magnifiedCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B524449CFA00F9FBAF /* magnifiedCellController.swift */; };
+		E345A0B8244BCF2900F9FBAF /* gradingCriteron.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B7244BCF2900F9FBAF /* gradingCriteron.swift */; };
+		E345A0BA244BFC3800F9FBAF /* loadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B9244BFC3800F9FBAF /* loadingView.swift */; };
+		E345A0BC244C919C00F9FBAF /* MagnifiedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0BB244C919C00F9FBAF /* MagnifiedCellView.swift */; };
 		E35CCBCB24400CDB006E8323 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCA24400CDB006E8323 /* Sizes.swift */; };
 		E35CCBCD24401658006E8323 /* VariadicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35CCBCC24401658006E8323 /* VariadicView.swift */; };
 		E380201D23A1BC48008A0B4C /* facultyfilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E380201C23A1BC48008A0B4C /* facultyfilterController.swift */; };
@@ -89,6 +93,10 @@
 		E345A0AB2443724A00F9FBAF /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		E345A0AD244372B500F9FBAF /* graphViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphViewContoller.swift; sourceTree = "<group>"; };
 		E345A0B32443EFBE00F9FBAF /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		E345A0B524449CFA00F9FBAF /* magnifiedCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magnifiedCellController.swift; sourceTree = "<group>"; };
+		E345A0B7244BCF2900F9FBAF /* gradingCriteron.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gradingCriteron.swift; sourceTree = "<group>"; };
+		E345A0B9244BFC3800F9FBAF /* loadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingView.swift; sourceTree = "<group>"; };
+		E345A0BB244C919C00F9FBAF /* MagnifiedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagnifiedCellView.swift; sourceTree = "<group>"; };
 		E35CCBCA24400CDB006E8323 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		E35CCBCC24401658006E8323 /* VariadicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariadicView.swift; sourceTree = "<group>"; };
 		E380201C23A1BC48008A0B4C /* facultyfilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = facultyfilterController.swift; sourceTree = "<group>"; };
@@ -150,6 +158,7 @@
 				E3064292242772EA00D40A78 /* MemoryCleaner.swift */,
 				E35CCBCA24400CDB006E8323 /* Sizes.swift */,
 				E35CCBCC24401658006E8323 /* VariadicView.swift */,
+				E345A0B9244BFC3800F9FBAF /* loadingView.swift */,
 			);
 			path = ReuasableFunctions;
 			sourceTree = "<group>";
@@ -179,6 +188,8 @@
 				E345A0AB2443724A00F9FBAF /* GraphView.swift */,
 				E345A0B32443EFBE00F9FBAF /* CellView.swift */,
 				E345A0AD244372B500F9FBAF /* graphViewContoller.swift */,
+				E345A0B524449CFA00F9FBAF /* magnifiedCellController.swift */,
+				E345A0BB244C919C00F9FBAF /* MagnifiedCellView.swift */,
 			);
 			path = reviewEvaluation;
 			sourceTree = "<group>";
@@ -285,6 +296,7 @@
 				E3064294242B091000D40A78 /* gradingTechnicalData.swift */,
 				E3064296242B099C00D40A78 /* gradingClinicalData.swift */,
 				E30CF807238F479A00CC7E04 /* firebaseFunctions.swift */,
+				E345A0B7244BCF2900F9FBAF /* gradingCriteron.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -447,6 +459,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */,
+				E345A0BC244C919C00F9FBAF /* MagnifiedCellView.swift in Sources */,
+				E345A0B624449CFA00F9FBAF /* magnifiedCellController.swift in Sources */,
 				E3A1389923A4008F008BF160 /* techImprovementController.swift in Sources */,
 				E30CF80E238F69BD00CC7E04 /* attendeeNameController.swift in Sources */,
 				E306429A242C59B000D40A78 /* clinicalevalResidentsController.swift in Sources */,
@@ -477,10 +491,12 @@
 				E3F61D56235A1915007F48D5 /* AppDelegate.swift in Sources */,
 				E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */,
 				E306429E242C62C300D40A78 /* clinicaldateController.swift in Sources */,
+				E345A0BA244BFC3800F9FBAF /* loadingView.swift in Sources */,
 				E35CCBCD24401658006E8323 /* VariadicView.swift in Sources */,
 				E30642A8242C6B7700D40A78 /* clinicalHistoryController.swift in Sources */,
 				E3064293242772EA00D40A78 /* MemoryCleaner.swift in Sources */,
 				E35CCBCB24400CDB006E8323 /* Sizes.swift in Sources */,
+				E345A0B8244BCF2900F9FBAF /* gradingCriteron.swift in Sources */,
 				E3F61D58235A1915007F48D5 /* SceneDelegate.swift in Sources */,
 				E380202023A29FA4008A0B4C /* gradeEvalsCell.swift in Sources */,
 				E30642B2242C6BF500D40A78 /* clinicalScoreController.swift in Sources */,

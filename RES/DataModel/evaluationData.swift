@@ -12,9 +12,20 @@ class evaluationData {
     
     static let shared = evaluationData()
     
+    //the username you signed in with
     var userName: String?
+    
+    //student request flow
     var attendeeName: String?
     var procedure: String?
     var date: String?
+    var graded: String?
+    
+    
+    
+    
+    
+    //tableView consume data
+    var pendingGrades: [Any]?
 }
 

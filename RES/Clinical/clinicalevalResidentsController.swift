@@ -75,7 +75,7 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
     }
     
     func continueToNextScreen(indexPath: IndexPath) {
-     gradingClinicalData.shared.residentEvaluated = Array[indexPath.row]
+        gradingClinicalData.shared.attendeeName = Array[indexPath.row]
      self.navigationController?.pushViewController(clinicalsettingController(), animated: true)
     }
     

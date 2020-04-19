@@ -12,9 +12,13 @@ class CellView: UICollectionViewCell {
     
     static var identifier: String = "cell"
     
-    var DateTitleLabel = UILabel()
+    var FacultyName = UILabel()
     var procedure = UILabel()
+    var date = UILabel()
+    var evalType = UILabel()
+    var ClickME = UILabel()
     var card = UIView()
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,12 +30,21 @@ class CellView: UICollectionViewCell {
 //        buildLabels()
     }
     
+    fileprivate func addLabel(labelName: UILabel, topContraint: CGFloat) {
+        labelName.font = .systemFont(ofSize: 24, weight: .semibold)
+        labelName.textAlignment = .center
+        labelName.textColor = .black
+        self.contentView.addSubview(labelName)
+        labelName.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            labelName.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: topContraint),
+            labelName.widthAnchor.constraint(equalToConstant: 300),
+            labelName.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0)
+        ])
+    }
+    
     func buildLabels(){
-        card.backgroundColor = UIColor.placeholderText
-//        card.layer.cornerRadius = 12.5
-//        card.layer.borderWidth = 3
-//        card.layer.borderColor = UIColor.black.cgColor
-        
+//        card.backgroundColor = UIColor.placeholderText
         self.contentView.addSubview(card)
 
         card.translatesAutoresizingMaskIntoConstraints = false
@@ -41,31 +54,22 @@ class CellView: UICollectionViewCell {
         self.contentView.heightAnchor.constraint(equalTo: card.heightAnchor, constant: 0),
         ])
         
-        DateTitleLabel.font = .boldSystemFont(ofSize: 22)
-        DateTitleLabel.textAlignment = .center
-        DateTitleLabel.textColor = .black
-        self.contentView.addSubview(DateTitleLabel)
-        DateTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        FacultyName.font = .boldSystemFont(ofSize: 22)
+        FacultyName.textAlignment = .center
+        FacultyName.textColor = .black
+        self.contentView.addSubview(FacultyName)
+        FacultyName.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-        DateTitleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 50),
-        DateTitleLabel.widthAnchor.constraint(equalToConstant: 300),
-        DateTitleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0)
+        FacultyName.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 30),
+        FacultyName.widthAnchor.constraint(equalToConstant: 300),
+        FacultyName.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0)
         ])
         
         
-        
-        procedure.font = .systemFont(ofSize: 24, weight: .semibold)
-        procedure.textAlignment = .center
-        procedure.textColor = .black
-        self.contentView.addSubview(procedure)
-        procedure.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-        procedure.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20),
-        procedure.widthAnchor.constraint(equalToConstant: 300),
-        procedure.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor, constant: 0)
-        ])
-
-        
+        addLabel(labelName: procedure, topContraint: 80)
+        addLabel(labelName: date, topContraint: 110)
+        addLabel(labelName: evalType, topContraint: 140)
+        addLabel(labelName: ClickME, topContraint: 220)
     }
 
 

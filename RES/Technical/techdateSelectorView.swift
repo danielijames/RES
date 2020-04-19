@@ -17,6 +17,7 @@ class techdateSelectorView: UIViewController {
         didSet{
             datePicker.calendar = .current
             datePicker.datePickerMode = .dateAndTime
+            datePicker.timeZone = .current
         }
     }
     
@@ -57,9 +58,9 @@ class techdateSelectorView: UIViewController {
     @IBAction func finalButton(_ sender: Any) {
         self.date = datePicker.date.description
         
-        let dateCorrected = self.date?.prefix(16)
+        let dateCorrected = self.date?.prefix(19)
         
-        gradingTechnicalData.shared.facultydateselected = String(dateCorrected!)
+        gradingTechnicalData.shared.date = String(dateCorrected!)
         self.navigationController?.pushViewController(techcasedifficultyController(), animated: true)
     }
     

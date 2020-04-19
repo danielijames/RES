@@ -75,7 +75,7 @@ class techevalprocedureController: UIViewController, ViewDelegate {
     }
     
     func continueToNextScreen(indexPath: IndexPath) {
-        gradingTechnicalData.shared.procedureEvaluated = Array[indexPath.row]
+        gradingTechnicalData.shared.procedure = Array[indexPath.row]
         let story = UIStoryboard(name: "Main", bundle: nil)
         let controller = story.instantiateViewController(identifier: "techDate")
         self.navigationController?.pushViewController(controller, animated: true)

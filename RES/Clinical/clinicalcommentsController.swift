@@ -10,96 +10,116 @@ import Foundation
 import FirebaseDatabase
 
 class clinicalcommentsController: UIViewController {
-    
+
     let ref = Database.database().reference()
     @IBOutlet weak var commentsText: UITextView!
-    
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarSetup(title: "Comment & Submit")
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
-            
+
         })
         BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: true)
     }
-    
+
     @objc func popController(){
         self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
-    
+
     @objc func logoutNow(){
         wipeMemory()
         self.navigationController?.popToRootViewController(animated: true)
     }
-    
-    
+
+
     @IBAction func submitAction(_ sender: Any) {
+        gradingClinicalData.shared.additionalComments = commentsText.text
+          
+        guard let attendeeName = gradingClinicalData.shared.attendeeName else {return}
+        guard let setting = gradingClinicalData.shared.setting else {return}
+        guard let date = gradingClinicalData.shared.date else {return}
+        guard let timing = gradingClinicalData.shared.timing else {return}
+        guard let attire = gradingClinicalData.shared.attire else {return}
+        guard let history = gradingClinicalData.shared.history else {return}
+        guard let physicalExam = gradingClinicalData.shared.physicalExam else {return}
+        guard let plan = gradingClinicalData.shared.plan else {return}
+        guard let diagnosis = gradingClinicalData.shared.diagnosis else {return}
+        guard let presentation = gradingClinicalData.shared.presentation else {return}
+        guard let score = gradingClinicalData.shared.score else {return}
+        guard let evalType = gradingClinicalData.shared.evalType else {return}
         
         guard let username = evaluationData.shared.userName else {return}
-        gradingTechnicalData.shared.additionalComments = commentsText.text
-        gradingTechnicalData.shared.graded = true
+          
+        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String, "FacultyName": username])
+           
+           guard let selectedEval = gradingTechnicalData.shared.selectedEvalDate else {return}
+
+           self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
         
-        self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(gradingTechnicalData.shared.selectedEval.student!).removeValue()
-        self.ref.child("Faculty/\(username)").child("Graded Requests").child(gradingTechnicalData.shared.selectedEval.student!).setValue(gradingTechnicalData.shared.selectedEval.date)
-        
-        gradingTechnicalData.shared.evalSet[1].append(gradingTechnicalData.shared.selectedEval as! (student: String, date: String))
-        
-        gradingTechnicalData.shared.evalSet[0].removeAll { (deletionTuple) -> Bool in
-            if deletionTuple == gradingTechnicalData.shared.selectedEval {
-                return true
-            }
-            return false}
-        
-        
-        let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
-            
-            self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
-            //            self?.performSegue(withIdentifier: "techHome", sender: self)
-        }))
-        
-        self.present(alert, animated: true)
-        
+           
+           let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
+               
+           self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
+           }))
+
+           self.present(alert, animated: true)
     }
-    
+
     @IBAction func finishWithRemediation(_ sender: Any) {
+        gradingClinicalData.shared.additionalComments = commentsText.text
+          
+        guard let attendeeName = gradingClinicalData.shared.attendeeName else {return}
+        guard let setting = gradingClinicalData.shared.setting else {return}
+        guard let date = gradingClinicalData.shared.date else {return}
+        guard let timing = gradingClinicalData.shared.timing else {return}
+        guard let attire = gradingClinicalData.shared.attire else {return}
+        guard let history = gradingClinicalData.shared.history else {return}
+        guard let physicalExam = gradingClinicalData.shared.physicalExam else {return}
+        guard let plan = gradingClinicalData.shared.plan else {return}
+        guard let diagnosis = gradingClinicalData.shared.diagnosis else {return}
+        guard let presentation = gradingClinicalData.shared.presentation else {return}
+        guard let score = gradingClinicalData.shared.score else {return}
+        guard let evalType = gradingClinicalData.shared.evalType else {return}
         
         guard let username = evaluationData.shared.userName else {return}
-        gradingTechnicalData.shared.additionalComments = commentsText.text
-        gradingTechnicalData.shared.graded = true
+          
+        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String])
+           
+           guard let selectedEval = gradingTechnicalData.shared.selectedEvalDate else {return}
+
+           self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
         
-        self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(gradingTechnicalData.shared.selectedEval.student!).removeValue()
-        self.ref.child("Faculty/\(username)").child("Graded Requests").child(gradingTechnicalData.shared.selectedEval.student!).setValue(gradingTechnicalData.shared.selectedEval.date)
-        
-        gradingTechnicalData.shared.evalSet[1].append(gradingTechnicalData.shared.selectedEval as! (student: String, date: String))
-        
-        gradingTechnicalData.shared.evalSet[0].removeAll { (deletionTuple) -> Bool in
-            if deletionTuple == gradingTechnicalData.shared.selectedEval {
-                return true
-            }
-            return false}
-        
-        self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
-        
-        
-        let email = "rgriffincook@yahoo.com"
-        if let url = URL(string: "mailto:\(email)") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
+           
+           let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
+               
+           self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
+           }))
+
+           self.present(alert, animated: true)
+
+
+        let emailOne = "rgriffincook@yahoo.com"
+        let emailTwo = "rgriffincook@yahoo.com"
+        if let url = URL(string: "mailto:\([emailOne, emailTwo])") {
+          if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url)
+          } else {
+            UIApplication.shared.openURL(url)
+          }
         }
     }
 }

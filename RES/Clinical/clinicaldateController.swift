@@ -59,7 +59,7 @@ class clinicaldateController: UIViewController {
         
         let dateCorrected = self.date?.prefix(16)
         
-        gradingClinicalData.shared.facultydateselected = String(dateCorrected!)
+        gradingClinicalData.shared.date = String(dateCorrected!)
         self.navigationController?.pushViewController(clinicalTimelinessController(), animated: true)
     }
     

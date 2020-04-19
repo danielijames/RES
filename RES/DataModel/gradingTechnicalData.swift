@@ -14,20 +14,22 @@ class gradingTechnicalData {
     static let shared = gradingTechnicalData()
     
         //for grading evals
-      var residentEvaluated: String?
-      var procedureEvaluated: String?
-      var facultydateselected: String?
+      var graded: String?
+      var procedure: String?
+      var attendeeName: String?
       
       
       //criterion
-      var selectedEval: (student: String?, date: String?)
       var evalType: String?
       var caseDifficulty: String?
+      var date: String?
       var preparation: String?
       var percentPerformed: String?
       var scoreGiven: String?
       var improvements = Set<String?>()
       var additionalComments: String?
-      var graded: Bool?
-      var evalSet = [[(student: String, date: String)](),[(student: String, date: String)]()]
+    
+      var receivedData: [JSONData]?
+      var selectedEvalDate: String?
+      var combinedKeywithData = [[String:JSONData]]()
 }

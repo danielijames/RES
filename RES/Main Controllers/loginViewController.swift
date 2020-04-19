@@ -23,8 +23,13 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     let firebaseFunction = firebaseFunctions()
     var loginInfoStudent = [(username: String, password: Any)]()
     var loginInfoFaculty = [(username: String, password: Any)]()
+    let loading = loadingView()
     
     @IBAction func loginButton(_ sender: Any) {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.frame.origin = .init(x: 0, y: 0)
+        }, completion: nil)
+        
         guard let username = self.usernameBox.text else {return}
         guard let password = self.loginBox.text else {return}
         
@@ -57,6 +62,12 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.isUserInteractionEnabled = false
+        super.view.addSubview(loading)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.loading.removeFromSuperview()
+            self.view.isUserInteractionEnabled = true
+        }
         usernameBox.delegate = self
         loginBox.delegate = self
         print("override view did load")
@@ -140,5 +151,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         errorLabel.isHidden = true
     }
+    
+    
     
 }

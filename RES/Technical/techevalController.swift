@@ -9,38 +9,36 @@
 import UIKit
 import FirebaseDatabase
 
-class techevalController: UITableViewController {
+struct JSONData: Decodable {
+    var graded: String?
+    var procedure: String?
+    var attendeeName: String?
     
+    enum CodingKeys: String, CodingKey {
+        case graded = "graded"
+        case procedure = "procedure"
+        case attendeeName = "attendeeName"
+    }
+}
+
+class techevalController: UITableViewController {
     var ungradedRequests: (student: String, date: String)?
     var gradedRequests: (student: String, date: String)?
+    var data: DataSnapshot?
+    var retrievedData: [JSONData]?
+    
+    var keys: Dictionary<String, Any>.Keys!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navBarSetup(title: "Pending & Graded")
         guard let username = evaluationData.shared.userName else {return}
         retrieveDataUngradedRequests(path: "Faculty/\(username)/Ungraded Requests")
-        retrieveDataGradedRequests(path: "Faculty/\(username)/Graded Requests")
         self.tableView.reloadData()
-        
-        
-        
-        
-        
-        
-    
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
         })
-        
-        
         BackButton(vc: self, selector: #selector(popController), closure: nil)
-        
-        
-        
-        
-        
-        
     }
     
     @objc func popController(){
@@ -55,17 +53,8 @@ class techevalController: UITableViewController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,7 +62,7 @@ class techevalController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gradingTechnicalData.shared.evalSet[section].count
+        return self.retrievedData?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -82,57 +71,112 @@ class techevalController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        if section == 0 {
-            return "Requested Evaluations"}
+            return "Requested Evaluations"
+    }
+    
+    func decodeData() {
+        let retrievedData = try! JSONDecoder().decode([JSONData].self, from: self.data!.listToJSON)
+        self.retrievedData = retrievedData
+    
+        gradingTechnicalData.shared.receivedData = retrievedData
+        self.tableView.reloadData()
         
-        return "Graded Requests"
+        guard let keys = self.keys?.count else {return}
+        
+        if retrievedData.count > 0 && keys > 0 {
+          combineData()
+        }
+        
+        
+    }
+    
+    func combineData(){
+        for i in 0...(self.retrievedData!.count - 1){
+            let arrayofkeys = Array(self.keys)
+            gradingTechnicalData.shared.combinedKeywithData.append([arrayofkeys[i]:self.retrievedData![i]])
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gradeCell", for: indexPath) as! gradeEvalsCell
-        cell.timeLabel.text = gradingTechnicalData.shared.evalSet[indexPath.section][indexPath.row].student
-        cell.fromLabel.text = gradingTechnicalData.shared.evalSet[indexPath.section][indexPath.row].date
+        
+        if let cellData = self.retrievedData {
+            cell.attendeeName.text = "From: " + cellData[indexPath.row].attendeeName!
+            cell.procedure.text = "For Procedure: " + cellData[indexPath.row].procedure!
+            cell.graded.text = "Graded: " + cellData[indexPath.row].graded!
+            return cell
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! gradeEvalsCell
         
-        switch indexPath.section {
-        case 0:
-            gradingTechnicalData.shared.selectedEval = gradingTechnicalData.shared.evalSet[0][indexPath.row]
-            performSegue(withIdentifier: "facultyFilterSegue", sender: self)
-        default: break
-            //do nothing
+        gradingTechnicalData.shared.attendeeName = cell.attendeeName.text
+        gradingTechnicalData.shared.graded = cell.graded.text
+        gradingTechnicalData.shared.procedure = cell.procedure.text
+        
+        for (i,x) in self.keys.enumerated(){
+            if i == indexPath.row{
+                gradingTechnicalData.shared.selectedEvalDate = x
+            }
         }
+        
+        
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "facultyfilterController")
+        self.navigationController?.pushViewController(controller, animated: true)
+      
     }
     
     func retrieveDataUngradedRequests(path: String) {
         let ref = Database.database().reference()
-        
         DispatchQueue.main.async {
             ref.child(path).observe(.value) { (data) in
-                guard let value = data.value as? [String: String] else { return }
-                
-                gradingTechnicalData.shared.evalSet[0] = (value.map { (student: $0.key, date: $0.value)})
-                
-                self.tableView.reloadData()
-            }
-            
+               print(data)
+            //Putting the Data in a format for which we can grab the keys
+                guard let value = data.value as? [String: Any] else { return }
+                self.keys = value.keys
+ 
+            self.data = data
+            self.decodeData()
+            self.tableView.reloadData()
+        }
+      }
+    }
+}
+
+
+extension Dictionary {
+    var JSON: Data {
+        do {
+            return try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
+        } catch {
+            return Data()
         }
     }
-    
-    func retrieveDataGradedRequests(path: String) {
-        let ref = Database.database().reference()
-        
-        DispatchQueue.main.async {
-            ref.child(path).observe(.value) { (data) in
-                guard let value = data.value as? [String: String] else { return }
-                
-                gradingTechnicalData.shared.evalSet[1] = (value.map { (student: $0.key, date: $0.value)})
-                self.tableView.reloadData()
-            }
-            
-        }
-    }
-    
+}
+
+
+extension DataSnapshot {
+  var valueToJSON: Data {
+      guard let dictionary = value as? [String: Any] else {
+          return Data()
+      }
+      return dictionary.JSON
+  }
+
+  var listToJSON: Data {
+      guard let object = children.allObjects as? [DataSnapshot] else {
+          return Data()
+      }
+
+      let dictionary: [NSDictionary] = object.compactMap { $0.value as? NSDictionary }
+
+      do {
+          return try JSONSerialization.data(withJSONObject: dictionary, options: .prettyPrinted)
+      } catch {
+          return Data()
+      }
+  }
 }

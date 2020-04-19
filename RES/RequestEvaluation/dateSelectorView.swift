@@ -57,7 +57,7 @@ class dateSelectorView: UIViewController {
     @IBAction func finalButton(_ sender: Any) {
         self.date = datePicker.date.description
         
-        let dateCorrected = self.date?.prefix(16)
+        let dateCorrected = self.date?.prefix(19)
         
         evaluationData.shared.date = String(dateCorrected!)
         

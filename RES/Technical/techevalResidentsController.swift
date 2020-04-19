@@ -75,7 +75,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     }
     
     func continueToNextScreen(indexPath: IndexPath) {
-        gradingTechnicalData.shared.residentEvaluated = Array[indexPath.row]
+        gradingTechnicalData.shared.attendeeName = Array[indexPath.row]
         self.navigationController?.pushViewController(techevalprocedureController(), animated: true)
     } 
 }

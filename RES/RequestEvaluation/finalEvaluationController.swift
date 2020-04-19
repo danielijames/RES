@@ -21,6 +21,7 @@ class finalEvaluationController: UIViewController {
     var procedure: String!
     var attendeeName: String!
     var date: String?
+    var graded: String?
     
     let ref = Database.database().reference()
     
@@ -33,6 +34,7 @@ class finalEvaluationController: UIViewController {
         self.username = username
         self.procedure = procedure
         self.attendeeName = attendeeName
+        self.graded = "false"
         
         submittalText.text = "\(username) requesting an evaluation for \(procedure) from \(attendeeName) on \(date)."
     }
@@ -60,13 +62,20 @@ class finalEvaluationController: UIViewController {
     }
     
     @IBAction func finalSubmittal(_ sender: Any) {
-        if let username = self.username, let attendeeName = self.attendeeName, let date = self.date, let procedure = self.procedure {
+        if let username = self.username, let attendeeName = self.attendeeName, let date = self.date, let procedure = self.procedure, let graded = self.graded {
             
-            let key = date + "from" + username
+//            let key = date + "from" + username
+//            
             
-            self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).setValue(attendeeName)
+            self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).child("attendeeName").setValue(attendeeName)
+            self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).child("graded").setValue(graded)
             
-            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(key).setValue(procedure)
+            
+            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("attendeeName").setValue(username)
+            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("graded").setValue(graded)
+            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("procedure").setValue(procedure)
+            
+            
             
             let alert = UIAlertController(title: "Request Submitted", message: "Verify you have submitted a request by navigating to the review graded evaluations tab and reviewing your submitted evaluations.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (_) in

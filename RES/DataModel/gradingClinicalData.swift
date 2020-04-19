@@ -9,29 +9,20 @@
 import Foundation
 
 class gradingClinicalData {
-    
+
     static let shared = gradingClinicalData()
     
-        //for grading evals
-      var residentEvaluated: String?
-      var procedureEvaluated: String?
-      var facultydateselected: String?
-      
-      
-      //criterion
-      var selectedEval: (student: String?, date: String?)
-      var evalType: String?
-      var setting: String?
-      var timing: String?
-      var attire: String?
-      var history: String?
-      var physicalExam: String?
-      var plan: String?
-      var diagnosis: String?
-      var presentation: String?
-      var score: String?
-      var areasforimprovements = Set<String?>()
-      var additionalComments: String?
-      var graded: Bool?
-      var evalSet = [[(student: String, date: String)](),[(student: String, date: String)]()]
+    var evalType: String?
+    var attendeeName: String?
+    var setting: String?
+    var date: String?
+    var timing: String?
+    var attire: String?
+    var history: String?
+    var physicalExam: String?
+    var plan: String?
+    var diagnosis: String?
+    var presentation: String?
+    var score: String?
+    var additionalComments: String?
 }

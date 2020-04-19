@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class graphViewContoller: UIViewController, GraphViewDelegate {
     let screenView = GraphView()
+    var data: DataSnapshot?
+    var dataTwo: DataSnapshot?
+    var retrievedData: [gradingCritereon]?
+    var sentData: [gradingCritereon]?
     
     override func loadView() {
         super.loadView()
@@ -19,6 +24,11 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         screenView.delegate = self
+        guard let username: String = evaluationData.shared.userName else {return}
+    
+        retrieveData(path: "Residents/\(username)/Graded Evaluations")
+        retrieveDataTwo(path: "Residents/\(username)/Requested Evaluations")
+        
         navBarSetup(title: "Monitor Your Evaluations")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
@@ -41,11 +51,59 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
     }
     
     func Count() -> (Sent: CGFloat, Graded: CGFloat)? {
+        let gradedCount = self.retrievedData?.count ?? 0
+        let sentCount = self.sentData?.count ?? 0
         screenView.TotalLabel.text = """
-                          🔵      Graded: \(8)
-                          🟢      Sent: \(35)
-                   """
-        return (Sent: 35, Graded: 8)
+                🟢      Sent: \(sentCount)
+                🔵      Graded: \(gradedCount)
+        """
+        return (Sent: CGFloat(sentCount), Graded: CGFloat(gradedCount))
     }
+    
+    func magnifyCell(with EvaluationDate: String) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "magnifiedCellController") as! magnifiedCellController
+        controller.EvaluationDate = EvaluationDate
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func decodeData() {
+        let retrievedData = try! JSONDecoder().decode([gradingCritereon].self, from: self.data!.listToJSON)
+        self.retrievedData = retrievedData
+        self.screenView.collection.reloadData()
+        
+    }
+    
+    func decodeDataTwo() {
+        let retrievedData = try! JSONDecoder().decode([gradingCritereon].self, from: self.dataTwo!.listToJSON)
+        self.sentData = retrievedData
+    }
+
+    
+    func getData() -> [gradingCritereon]? {
+        return self.retrievedData
+    }
+    
+    
+        func retrieveData(path: String) {
+           let ref = Database.database().reference()
+           DispatchQueue.main.async {
+               ref.child(path).observe(.value) { (data) in
+               self.data = data
+               self.decodeData()
+               self.screenView.collection.reloadData()
+           }
+         }
+       }
+    
+    func retrieveDataTwo(path: String) {
+        let ref = Database.database().reference()
+        DispatchQueue.main.async {
+            ref.child(path).observe(.value) { (data) in
+            self.dataTwo = data
+            self.decodeDataTwo()
+        }
+      }
+    }
+    
 
 }

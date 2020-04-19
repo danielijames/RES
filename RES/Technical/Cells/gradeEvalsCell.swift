@@ -10,8 +10,11 @@ import UIKit
 
 class gradeEvalsCell: UITableViewCell {
 
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var attendeeName: UILabel!
+    
+    @IBOutlet weak var procedure: UILabel!
+    
+    @IBOutlet weak var graded: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
