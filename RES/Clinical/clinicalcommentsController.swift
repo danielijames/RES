@@ -8,8 +8,9 @@
 
 import Foundation
 import FirebaseDatabase
+import MessageUI
 
-class clinicalcommentsController: UIViewController {
+class clinicalcommentsController: UIViewController, MFMailComposeViewControllerDelegate {
 
     let ref = Database.database().reference()
     @IBOutlet weak var commentsText: UITextView!
@@ -119,14 +120,15 @@ class clinicalcommentsController: UIViewController {
            self.present(alert, animated: true)
 
 
-        let emailOne = "rgriffincook@yahoo.com"
-        let emailTwo = "rgriffincook@yahoo.com"
-        if let url = URL(string: "mailto:\([emailOne, emailTwo])") {
-          if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url)
-          } else {
-            UIApplication.shared.openURL(url)
-          }
-        }
+        let emailTitle = "Reccommending remediation for \(attendeeName)"
+        let messageBody = "Reccommended remediation for \(attendeeName) prompted by evaluation grade given on date \(date) which was unsatisfactory"
+        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
+        let mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: false)
+        mc.setToRecipients(toRecipents)
+
+        self.present(mc, animated: true, completion: nil)
     }
 }
