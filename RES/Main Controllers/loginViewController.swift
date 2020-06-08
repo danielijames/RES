@@ -38,8 +38,9 @@ class loginViewController: UIViewController, UITextFieldDelegate {
             for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
                 
-                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "filterViewController")
-                self.navigationController?.pushViewController(controller, animated: true)
+//                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "filterViewController")
+//                self.navigationController?.pushViewController(controller, animated: true)
+                self.navigationController?.performSegue(withIdentifier: "studentSegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }
@@ -47,7 +48,8 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         default:
             for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
-                performSegue(withIdentifier: "facultySegue", sender: self)
+                self.navigationController?.performSegue(withIdentifier: "facultySegue", sender: self)
+
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }

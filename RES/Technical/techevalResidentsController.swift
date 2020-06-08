@@ -30,12 +30,9 @@ class techevalResidentsController: UIViewController, ViewDelegate {
         screenView.delegate = self
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
-        
         navBarSetup(title: "Pick Resident")
-        
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
-            
         })
         BackButton(vc: self, selector: #selector(popController), closure: nil)
     }
@@ -76,6 +73,10 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.attendeeName = Array[indexPath.row]
-        self.navigationController?.pushViewController(techevalprocedureController(), animated: true)
-    } 
+        self.navigationController?.performSegue(withIdentifier: "tech2", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techevalprocedureController())
+    }
 }

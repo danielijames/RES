@@ -76,8 +76,10 @@ class techevalprocedureController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.procedure = Array[indexPath.row]
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let controller = story.instantiateViewController(identifier: "techDate")
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech3", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techdateSelectorView())
     }
 }

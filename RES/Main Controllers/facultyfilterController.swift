@@ -26,12 +26,12 @@ class facultyfilterController: UIViewController {
     
     
     @IBAction func techSegue(_ sender: Any) {
-        self.navigationController?.pushViewController(techevalResidentsController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech1", sender: self)
         gradingTechnicalData.shared.evalType = "Technical"
     }
     
     @IBAction func clinicalSegue(_ sender: Any) {
-        self.navigationController?.pushViewController(clinicalevalResidentsController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin1", sender: self)
         gradingClinicalData.shared.evalType = "Clinical"
     }
     
@@ -56,4 +56,12 @@ class facultyfilterController: UIViewController {
             wipeMemory()
             self.navigationController?.popToRootViewController(animated: true)
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tech1" {
+        segueHelper(nextVC: techevalResidentsController())
+        } else {
+        segueHelper(nextVC: clinicalevalResidentsController())
+        }
+    }
 }

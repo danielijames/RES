@@ -123,9 +123,9 @@ class techevalController: UITableViewController {
             }
         }
         
-        
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "facultyfilterController")
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "facultyfilterController")
+//        self.navigationController?.pushViewController(controller, animated: true)
       
     }
     
@@ -145,6 +145,10 @@ class techevalController: UITableViewController {
             self.tableView.reloadData()
         }
       }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techevalResidentsController())
     }
 }
 

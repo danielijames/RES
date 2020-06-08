@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lp6-uz-T9k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lp6-uz-T9k">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,7 +101,6 @@
                         <outlet property="segmentController" destination="Qgl-K6-aNv" id="zXo-xR-bgg"/>
                         <outlet property="stackView" destination="z2X-sz-Z9V" id="ez1-F6-R62"/>
                         <outlet property="usernameBox" destination="HEE-e1-7RX" id="WYT-6b-0dF"/>
-                        <segue destination="bSR-5g-9oT" kind="show" identifier="facultySegue" id="AVx-rY-n11"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -181,6 +180,7 @@
                         <viewLayoutGuide key="safeArea" id="6PB-8V-A0s"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="sXZ-YW-kul"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -257,30 +257,30 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gradeCell" id="EoB-vR-CgQ" customClass="gradeEvalsCell" customModule="RES" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="73.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EoB-vR-CgQ" id="rs8-Yk-FyR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-GM-h5q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="73.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date and name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biG-b0-kuG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="24.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmS-UQ-gEh">
-                                                    <rect key="frame" x="0.0" y="24.5" width="414" height="24"/>
+                                                    <rect key="frame" x="0.0" y="25" width="414" height="24.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9TQ-yL-jNy">
-                                                    <rect key="frame" x="0.0" y="48.5" width="414" height="24.5"/>
+                                                    <rect key="frame" x="0.0" y="49.5" width="414" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -323,11 +323,12 @@
             <objects>
                 <viewController id="Zyc-sh-OqP" customClass="attendeeNameController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gKH-gM-T7U">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="t1I-Wd-nea"/>
                     </view>
+                    <navigationItem key="navigationItem" id="bhG-1j-bD2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8U0-OI-HNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,11 +339,12 @@
             <objects>
                 <viewController storyboardIdentifier="graphViewController" id="YwY-82-w7s" customClass="graphViewContoller" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2dd-sd-DT5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6oD-bB-xp1"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UfN-fr-Vzw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vfT-sQ-2ZU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,11 +355,12 @@
             <objects>
                 <viewController storyboardIdentifier="magnifiedCellController" id="qmz-88-xWg" customClass="magnifiedCellController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Oh9-8R-UNN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="eDJ-TF-SfZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xBz-7D-Jor"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzd-9G-JOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -368,11 +371,12 @@
             <objects>
                 <viewController id="Vam-hc-ka4" customClass="techevalprocedureController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3CQ-fX-Kip">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Rl0-Jr-n3m"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JgH-RF-sOf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFl-Nz-qJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -434,11 +438,12 @@
             <objects>
                 <viewController id="3lK-kp-OT8" customClass="procedureController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4EM-f0-wqA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="APm-N1-I8i"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Amu-Q3-eSw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9X-ps-SZz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -463,11 +468,41 @@
                     </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ztA-yM-T1e"/>
+                        <segue destination="diR-LK-diT" kind="show" identifier="studentSegue" id="MLX-Jc-lXJ"/>
+                        <segue destination="Zyc-sh-OqP" kind="show" identifier="request1" id="uy7-UO-Osl"/>
+                        <segue destination="3lK-kp-OT8" kind="show" identifier="request2" id="Mpo-pT-0PO"/>
+                        <segue destination="LTn-Ks-WgB" kind="show" identifier="request3" id="4Uu-oS-RvI"/>
+                        <segue destination="cVW-P0-RF7" kind="show" identifier="request4" id="3O0-Dh-byY"/>
+                        <segue destination="bSR-5g-9oT" kind="show" identifier="facultySegue" id="ReJ-uw-G5q"/>
+                        <segue destination="YwY-82-w7s" kind="show" identifier="reviewGraded" id="f88-RU-pFq"/>
+                        <segue destination="qmz-88-xWg" kind="show" identifier="graded1" id="JLH-gS-4fT"/>
+                        <segue destination="8H2-te-0oz" kind="show" identifier="typeEvalFilter" id="3JA-Yv-DAv"/>
+                        <segue destination="Loo-Ua-atD" kind="show" identifier="tech1" id="Dg3-Gk-Qcg"/>
+                        <segue destination="Vam-hc-ka4" kind="show" identifier="tech2" id="gff-4O-hVJ"/>
+                        <segue destination="RWY-YA-BTc" kind="show" identifier="tech3" id="hP8-wf-oel"/>
+                        <segue destination="jqe-zP-Wbj" kind="show" identifier="tech4" id="H2c-Y4-7Qd"/>
+                        <segue destination="qYe-Bc-Ia7" kind="show" identifier="tech5" id="Zuv-Wg-91b"/>
+                        <segue destination="68h-Sd-L2N" kind="show" identifier="tech6" id="GlW-cU-a2r"/>
+                        <segue destination="o4N-b5-qIT" kind="show" identifier="tech7" id="Qzq-9r-Cc8"/>
+                        <segue destination="c7v-pZ-KpI" kind="show" identifier="tech8" id="sre-dw-RQD"/>
+                        <segue destination="CWQ-st-NaO" kind="show" identifier="tech9" id="hjp-W6-K8Y"/>
+                        <segue destination="go2-wG-tcG" kind="show" identifier="clin1" id="r9j-QL-7W6"/>
+                        <segue destination="YRk-XB-emp" kind="show" identifier="clin2" id="tZb-pG-B8E"/>
+                        <segue destination="c1z-qr-vMv" kind="show" identifier="clin3" id="kp8-Wa-8WT"/>
+                        <segue destination="lQ8-xt-Iop" kind="show" identifier="clin4" id="lsG-8o-fDF"/>
+                        <segue destination="D3h-h3-KLS" kind="show" identifier="clin5" id="7aM-en-k0m"/>
+                        <segue destination="sbV-RF-keV" kind="show" identifier="clin6" id="41m-i7-qIa"/>
+                        <segue destination="31T-E5-Lua" kind="show" identifier="clin8" id="iiv-wn-CTM"/>
+                        <segue destination="3BF-RI-YqI" kind="show" identifier="clin9" id="x5l-u0-12Z"/>
+                        <segue destination="psb-Tg-XR5" kind="show" identifier="clin10" id="OYP-V8-imT"/>
+                        <segue destination="jlI-GA-blQ" kind="show" identifier="clin11" id="jn7-mV-PNj"/>
+                        <segue destination="VcQ-cz-8nL" kind="show" identifier="clin12" id="j6a-Ju-BCY"/>
+                        <segue destination="f4G-uH-4vm" kind="show" identifier="clin7" id="ylD-E5-lyS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msQ-Im-h9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89.855072463768124" y="-293.30357142857139"/>
+            <point key="canvasLocation" x="8123" y="3"/>
         </scene>
         <!--Additional Comments?-->
         <scene sceneID="nL9-Sb-Xtt">
@@ -549,7 +584,7 @@
             <objects>
                 <viewController id="go2-wG-tcG" customClass="clinicalevalResidentsController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CjR-B7-Tj8">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Y6g-qv-Gxt"/>
@@ -565,7 +600,7 @@
             <objects>
                 <viewController storyboardIdentifier="clinicalsetting" id="YRk-XB-emp" customClass="clinicalsettingController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ynO-Hw-7vT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="PMZ-zq-fkI"/>
@@ -581,17 +616,17 @@
             <objects>
                 <viewController storyboardIdentifier="clinicaldatePicker" id="c1z-qr-vMv" customClass="clinicaldateController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1oh-AU-pIR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="6rs-48-Exp">
-                                <rect key="frame" x="47" y="340" width="320" height="216"/>
+                                <rect key="frame" x="47" y="313" width="320" height="216"/>
                                 <connections>
                                     <action selector="datePicked:" destination="c1z-qr-vMv" eventType="valueChanged" id="Kdn-Gn-mDH"/>
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuI-2i-OQD">
-                                <rect key="frame" x="107" y="702" width="200" height="60"/>
+                                <rect key="frame" x="107" y="648" width="200" height="60"/>
                                 <color key="backgroundColor" red="0.70031267429999999" green="0.8752899851" blue="0.65978642219999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8NZ-S6-Roc"/>
@@ -615,6 +650,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g2V-Oy-s1g"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yuV-cf-ovB"/>
                     <connections>
                         <outlet property="dateButton" destination="HuI-2i-OQD" id="1mS-cs-tCl"/>
                         <outlet property="datePicker" destination="6rs-48-Exp" id="ybS-kT-BAu"/>
@@ -629,7 +665,7 @@
             <objects>
                 <viewController storyboardIdentifier="clinicalTimeliness" id="lQ8-xt-Iop" customClass="clinicalTimelinessController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SWD-IA-WNk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dGM-VJ-Psp"/>
@@ -645,7 +681,7 @@
             <objects>
                 <viewController storyboardIdentifier="clinicalAttire" id="D3h-h3-KLS" customClass="clinicalAttireController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RQl-BK-66i">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="BGD-Nn-0va"/>
@@ -661,7 +697,7 @@
             <objects>
                 <viewController id="sbV-RF-keV" customClass="clinicalHistoryController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xwT-35-CAn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hAo-Cw-NP4"/>
@@ -677,7 +713,7 @@
             <objects>
                 <viewController id="f4G-uH-4vm" customClass="clinicalPhysicalExamController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oJU-uy-YSJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="uxN-vX-08N"/>
@@ -693,7 +729,7 @@
             <objects>
                 <viewController id="31T-E5-Lua" customClass="clinicalPlanController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V8S-Fk-GRo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="0kd-db-UOY"/>
@@ -709,7 +745,7 @@
             <objects>
                 <viewController id="3BF-RI-YqI" customClass="clinicalDiagnosisController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gx3-4o-Dnu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4zE-7W-UoH"/>
@@ -725,7 +761,7 @@
             <objects>
                 <viewController id="psb-Tg-XR5" customClass="clinicalPresentationController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hZF-dA-VI3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Sda-ri-vCl"/>
@@ -741,7 +777,7 @@
             <objects>
                 <viewController id="jlI-GA-blQ" customClass="clinicalScoreController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FuE-fR-37f">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="x2c-3z-aW9"/>
@@ -757,11 +793,12 @@
             <objects>
                 <viewController id="Loo-Ua-atD" customClass="techevalResidentsController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zOi-qU-hzy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="udh-jm-f83"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gkd-UU-nuR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="piW-Lu-uxw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,17 +809,17 @@
             <objects>
                 <viewController storyboardIdentifier="techDate" id="RWY-YA-BTc" customClass="techdateSelectorView" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B0u-Kq-eva">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="O75-Le-Tnt">
-                                <rect key="frame" x="47" y="340" width="320" height="216"/>
+                                <rect key="frame" x="47" y="313" width="320" height="216"/>
                                 <connections>
                                     <action selector="datePicked:" destination="RWY-YA-BTc" eventType="valueChanged" id="xdt-zH-0Ls"/>
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxn-lr-lgC">
-                                <rect key="frame" x="107" y="702" width="200" height="60"/>
+                                <rect key="frame" x="107" y="648" width="200" height="60"/>
                                 <color key="backgroundColor" red="0.70031267429999999" green="0.8752899851" blue="0.65978642219999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Y9U-12-urK"/>
@@ -806,6 +843,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uJq-ih-erY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hAs-1l-Z1o"/>
                     <connections>
                         <outlet property="dateButton" destination="mxn-lr-lgC" id="NjO-Ey-xUI"/>
                         <outlet property="datePicker" destination="O75-Le-Tnt" id="Rn3-hX-FXz"/>
@@ -820,11 +858,12 @@
             <objects>
                 <viewController id="jqe-zP-Wbj" customClass="techcasedifficultyController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kw3-fK-Yby">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="czg-2a-ioR"/>
                     </view>
+                    <navigationItem key="navigationItem" id="tF4-P0-jra"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GEZ-fn-ysd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -835,11 +874,12 @@
             <objects>
                 <viewController id="qYe-Bc-Ia7" customClass="techpreparationviewController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cft-mP-sca">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="q8c-Fe-tZ4"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rqN-ZV-lDU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ayo-4L-VtH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -850,11 +890,12 @@
             <objects>
                 <viewController id="68h-Sd-L2N" customClass="techpercentViewController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bwX-uX-5Jw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Vef-yN-YEd"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wDz-Ws-7L5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M5v-mf-hb8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -865,11 +906,12 @@
             <objects>
                 <viewController id="o4N-b5-qIT" customClass="techscoreController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vOh-2d-Y24">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fMI-lv-wdE"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3TG-3x-sgM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTe-S9-d3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -895,6 +937,7 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WcL-nt-m1Q"/>
                     </toolbarItems>
+                    <navigationItem key="navigationItem" id="cES-91-MI9"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -982,17 +1025,17 @@
             <objects>
                 <viewController storyboardIdentifier="dateSelector" id="LTn-Ks-WgB" customClass="dateSelectorView" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uJj-g5-PNC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="lb4-gT-K7l">
-                                <rect key="frame" x="47" y="340" width="320" height="216"/>
+                                <rect key="frame" x="47" y="313" width="320" height="216"/>
                                 <connections>
                                     <action selector="datePicked:" destination="LTn-Ks-WgB" eventType="valueChanged" id="YyG-nR-uIU"/>
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JU-PS-QYO">
-                                <rect key="frame" x="107" y="702" width="200" height="60"/>
+                                <rect key="frame" x="107" y="648" width="200" height="60"/>
                                 <color key="backgroundColor" red="0.70031267429999999" green="0.8752899851" blue="0.65978642219999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KFt-Ok-D8d"/>
@@ -1016,6 +1059,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q1w-zg-ZQy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="exu-ur-IWC"/>
                     <connections>
                         <outlet property="dateButton" destination="5JU-PS-QYO" id="dDw-gq-Mlu"/>
                         <outlet property="datePicker" destination="lb4-gT-K7l" id="8vU-uw-bbm"/>
@@ -1027,8 +1071,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="folder.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="paperplane.fill" catalog="system" width="64" height="60"/>
+        <image name="folder.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="paperplane.fill" catalog="system" width="128" height="121"/>
         <image name="resLogo" width="291.5" height="292"/>
     </resources>
 </document>

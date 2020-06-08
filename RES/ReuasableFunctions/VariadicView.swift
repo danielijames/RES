@@ -14,6 +14,13 @@ protocol ViewDelegate: AnyObject {
     func getContentArray() -> Array<String>
 }
 
+extension UIViewController{
+    func segueHelper(nextVC: UIViewController) {
+        let view = VariadicView()
+        nextVC.view = view
+    }
+}
+
 class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegate: ViewDelegate?

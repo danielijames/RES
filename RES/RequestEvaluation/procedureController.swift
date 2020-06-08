@@ -68,7 +68,13 @@ class procedureController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         evaluationData.shared.procedure = Array[indexPath.row]
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "dateSelector")
-        self.navigationController?.pushViewController(controller, animated: true)
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "dateSelector")
+//        self.navigationController?.pushViewController(controller, animated: true)
+//        
+        self.navigationController?.performSegue(withIdentifier: "request3", sender: self)
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        segueHelper(nextVC: procedureController())
+//    }
 }

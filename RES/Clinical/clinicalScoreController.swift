@@ -72,8 +72,10 @@ class clinicalScoreController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.score = Array[indexPath.row]
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let controller = story.instantiateViewController(withIdentifier: "clinicalComments")
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin12", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalcommentsController())
     }
 }

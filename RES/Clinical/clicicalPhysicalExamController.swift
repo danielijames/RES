@@ -71,6 +71,10 @@ class clicicalPhysicalExamController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.physicalExam = Array[indexPath.row]
-        self.navigationController?.pushViewController(clinicalPlanController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin8", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalPlanController())
     }
 }

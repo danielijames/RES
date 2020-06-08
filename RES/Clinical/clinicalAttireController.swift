@@ -71,6 +71,10 @@ class clinicalAttireController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.attire = Array[indexPath.row]
-        self.navigationController?.pushViewController(clinicalHistoryController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin6", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalHistoryController())
     }
 }

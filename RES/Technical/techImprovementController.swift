@@ -73,9 +73,7 @@ class techImprovementController: UIViewController, ViewDelegate {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let controller = story.instantiateViewController(identifier: "techComments")
-        self.navigationController?.pushViewController(controller, animated: true)
+       self.navigationController?.performSegue(withIdentifier: "tech9", sender: self)
     }
     
     func getTitle() -> String! {
@@ -102,5 +100,9 @@ class techImprovementController: UIViewController, ViewDelegate {
            screenView.table.reloadData()
             gradingTechnicalData.shared.improvements.insert(Array[indexPath.row])
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techcommentsController())
     }
 }

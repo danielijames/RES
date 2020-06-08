@@ -27,13 +27,15 @@ class filterViewController: UIViewController {
         }
         
     @IBAction func requestEval(_ sender: Any) {
-        self.navigationController?.pushViewController(attendeeNameController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "request1", sender: self)
     }
+
     
     @IBAction func reviewEval(_ sender: Any) {
-        
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "graphViewController")
-        self.navigationController?.pushViewController(controller, animated: true)
-        
+        self.navigationController?.performSegue(withIdentifier: "reviewGraded", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: attendeeNameController())
     }
 }

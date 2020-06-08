@@ -75,6 +75,10 @@ class attendeeNameController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         evaluationData.shared.attendeeName = Array[indexPath.row]
-        self.navigationController?.pushViewController(procedureController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "request2", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: procedureController())
     }
 }

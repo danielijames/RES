@@ -61,8 +61,10 @@ class dateSelectorView: UIViewController {
         
         evaluationData.shared.date = String(dateCorrected!)
         
-       let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StudentfinalSubmit")
-        self.navigationController?.pushViewController(controller, animated: true)
+//       let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StudentfinalSubmit")
+//        self.navigationController?.pushViewController(controller, animated: true)
+//        
+        self.navigationController?.performSegue(withIdentifier: "request4", sender: self)
     }
     
 }

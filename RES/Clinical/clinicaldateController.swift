@@ -60,7 +60,11 @@ class clinicaldateController: UIViewController {
         let dateCorrected = self.date?.prefix(16)
         
         gradingClinicalData.shared.date = String(dateCorrected!)
-        self.navigationController?.pushViewController(clinicalTimelinessController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin4", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalTimelinessController())
     }
     
 }

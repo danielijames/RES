@@ -76,6 +76,10 @@ class techpercentViewController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.percentPerformed = Array[indexPath.row]
-        self.navigationController?.pushViewController(techscoreController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech7", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techscoreController())
     }
 }

@@ -71,6 +71,10 @@ class clinicalPresentationController: UIViewController, ViewDelegate {
         
         func continueToNextScreen(indexPath: IndexPath) {
             gradingClinicalData.shared.presentation = Array[indexPath.row]
-            self.navigationController?.pushViewController(clinicalScoreController(), animated: true)
+            self.navigationController?.performSegue(withIdentifier: "clin11", sender: self)
         }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalScoreController())
+    }
     }

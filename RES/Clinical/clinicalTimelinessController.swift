@@ -72,6 +72,10 @@ class clinicalTimelinessController: UIViewController, ViewDelegate{
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.timing = Array[indexPath.row]
-        self.navigationController?.pushViewController(clinicalAttireController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin5", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalAttireController())
     }
 }

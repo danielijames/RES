@@ -61,7 +61,11 @@ class techdateSelectorView: UIViewController {
         let dateCorrected = self.date?.prefix(19)
         
         gradingTechnicalData.shared.date = String(dateCorrected!)
-        self.navigationController?.pushViewController(techcasedifficultyController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech4", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         segueHelper(nextVC: techcasedifficultyController())
+     }
     
 }

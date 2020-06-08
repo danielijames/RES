@@ -76,6 +76,10 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.caseDifficulty = Array[indexPath.row]
-        self.navigationController?.pushViewController(techpreparationviewController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech5", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techpreparationviewController())
     }
 }

@@ -76,6 +76,10 @@ class techpreparationviewController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.preparation = Array[indexPath.row]
-        self.navigationController?.pushViewController(techpercentViewController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech6", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techpercentViewController())
     }
 }

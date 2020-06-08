@@ -31,6 +31,7 @@
 		E30CF812238F6EA400CC7E04 /* dateSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF811238F6EA400CC7E04 /* dateSelectorView.swift */; };
 		E30CF814238F72CD00CC7E04 /* finalEvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */; };
 		E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322B6E1236FAF17008C2B1F /* evaluationData.swift */; };
+		E33113DC248E859F00FF5D70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E33113DB248E7BFF00FF5D70 /* GoogleService-Info.plist */; };
 		E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AB2443724A00F9FBAF /* GraphView.swift */; };
 		E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AD244372B500F9FBAF /* graphViewContoller.swift */; };
 		E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B32443EFBE00F9FBAF /* CellView.swift */; };
@@ -366,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E33113DC248E859F00FF5D70 /* GoogleService-Info.plist in Resources */,
 				E3F61D65235A1919007F48D5 /* LaunchScreen.storyboard in Resources */,
 				E3F61D62235A1919007F48D5 /* Assets.xcassets in Resources */,
 				E3F61D5D235A1916007F48D5 /* Main.storyboard in Resources */,

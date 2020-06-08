@@ -73,8 +73,10 @@ class clinicalsettingController: UIViewController, ViewDelegate {
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.setting = Array[indexPath.row]
         
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let controller = story.instantiateViewController(withIdentifier: "clinicaldatePicker")
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin3", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicaldateController())
     }
 }
