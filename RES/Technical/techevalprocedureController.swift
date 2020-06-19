@@ -76,10 +76,19 @@ class techevalprocedureController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.procedure = Array[indexPath.row]
-        self.navigationController?.performSegue(withIdentifier: "tech3", sender: self)
+        
+        if ApplicationState.sharedState.isOnUnpromptedPath == true {
+        self.navigationController?.performSegue(withIdentifier: "tech3", sender: self)} else {
+           self.navigationController?.performSegue(withIdentifier: "tech4", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: techdateSelectorView())
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            segueHelper(nextVC: techdateSelectorView())
+        default:
+            segueHelper(nextVC: techcasedifficultyController())
+        }
     }
 }

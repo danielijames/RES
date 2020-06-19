@@ -12,6 +12,7 @@ final class ApplicationState {
     static let sharedState = ApplicationState(LoggedIn: nil)
     
     var LoggedIn: Bool?
+    var isOnUnpromptedPath: Bool?
     
     init(LoggedIn: Bool?) {
         self.LoggedIn = LoggedIn

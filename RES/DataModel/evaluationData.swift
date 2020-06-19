@@ -20,11 +20,7 @@ class evaluationData {
     var procedure: String?
     var date: String?
     var graded: String?
-    
-    
-    
-    
-    
+
     //tableView consume data
     var pendingGrades: [Any]?
 }

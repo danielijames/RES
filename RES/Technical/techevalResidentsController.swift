@@ -18,9 +18,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
         view = screenView
     }
     
-    
     var Array = [String]()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +71,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingTechnicalData.shared.attendeeName = Array[indexPath.row]
+        
         self.navigationController?.performSegue(withIdentifier: "tech2", sender: self)
     }
     

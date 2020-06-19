@@ -24,7 +24,6 @@ class facultyfilterController: UIViewController {
     
     var evalData: evaluationData?
     
-    
     @IBAction func techSegue(_ sender: Any) {
         self.navigationController?.performSegue(withIdentifier: "tech1", sender: self)
         gradingTechnicalData.shared.evalType = "Technical"

@@ -12,7 +12,6 @@ import FirebaseDatabase
 class magnifiedCellController: UITableViewController {
     
     var EvaluationDate: String!
-    let screenView = MagnifiedCellView()
     var categories = [String]()
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

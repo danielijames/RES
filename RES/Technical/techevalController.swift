@@ -10,12 +10,12 @@ import UIKit
 import FirebaseDatabase
 
 struct JSONData: Decodable {
-    var graded: String?
+    var date: String?
     var procedure: String?
     var attendeeName: String?
     
     enum CodingKeys: String, CodingKey {
-        case graded = "graded"
+        case date = "date"
         case procedure = "procedure"
         case attendeeName = "attendeeName"
     }
@@ -30,6 +30,7 @@ class techevalController: UITableViewController {
     var keys: Dictionary<String, Any>.Keys!
     
     @IBAction func emptyEvalPressed(_ sender: Any) {
+        ApplicationState.sharedState.isOnUnpromptedPath = true
         self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
     }
     
@@ -109,8 +110,11 @@ class techevalController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gradeCell", for: indexPath) as! gradeEvalsCell
         
         if let cellData = self.retrievedData {
-            cell.attendeeName.text = cellData[indexPath.row].attendeeName!
-            cell.procedure.text = "For Procedure: " + cellData[indexPath.row].procedure!
+            
+            guard let attendeeName = cellData[indexPath.row].attendeeName, let procedure = cellData[indexPath.row].procedure, let date = cellData[indexPath.row].date else {return cell}
+            cell.attendeeName.text = attendeeName
+            cell.procedure.text = "Procedure: " + procedure
+            cell.date.text = "Date: " + date
             return cell
         }
         
@@ -121,19 +125,15 @@ class techevalController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! gradeEvalsCell
         
         gradingTechnicalData.shared.attendeeName = cell.attendeeName.text
-//        gradingTechnicalData.shared.graded = cell.graded.text
         gradingTechnicalData.shared.procedure = cell.procedure.text
+        gradingTechnicalData.shared.date = cell.date.text
         
         for (i,x) in self.keys.enumerated(){
             if i == indexPath.row{
                 gradingTechnicalData.shared.selectedEvalDate = x
             }
         }
-        
         self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
-//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "facultyfilterController")
-//        self.navigationController?.pushViewController(controller, animated: true)
-      
     }
     
     func retrieveDataUngradedRequests(path: String) {

@@ -62,17 +62,17 @@ class finalEvaluationController: UIViewController {
     }
     
     @IBAction func finalSubmittal(_ sender: Any) {
-        if let username = self.username, let attendeeName = self.attendeeName, let date = self.date, let procedure = self.procedure, let graded = self.graded {
+        if let username = self.username, let attendeeName = self.attendeeName, let date = self.date, let procedure = self.procedure {
             
 //            let key = date + "from" + username
 //            
             
             self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).child("attendeeName").setValue(attendeeName)
-            self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).child("graded").setValue(graded)
+            self.ref.child("Residents/\(String(describing: username))").child("Requested Evaluations").child(date).child("date").setValue(date)
             
             
             self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("attendeeName").setValue(username)
-            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("graded").setValue(graded)
+            self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("date").setValue(date)
             self.ref.child("Faculty/\(String(describing: attendeeName))").child("Ungraded Requests").child(date).child("procedure").setValue(procedure)
             
             
