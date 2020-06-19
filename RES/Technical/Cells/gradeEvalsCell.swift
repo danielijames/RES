@@ -14,8 +14,6 @@ class gradeEvalsCell: UITableViewCell {
     
     @IBOutlet weak var procedure: UILabel!
     
-    @IBOutlet weak var graded: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

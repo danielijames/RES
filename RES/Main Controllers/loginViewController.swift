@@ -9,6 +9,10 @@
 import UIKit
 import FirebaseDatabase
 
+enum retrievingDataErrors: Error {
+    case failureToRecieveData
+}
+
 class loginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var segmentController: UISegmentedControl!
@@ -24,14 +28,15 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     var loginInfoStudent = [(username: String, password: Any)]()
     var loginInfoFaculty = [(username: String, password: Any)]()
     let loading = loadingView()
+    let ref = Database.database().reference()
     
     @IBAction func loginButton(_ sender: Any) {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame.origin = .init(x: 0, y: 0)
         }, completion: nil)
         
-        guard let username = self.usernameBox.text else {return}
-        guard let password = self.loginBox.text else {return}
+        if let username = self.usernameBox.text, let password = self.loginBox.text {
+      
         
         switch self.typeOfUser {
         case "Student":
@@ -54,6 +59,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             errorLabel.isHidden = false
+           }
         }
     }
     
@@ -64,6 +70,10 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.retrieveData(path: "Residents")
+        self.retrieveDataFaculty(path: "Faculty")
+        
         
         if defaults.object(forKey: "BadgeNumberCounter") == nil {
             
@@ -81,15 +91,30 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.loading.removeFromSuperview()
             self.view.isUserInteractionEnabled = true
+            
+            
+           self.checkResults(data: self.loginInfoFaculty)
+            self.checkResults(data: self.loginInfoStudent)
+            
         }
         usernameBox.delegate = self
         loginBox.delegate = self
-        print("override view did load")
-        self.retrieveData(path: "Residents")
-        self.retrieveDataFaculty(path: "Faculty")
+    
+
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
     }
     
+    func checkResults(data: Any?){
+        if data == nil {
+                 let alert = UIAlertController(title: "Error Retrieving Data", message: "No data to retrieve or poor connection.", preferredStyle: .alert)
+//                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (_) in
+//
+//                     self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+//                 }))
+//
+                 self.present(alert, animated: true)
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.Login.layer.cornerRadius = 10
@@ -102,12 +127,13 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    func retrieveData(path: String) {
-        let ref = Database.database().reference()
+    func retrieveData(path: String){
+        
         
         DispatchQueue.main.async {
-            ref.child(path).observe(.value) { (data) in
-                guard let value = data.value as? [String: Dictionary<String, Any>] else { return }
+            self.ref.child(path).observe(.value) { (data) in
+                guard let value = data.value as? [String: Dictionary<String, Any>] else {
+                    return }
                 for each in value {
                     guard let password = each.value["Password"] else {return}
                     self.loginInfoStudent.append((username: each.key, password: password))
@@ -117,10 +143,9 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func retrieveDataFaculty(path: String) {
-        let ref = Database.database().reference()
-        
+ 
         DispatchQueue.main.async {
-            ref.child(path).observe(.value) { (data) in
+            self.ref.child(path).observe(.value) { (data) in
                 guard let value = data.value as? [String: Dictionary<String, Any>] else { return }
                 
                 for each in value {

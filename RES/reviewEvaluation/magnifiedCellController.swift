@@ -9,45 +9,65 @@
 import UIKit
 import FirebaseDatabase
 
-class magnifiedCellController: UIViewController {
+class magnifiedCellController: UITableViewController {
     
     var EvaluationDate: String!
     let screenView = MagnifiedCellView()
-    
-    override func loadView() {
-        view = screenView
+    var categories = [String]()
+
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.categories.count
     }
+    
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myResultsCell", for: indexPath)
+        cell.textLabel?.text = self.categories[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.textColor = .black
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myResultsCell")
         guard let username: String = evaluationData.shared.userName else {return}
         guard let datePath: String = self.EvaluationDate else {return}
         retrieveDataGraded(path: "Residents/\(username)/Graded Evaluations/\(datePath)")
-        // Do any additional setup after loading the view.
+        self.tableView.reloadData()
     }
-    
-    init(with EvaluationDate: String) {
-        super.init(nibName: "magnifiedCellController", bundle: nil)
-        self.EvaluationDate = EvaluationDate
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-//        fatalError("init(coder:) has not been implemented")
-    }
+
+//    init(with EvaluationDate: String) {
+//
+////        super.init(nibName: "magnifiedCellController", bundle: nil)
+////        self.EvaluationDate = EvaluationDate
+//    }
     
     
        func retrieveDataGraded(path: String) {
            let ref = Database.database().reference()
            DispatchQueue.main.async {
                ref.child(path).observe(.value) { (data) in
-                print(data)
-                let dataString = "\(data)"
-                let dataStringAdjusted = "\(dataString.dropFirst(28).dropLast(3))"
-                self.screenView.infoLabel.text = dataStringAdjusted
+                guard let values = data.value as? [String:Any] else {return}
+                //dropping the boolean isGraded value
+
+                for i in values{
+                    if i.value is String {
+                        let newValue: String = i.value as! String
+                        self.categories.append(i.key + ": \n" + newValue)
+                    } else {
+                        let newValue: Array = i.value as! Array<Any>
+                        self.categories.append(i.key + ": \n" + newValue.description)
+                    }
+                }
+                self.tableView.reloadData()
            }
          }
        }
-
+    
 
 }

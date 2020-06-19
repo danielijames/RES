@@ -255,32 +255,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LAA-98-cWJ">
+                            <rect key="frame" x="0.0" y="132.5" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
+                            <state key="normal" title="Start Empty Evaluation">
+                                <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="emptyEvalPressed:" destination="bSR-5g-9oT" eventType="touchUpInside" id="Xr3-hF-3Un"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gradeCell" id="EoB-vR-CgQ" customClass="gradeEvalsCell" customModule="RES" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="75"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="76.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EoB-vR-CgQ" id="rs8-Yk-FyR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="76.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-GM-h5q">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date and name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biG-b0-kuG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="24.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmS-UQ-gEh">
-                                                    <rect key="frame" x="0.0" y="25" width="414" height="24.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9TQ-yL-jNy">
-                                                    <rect key="frame" x="0.0" y="49.5" width="414" height="25"/>
+                                                    <rect key="frame" x="0.0" y="38" width="414" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -302,7 +307,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="attendeeName" destination="biG-b0-kuG" id="f8F-CH-JfU"/>
-                                    <outlet property="graded" destination="9TQ-yL-jNy" id="t7j-hs-Nke"/>
                                     <outlet property="procedure" destination="ZmS-UQ-gEh" id="k9d-my-lRb"/>
                                 </connections>
                             </tableViewCell>
@@ -351,20 +355,34 @@
             <point key="canvasLocation" x="2961" y="498"/>
         </scene>
         <!--Magnified Cell Controller-->
-        <scene sceneID="LbO-t0-s6k">
+        <scene sceneID="ZUv-zP-DIQ">
             <objects>
-                <viewController storyboardIdentifier="magnifiedCellController" id="qmz-88-xWg" customClass="magnifiedCellController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Oh9-8R-UNN">
+                <tableViewController id="juJ-gQ-gr6" customClass="magnifiedCellController" customModule="RES" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5fr-lo-DpP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="eDJ-TF-SfZ"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xBz-7D-Jor"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pzd-9G-JOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myResultsCell" id="gW3-Bj-kPy">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gW3-Bj-kPy" id="giz-QD-oRg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="myResultsCell"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="juJ-gQ-gr6" id="KdY-22-dcb"/>
+                            <outlet property="delegate" destination="juJ-gQ-gr6" id="Nbj-Nl-UKp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="iy0-lP-bky"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rgh-GM-FwQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3843.4782608695655" y="496.875"/>
+            <point key="canvasLocation" x="3904" y="498"/>
         </scene>
         <!--Techevalprocedure Controller-->
         <scene sceneID="IkM-DO-nwp">
@@ -475,7 +493,6 @@
                         <segue destination="cVW-P0-RF7" kind="show" identifier="request4" id="3O0-Dh-byY"/>
                         <segue destination="bSR-5g-9oT" kind="show" identifier="facultySegue" id="ReJ-uw-G5q"/>
                         <segue destination="YwY-82-w7s" kind="show" identifier="reviewGraded" id="f88-RU-pFq"/>
-                        <segue destination="qmz-88-xWg" kind="show" identifier="graded1" id="JLH-gS-4fT"/>
                         <segue destination="8H2-te-0oz" kind="show" identifier="typeEvalFilter" id="3JA-Yv-DAv"/>
                         <segue destination="Loo-Ua-atD" kind="show" identifier="tech1" id="Dg3-Gk-Qcg"/>
                         <segue destination="Vam-hc-ka4" kind="show" identifier="tech2" id="gff-4O-hVJ"/>
@@ -498,6 +515,7 @@
                         <segue destination="jlI-GA-blQ" kind="show" identifier="clin11" id="jn7-mV-PNj"/>
                         <segue destination="VcQ-cz-8nL" kind="show" identifier="clin12" id="j6a-Ju-BCY"/>
                         <segue destination="f4G-uH-4vm" kind="show" identifier="clin7" id="ylD-E5-lyS"/>
+                        <segue destination="juJ-gQ-gr6" kind="show" identifier="graded1" id="Odk-h0-Zmo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="msQ-Im-h9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

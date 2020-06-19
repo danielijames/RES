@@ -29,6 +29,14 @@ class techevalController: UITableViewController {
     let defaults = UserDefaults.standard
     var keys: Dictionary<String, Any>.Keys!
     
+    @IBAction func emptyEvalPressed(_ sender: Any) {
+        self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarSetup(title: "Pending & Graded")
@@ -66,7 +74,7 @@ class techevalController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 100
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -101,9 +109,8 @@ class techevalController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "gradeCell", for: indexPath) as! gradeEvalsCell
         
         if let cellData = self.retrievedData {
-            cell.attendeeName.text = "From: " + cellData[indexPath.row].attendeeName!
+            cell.attendeeName.text = cellData[indexPath.row].attendeeName!
             cell.procedure.text = "For Procedure: " + cellData[indexPath.row].procedure!
-            cell.graded.text = "Graded: " + cellData[indexPath.row].graded!
             return cell
         }
         
@@ -114,7 +121,7 @@ class techevalController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! gradeEvalsCell
         
         gradingTechnicalData.shared.attendeeName = cell.attendeeName.text
-        gradingTechnicalData.shared.graded = cell.graded.text
+//        gradingTechnicalData.shared.graded = cell.graded.text
         gradingTechnicalData.shared.procedure = cell.procedure.text
         
         for (i,x) in self.keys.enumerated(){
@@ -185,4 +192,6 @@ extension DataSnapshot {
           return Data()
       }
   }
+    
+    
 }

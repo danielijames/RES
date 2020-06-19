@@ -15,6 +15,7 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
     var dataTwo: DataSnapshot?
     var retrievedData: [gradingCritereon]?
     var sentData: [gradingCritereon]?
+    var EvaluationDate: String?
     
     override func loadView() {
         super.loadView()
@@ -61,9 +62,23 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
     }
     
     func magnifyCell(with EvaluationDate: String) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "magnifiedCellController") as! magnifiedCellController
-        controller.EvaluationDate = EvaluationDate
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.EvaluationDate = EvaluationDate
+        
+        let nextVC = magnifiedCellController()
+        guard let date = self.EvaluationDate else {
+            return
+        }
+        nextVC.EvaluationDate = date
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
+//        self.navigationController?.performSegue(withIdentifier: "graded1", sender: self)
+//        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "magnifiedCellController") as! magnifiedCellController
+//        controller.EvaluationDate = EvaluationDate
+//        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
     
     func decodeData() {
