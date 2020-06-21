@@ -24,10 +24,7 @@ extension UIViewController{
 class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     weak var delegate: ViewDelegate?
-    let table = UITableView()
-    
-    
-    
+    let table = UITableView(frame: .zero, style: .insetGrouped)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +63,7 @@ class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 80
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -76,6 +73,8 @@ class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
         cell.textLabel?.text = delegate?.getContentArray()[indexPath.row]
+        cell.textLabel?.numberOfLines = 0
+        cell.heightAnchor.constraint(equalToConstant: 80).isActive = true
         return cell
     }
     

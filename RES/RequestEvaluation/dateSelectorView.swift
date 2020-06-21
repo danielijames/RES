@@ -15,11 +15,11 @@ class dateSelectorView: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker! {
         didSet{
-            datePicker.calendar = .current
+            datePicker.calendar.timeZone = .autoupdatingCurrent
+            datePicker.calendar = .autoupdatingCurrent
             datePicker.datePickerMode = .dateAndTime
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +60,7 @@ class dateSelectorView: UIViewController {
         let dateCorrected = self.date?.prefix(19)
         
         evaluationData.shared.date = String(dateCorrected!)
-        
-//       let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StudentfinalSubmit")
-//        self.navigationController?.pushViewController(controller, animated: true)
-//        
+             
         self.navigationController?.performSegue(withIdentifier: "request4", sender: self)
     }
     

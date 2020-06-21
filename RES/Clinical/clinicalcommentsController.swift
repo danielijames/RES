@@ -10,11 +10,21 @@ import Foundation
 import FirebaseDatabase
 import MessageUI
 
-class clinicalcommentsController: UIViewController, MFMailComposeViewControllerDelegate {
+class clinicalcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate, UITextFieldDelegate{
 
     let ref = Database.database().reference()
     @IBOutlet weak var commentsText: UITextView!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var textField: UITextView! {
+        didSet{
+            textField.delegate = self
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.textField.resignFirstResponder()
+        self.textField.endEditing(true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +34,10 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
 
         })
         BackButton(vc: self, selector: #selector(popController), closure: nil)
+        
     }
+    
+    
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)

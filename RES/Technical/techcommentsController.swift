@@ -106,14 +106,10 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         mc.setToRecipients(toRecipents)
 
         self.present(mc, animated: true, completion: nil)
-//
-//        let emailOne = "rgriffincook@yahoo.com"
-//        if let url = URL(string: "mailto:\(emailOne)") {
-//          if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url)
-//          } else {
-//            UIApplication.shared.openURL(url)
-//          }
-//        }
     }
+    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.textField.resignFirstResponder()
+//        self.textField.endEditing(true)
+//    }
 }

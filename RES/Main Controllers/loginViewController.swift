@@ -31,6 +31,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     let ref = Database.database().reference()
     
     @IBAction func loginButton(_ sender: Any) {
+        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame.origin = .init(x: 0, y: 0)
         }, completion: nil)
@@ -42,9 +43,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         case "Student":
             for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
-                
-//                let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "filterViewController")
-//                self.navigationController?.pushViewController(controller, animated: true)
                 self.navigationController?.performSegue(withIdentifier: "studentSegue", sender: self)
                 ApplicationState.sharedState.LoggedIn = true
                 return
@@ -70,6 +68,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
         
         self.retrieveData(path: "Residents")
         self.retrieveDataFaculty(path: "Faculty")
@@ -99,19 +98,11 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         }
         usernameBox.delegate = self
         loginBox.delegate = self
-    
-
-        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
     }
     
     func checkResults(data: Any?){
         if data == nil {
                  let alert = UIAlertController(title: "Error Retrieving Data", message: "No data to retrieve or poor connection.", preferredStyle: .alert)
-//                 alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { (_) in
-//
-//                     self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
-//                 }))
-//
                  self.present(alert, animated: true)
         }
     }
