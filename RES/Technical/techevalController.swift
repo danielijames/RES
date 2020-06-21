@@ -40,7 +40,7 @@ class techevalController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navBarSetup(title: "Pending & Graded")
+        navBarSetup(title: "Pending Requests")
         guard let username = evaluationData.shared.userName else {return}
         retrieveDataUngradedRequests(path: "Faculty/\(username)/Ungraded Requests")
         self.tableView.reloadData()

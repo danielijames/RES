@@ -255,7 +255,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LAA-98-cWJ">
-                            <rect key="frame" x="0.0" y="155.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="156" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
@@ -268,30 +268,30 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gradeCell" id="EoB-vR-CgQ" customClass="gradeEvalsCell" customModule="RES" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="82"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="82.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EoB-vR-CgQ" id="rs8-Yk-FyR">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="82"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="82.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-GM-h5q">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="82"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="82.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date and name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biG-b0-kuG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmS-UQ-gEh">
-                                                    <rect key="frame" x="0.0" y="27" width="374" height="27.5"/>
+                                                    <rect key="frame" x="0.0" y="27.5" width="374" height="27"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lMW-M9-evl">
-                                                    <rect key="frame" x="0.0" y="54.5" width="374" height="27"/>
+                                                    <rect key="frame" x="0.0" y="54.5" width="374" height="27.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -541,7 +541,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcX-2j-peV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                        <rect key="frame" x="0.0" y="40" width="414" height="1500"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1500" id="HhL-W4-yT8"/>
@@ -549,12 +549,25 @@
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-ca-60N">
+                                        <rect key="frame" x="281" y="11" width="123" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="123" id="9kh-Aq-BOd"/>
+                                        </constraints>
+                                        <state key="normal" title="Dismiss Keyboard">
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissKeyboard:" destination="CWQ-st-NaO" eventType="touchUpInside" id="5Z7-Su-BkO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hcX-2j-peV" secondAttribute="trailing" id="CBg-zW-N8W"/>
                                     <constraint firstItem="hcX-2j-peV" firstAttribute="centerX" secondItem="usM-34-y3A" secondAttribute="centerX" id="Kjv-fU-399"/>
-                                    <constraint firstItem="hcX-2j-peV" firstAttribute="top" secondItem="usM-34-y3A" secondAttribute="top" id="Nra-YW-k55"/>
+                                    <constraint firstItem="hcX-2j-peV" firstAttribute="top" secondItem="usM-34-y3A" secondAttribute="top" constant="40" id="Nra-YW-k55"/>
                                     <constraint firstItem="hcX-2j-peV" firstAttribute="leading" secondItem="usM-34-y3A" secondAttribute="leading" id="aW1-h7-wd8"/>
+                                    <constraint firstAttribute="trailing" secondItem="lWW-ca-60N" secondAttribute="trailing" constant="10" id="lf0-Jv-h2f"/>
                                     <constraint firstAttribute="bottom" secondItem="hcX-2j-peV" secondAttribute="bottom" id="zAX-c6-bSQ"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="wWf-xY-boC"/>
@@ -567,6 +580,7 @@
                             <constraint firstItem="usM-34-y3A" firstAttribute="leading" secondItem="zlO-bZ-YXp" secondAttribute="leading" id="J1M-Eu-WgE"/>
                             <constraint firstItem="zlO-bZ-YXp" firstAttribute="trailing" secondItem="usM-34-y3A" secondAttribute="trailing" id="PU9-XQ-CrM"/>
                             <constraint firstItem="usM-34-y3A" firstAttribute="top" secondItem="zlO-bZ-YXp" secondAttribute="top" id="ZtB-DU-pLU"/>
+                            <constraint firstItem="lWW-ca-60N" firstAttribute="top" secondItem="zlO-bZ-YXp" secondAttribute="top" constant="8" id="nBd-o2-Ia1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zlO-bZ-YXp"/>
                     </view>
@@ -590,6 +604,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentsText" destination="hcX-2j-peV" id="iOD-YT-Wu2"/>
+                        <outlet property="dismissButton" destination="lWW-ca-60N" id="To6-LJ-bvI"/>
+                        <outlet property="textField" destination="hcX-2j-peV" id="Zbf-Jc-imw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2KE-wK-WqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -974,7 +990,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" usesAttributedText="YES" allowsEditingTextAttributes="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z32-H9-ecL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                        <rect key="frame" x="0.0" y="40" width="414" height="1500"/>
                                         <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1500" id="Prz-fn-I2V"/>
@@ -982,10 +998,23 @@
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuw-rt-di4">
+                                        <rect key="frame" x="281" y="8" width="123" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="123" id="OzL-7t-cwt"/>
+                                        </constraints>
+                                        <state key="normal" title="Dismiss Keyboard">
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissBoard:" destination="VcQ-cz-8nL" eventType="touchUpInside" id="FRL-NL-cRg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="z32-H9-ecL" secondAttribute="bottom" id="EEP-kZ-dCU"/>
-                                    <constraint firstItem="z32-H9-ecL" firstAttribute="top" secondItem="cIu-Cr-UXM" secondAttribute="top" id="VGc-bW-veQ"/>
+                                    <constraint firstItem="wuw-rt-di4" firstAttribute="trailing" secondItem="z32-H9-ecL" secondAttribute="trailing" constant="-10" id="Qif-ks-yb8"/>
+                                    <constraint firstItem="z32-H9-ecL" firstAttribute="top" secondItem="cIu-Cr-UXM" secondAttribute="top" constant="40" id="VGc-bW-veQ"/>
                                     <constraint firstItem="z32-H9-ecL" firstAttribute="centerX" secondItem="cIu-Cr-UXM" secondAttribute="centerX" id="beP-U6-Bf7"/>
                                     <constraint firstAttribute="trailing" secondItem="z32-H9-ecL" secondAttribute="trailing" id="gQi-a2-Ax5"/>
                                     <constraint firstItem="z32-H9-ecL" firstAttribute="leading" secondItem="cIu-Cr-UXM" secondAttribute="leading" id="n0T-OJ-Fgv"/>
@@ -1002,6 +1031,7 @@
                             <constraint firstItem="cIu-Cr-UXM" firstAttribute="top" secondItem="mNB-6H-M4O" secondAttribute="top" id="2M4-Jf-HiA"/>
                             <constraint firstItem="mNB-6H-M4O" firstAttribute="bottom" secondItem="cIu-Cr-UXM" secondAttribute="bottom" id="Gsz-cL-6hN"/>
                             <constraint firstItem="cIu-Cr-UXM" firstAttribute="leading" secondItem="mNB-6H-M4O" secondAttribute="leading" id="HlY-Nv-77J"/>
+                            <constraint firstItem="wuw-rt-di4" firstAttribute="top" secondItem="mNB-6H-M4O" secondAttribute="top" constant="8" id="bbL-EE-9pv"/>
                             <constraint firstItem="mNB-6H-M4O" firstAttribute="trailing" secondItem="cIu-Cr-UXM" secondAttribute="trailing" id="nw9-eq-kns"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mNB-6H-M4O"/>
@@ -1026,6 +1056,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentsText" destination="z32-H9-ecL" id="pJP-tF-t1a"/>
+                        <outlet property="dismissBoard" destination="wuw-rt-di4" id="qwH-pi-ayb"/>
                         <outlet property="scrollView" destination="cIu-Cr-UXM" id="7bV-Fq-DCH"/>
                         <outlet property="textField" destination="z32-H9-ecL" id="YWn-dv-m2c"/>
                     </connections>

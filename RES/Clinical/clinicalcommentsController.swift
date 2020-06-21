@@ -20,10 +20,12 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
             textField.delegate = self
         }
     }
+    @IBOutlet weak var dismissBoard: UIButton!
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.textField.resignFirstResponder()
-        self.textField.endEditing(true)
+
+    @IBAction func dismissBoard(_ sender: Any) {
+        self.view.endEditing(true)
+        self.dismissBoard.isHidden = true
     }
 
     override func viewDidLoad() {
@@ -36,8 +38,9 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         BackButton(vc: self, selector: #selector(popController), closure: nil)
         
     }
-    
-    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.dismissBoard.isHidden = false
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(false, animated: true)
@@ -120,28 +123,32 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
 
            self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
         
-           
-           let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
-           alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
-            
-           self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
-           }))
+//           
+//           let alert = UIAlertController(title: "Evaluation Submitted", message: "Verify you have submitted a request by navigating back to the filter screen and notice that the evaluation is now located in the graded section.", preferredStyle: .alert)
+//           alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] (_) in
+//            
+//           self?.navigationController?.popToViewController((self?.navigationController?.viewControllers[1])!, animated: true)
+//           }))
 
            let defaults = UserDefaults.standard
            let count: Int = defaults.value(forKey: "BadgeCount") as! Int
            UIApplication.shared.applicationIconBadgeNumber = (count - 1)
-           self.present(alert, animated: true)
+//           self.present(alert, animated: true)
 
 
         let emailTitle = "Reccommending remediation for \(attendeeName)"
         let messageBody = "Reccommended remediation for \(attendeeName) prompted by evaluation grade given on date \(date) which was unsatisfactory"
-        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
+//        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
+        let toRecipents = ["rgriffincook@yahoo.com"]
         let mc: MFMailComposeViewController = MFMailComposeViewController()
         mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.setToRecipients(toRecipents)
 
-        self.present(mc, animated: true, completion: nil)
+        self.navigationController?.present(mc, animated: true, completion: {
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+        })
     }
+    
 }

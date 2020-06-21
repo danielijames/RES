@@ -10,7 +10,13 @@ import UIKit
 import FirebaseDatabase
 import MessageUI
 
-class techcommentsController: UIViewController, MFMailComposeViewControllerDelegate {
+class techcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var textField: UITextView!{
+        didSet{
+            textField.delegate = self
+        }
+    }
     
     let ref = Database.database().reference()
     @IBOutlet weak var commentsText: UITextView!
@@ -33,6 +39,15 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
             wipeMemory()
             self.navigationController?.popToRootViewController(animated: true)
         }
+    
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        self.view.endEditing(true)
+        self.dismissButton.isHidden = true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.dismissButton.isHidden = false
+    }
     
     @IBAction func submitAction(_ sender: Any) {
        gradingTechnicalData.shared.additionalComments = commentsText.text
@@ -72,7 +87,7 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func finishWithRemediation(_ sender: Any) {
-            gradingTechnicalData.shared.additionalComments = commentsText.text
+          gradingTechnicalData.shared.additionalComments = commentsText.text
           
           guard let attendeeName = gradingTechnicalData.shared.attendeeName else {return}
           guard let procedure = gradingTechnicalData.shared.procedure else {return}
@@ -93,23 +108,28 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
            self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
         
         gradingTechnicalData.shared.improvements.removeAll()
-        self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
         
+        let defaults = UserDefaults.standard
+        let count: Int = defaults.value(forKey: "BadgeCount") as! Int
+        UIApplication.shared.applicationIconBadgeNumber = (count - 1)
         
         let emailTitle = "Reccommending remediation for \(attendeeName)"
         let messageBody = "Reccommended remediation for \(attendeeName) prompteed by \(procedure) performance which was unsatisfactory"
-        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
+//        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
+        let toRecipents = ["rgriffincook@yahoo.com"]
         let mc: MFMailComposeViewController = MFMailComposeViewController()
         mc.mailComposeDelegate = self
         mc.setSubject(emailTitle)
         mc.setMessageBody(messageBody, isHTML: false)
         mc.setToRecipients(toRecipents)
-
-        self.present(mc, animated: true, completion: nil)
+        self.navigationController?.present(mc, animated: true, completion: {
+            self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: true)
+        })
+//        self.present(mc, animated: true, completion: nil)
     }
     
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.textField.resignFirstResponder()
-//        self.textField.endEditing(true)
-//    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }

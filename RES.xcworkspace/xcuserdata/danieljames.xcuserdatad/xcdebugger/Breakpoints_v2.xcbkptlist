@@ -194,38 +194,22 @@
             endingLineNumber = "114"
             landmarkName = "checkForFacultyAndStudents()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F92B1AA4-FA15-46DD-AE64-C79F36903DA6 - 93a636f7d9e46fb0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RES.loginViewController.checkForFacultyAndStudents() -&gt; ()"
-                  moduleName = "RES"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danieljames/Desktop/RES/RES/Main%20Controllers/loginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "256">
-               </Location>
-               <Location
-                  uuid = "F92B1AA4-FA15-46DD-AE64-C79F36903DA6 - 93a636f7d9e46fb0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RES.loginViewController.checkForFacultyAndStudents() -&gt; ()"
-                  moduleName = "RES"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/danieljames/Desktop/RES/RES/Main%20Controllers/loginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "340">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DC9EB64-0DAF-49B2-996D-553771119FD0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RES/Technical/techcommentsController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "techcommentsController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
