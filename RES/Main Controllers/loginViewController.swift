@@ -31,14 +31,13 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     let ref = Database.database().reference()
     
     @IBAction func loginButton(_ sender: Any) {
+        super.view.addSubview(loading)
+        checkForFacultyAndStudents()
+        
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
-            self.view.frame.origin = .init(x: 0, y: 0)
-        }, completion: nil)
+
         
         if let username = self.usernameBox.text, let password = self.loginBox.text {
-      
-        
         switch self.typeOfUser {
         case "Student":
             for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
@@ -47,18 +46,31 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }
-            errorLabel.isHidden = false
+            super.view.addSubview(loading)
+             checkForFacultyAndStudents()
+             errorLabel.isHidden = false
+             DispatchQueue.main.async {
+                 self.loginButton(self)
+             }
         default:
             for name in self.loginInfoFaculty where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
                 self.navigationController?.performSegue(withIdentifier: "facultySegue", sender: self)
-
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }
+            super.view.addSubview(loading)
+            checkForFacultyAndStudents()
             errorLabel.isHidden = false
+            DispatchQueue.main.async {
+                self.loginButton(self)
+            }
            }
         }
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.frame.origin = .init(x: 0, y: 0)
+        }, completion: nil)
     }
     
     
@@ -87,26 +99,33 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
         self.view.isUserInteractionEnabled = false
         super.view.addSubview(loading)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.loading.removeFromSuperview()
-            self.view.isUserInteractionEnabled = true
-            
-            
-           self.checkResults(data: self.loginInfoFaculty)
-            self.checkResults(data: self.loginInfoStudent)
-            
+            self.checkForFacultyAndStudents()
         }
+        
         usernameBox.delegate = self
         loginBox.delegate = self
     }
     
-    func checkResults(data: Any?){
-        if data == nil {
-                 let alert = UIAlertController(title: "Error Retrieving Data", message: "No data to retrieve or poor connection.", preferredStyle: .alert)
-                 self.present(alert, animated: true)
-        }
+    func checkForFacultyAndStudents() {
+            
+//            let tuple = (self.loginInfoStudent.count, self.loginInfoFaculty.count)
+            let currentType = self.typeOfUser
+            switch currentType{
+            case "Student":
+                self.retrieveData(path: "Residents")
+            case "Instructor":
+                self.retrieveDataFaculty(path: "Faculty")
+            default:
+                self.loading.removeFromSuperview()
+            }
+
+            self.loading.removeFromSuperview()
+            self.view.isUserInteractionEnabled = true
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
         self.Login.layer.cornerRadius = 10
         self.navigationController?.navigationBar.isHidden = true
@@ -119,8 +138,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
 
     func retrieveData(path: String){
-        
-        
         DispatchQueue.main.async {
             self.ref.child(path).observe(.value) { (data) in
                 guard let value = data.value as? [String: Dictionary<String, Any>] else {
