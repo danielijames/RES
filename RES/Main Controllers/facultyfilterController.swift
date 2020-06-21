@@ -25,12 +25,22 @@ class facultyfilterController: UIViewController {
     var evalData: evaluationData?
     
     @IBAction func techSegue(_ sender: Any) {
-        self.navigationController?.performSegue(withIdentifier: "tech1", sender: self)
+        if ApplicationState.sharedState.isOnUnpromptedPath == true {
+            self.navigationController?.performSegue(withIdentifier: "tech1", sender: self)
+        } else {
+            self.navigationController?.performSegue(withIdentifier: "tech4", sender: self)
+        }
+        
         gradingTechnicalData.shared.evalType = "Technical"
     }
     
     @IBAction func clinicalSegue(_ sender: Any) {
-        self.navigationController?.performSegue(withIdentifier: "clin1", sender: self)
+        if ApplicationState.sharedState.isOnUnpromptedPath == true {
+            self.navigationController?.performSegue(withIdentifier: "clin1", sender: self)
+        } else {
+            self.navigationController?.performSegue(withIdentifier: "clin2", sender: self)
+        }
+        
         gradingClinicalData.shared.evalType = "Clinical"
     }
     
@@ -57,10 +67,20 @@ class facultyfilterController: UIViewController {
         }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "tech1" {
-        segueHelper(nextVC: techevalResidentsController())
+        if segue.identifier == "tech1" || segue.identifier == "tech4" {
+            switch ApplicationState.sharedState.isOnUnpromptedPath {
+            case true:
+                segueHelper(nextVC: techevalResidentsController())
+            default:
+                segueHelper(nextVC: techcasedifficultyController())
+            }
         } else {
-        segueHelper(nextVC: clinicalevalResidentsController())
+            switch ApplicationState.sharedState.isOnUnpromptedPath {
+            case true:
+                segueHelper(nextVC: clinicalevalResidentsController())
+            default:
+                segueHelper(nextVC: clinicalsettingController())
+            }
         }
     }
 }

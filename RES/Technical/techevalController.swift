@@ -128,6 +128,11 @@ class techevalController: UITableViewController {
         gradingTechnicalData.shared.procedure = cell.procedure.text
         gradingTechnicalData.shared.date = cell.date.text
         
+        gradingClinicalData.shared.attendeeName = cell.attendeeName.text
+        gradingClinicalData.shared.date = cell.date.text
+        
+        ApplicationState.sharedState.isOnUnpromptedPath = false
+        
         for (i,x) in self.keys.enumerated(){
             if i == indexPath.row{
                 gradingTechnicalData.shared.selectedEvalDate = x

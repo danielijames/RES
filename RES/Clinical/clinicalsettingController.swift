@@ -73,10 +73,22 @@ class clinicalsettingController: UIViewController, ViewDelegate {
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.setting = Array[indexPath.row]
         
-        self.navigationController?.performSegue(withIdentifier: "clin3", sender: self)
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            self.navigationController?.performSegue(withIdentifier: "clin3", sender: self)
+        default:
+            self.navigationController?.performSegue(withIdentifier: "clin4", sender: self)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: clinicaldateController())
+        switch segue.identifier {
+        case "clin3":
+            segueHelper(nextVC: clinicaldateController())
+        default:
+            segueHelper(nextVC: clinicalTimelinessController())
+        }
+        
     }
 }
