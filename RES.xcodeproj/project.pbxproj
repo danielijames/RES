@@ -32,7 +32,6 @@
 		E30CF814238F72CD00CC7E04 /* finalEvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */; };
 		E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322B6E1236FAF17008C2B1F /* evaluationData.swift */; };
 		E33113DC248E859F00FF5D70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E33113DB248E7BFF00FF5D70 /* GoogleService-Info.plist */; };
-		E33113DF249FC40300FF5D70 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33113DE249FC40300FF5D70 /* PassKit.framework */; };
 		E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AB2443724A00F9FBAF /* GraphView.swift */; };
 		E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AD244372B500F9FBAF /* graphViewContoller.swift */; };
 		E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B32443EFBE00F9FBAF /* CellView.swift */; };
@@ -127,7 +126,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E33113DF249FC40300FF5D70 /* PassKit.framework in Frameworks */,
 				1C1E0D2A56F1D0BB8E0491DF /* Pods_RES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
