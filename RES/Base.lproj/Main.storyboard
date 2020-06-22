@@ -57,8 +57,8 @@
                                             <constraint firstAttribute="height" constant="30" id="edk-xR-ATz"/>
                                         </constraints>
                                         <segments>
-                                            <segment title="Student"/>
-                                            <segment title="Instructor"/>
+                                            <segment title="Resident"/>
+                                            <segment title="Faculty"/>
                                         </segments>
                                         <connections>
                                             <action selector="segmentedController:" destination="BYZ-38-t0r" eventType="valueChanged" id="wgQ-S9-X5b"/>
@@ -255,7 +255,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LAA-98-cWJ">
-                            <rect key="frame" x="0.0" y="156" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="156.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
@@ -268,30 +268,30 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gradeCell" id="EoB-vR-CgQ" customClass="gradeEvalsCell" customModule="RES" customModuleProvider="target">
-                                <rect key="frame" x="20" y="55.5" width="374" height="82.5"/>
+                                <rect key="frame" x="20" y="55.5" width="374" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EoB-vR-CgQ" id="rs8-Yk-FyR">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="82.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="83"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ewr-GM-h5q">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="82.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="83"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date and name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biG-b0-kuG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Procedure" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZmS-UQ-gEh">
-                                                    <rect key="frame" x="0.0" y="27.5" width="374" height="27"/>
+                                                    <rect key="frame" x="0.0" y="27.5" width="374" height="27.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lMW-M9-evl">
-                                                    <rect key="frame" x="0.0" y="54.5" width="374" height="27.5"/>
+                                                    <rect key="frame" x="0.0" y="55" width="374" height="27.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -550,7 +550,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWW-ca-60N">
-                                        <rect key="frame" x="281" y="11" width="123" height="30"/>
+                                        <rect key="frame" x="281" y="8" width="123" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="123" id="9kh-Aq-BOd"/>
                                         </constraints>
@@ -592,7 +592,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dOG-dV-AJp"/>
-                        <barButtonItem title="DONE" style="done" id="cAD-UA-BED">
+                        <barButtonItem title="Submit Evaluation" style="done" id="cAD-UA-BED">
                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="submitAction:" destination="CWQ-st-NaO" id="bE1-7r-M5f"/>
@@ -1044,7 +1044,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="L2O-9H-MdE"/>
-                        <barButtonItem title="DONE" style="done" id="CeN-JM-c7N">
+                        <barButtonItem title="Submit Evaluation" style="done" id="CeN-JM-c7N">
                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="submitAction:" destination="VcQ-cz-8nL" id="ZnB-BR-JVY"/>

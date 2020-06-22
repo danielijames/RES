@@ -34,7 +34,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         super.view.addSubview(loading)
         checkForFacultyAndStudents()
         
-        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
+        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Resident" : "Faculty"
 
         
         if let username = self.usernameBox.text, let password = self.loginBox.text {
@@ -75,12 +75,12 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func segmentedController(_ sender: Any) {
-        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
+        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Resident" : "Faculty"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Student" : "Instructor"
+        self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Resident" : "Faculty"
         
         self.retrieveData(path: "Residents")
         self.retrieveDataFaculty(path: "Faculty")
