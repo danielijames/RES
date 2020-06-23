@@ -25,7 +25,7 @@ class techpercentViewController: UIViewController, ViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.retrieveData(path: "Technical/Percent Performed")
+        self.retrieveData(path: "Technical/Percent")
         
         screenView.delegate = self
         screenView.table.delegate = screenView
@@ -67,7 +67,7 @@ class techpercentViewController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Perecent?"
+        return "Percent?"
     }
     
     func getContentArray() -> Array<String> {
