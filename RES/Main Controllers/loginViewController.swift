@@ -39,7 +39,7 @@ class loginViewController: UIViewController, UITextFieldDelegate {
         
         if let username = self.usernameBox.text, let password = self.loginBox.text {
         switch self.typeOfUser {
-        case "Student":
+        case "Resident":
             for name in self.loginInfoStudent where name.username == username && "\(String(describing: name.password))" == password {
                 evaluationData.shared.userName = username
                 self.navigationController?.performSegue(withIdentifier: "studentSegue", sender: self)
