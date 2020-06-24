@@ -10,7 +10,7 @@ import Foundation
 import FirebaseDatabase
 import MessageUI
 
-public func performSubmission(vc: UIViewController) {
+public func performSubmission(vc: UIViewController, completion: ()->()) {
     let alert = UIAlertController(title: "Evaluation Submitted", message: "Congratulations on submitting an evaluation!", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak vc] (_) in
         
@@ -24,7 +24,7 @@ public func performSubmission(vc: UIViewController) {
     vc.present(alert, animated: true)
 }
 
-public func performSubmissionWithEmail(vc: UIViewController, attendeeName: String, date: String) {
+public func performSubmissionWithEmail(vc: UIViewController, attendeeName: String, date: String, completion: ()->()) {
     
     let defaults = UserDefaults.standard
     let count: Int = defaults.value(forKey: "BadgeCount") as! Int
@@ -123,9 +123,13 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
             
             self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeClinicalMemory()
+            }
         } else {
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeClinicalMemory()
+            }
         }
     }
 
@@ -153,9 +157,13 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
 
            self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
             
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date) {
+            wipeClinicalMemory()
+            }
             } else {
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date) {
+            wipeClinicalMemory()
+            }
         }
     
 

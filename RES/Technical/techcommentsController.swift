@@ -70,9 +70,13 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
             
             self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeTechnicalMemory()
+            }
         } else {
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeTechnicalMemory()
+            }
         }
         
     }
@@ -99,9 +103,13 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
             
             self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
             
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date){
+            wipeTechnicalMemory()
+            }
         } else {
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date){
+            wipeTechnicalMemory()
+            }
         }
     }
     
