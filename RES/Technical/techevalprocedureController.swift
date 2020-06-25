@@ -31,7 +31,7 @@ class techevalprocedureController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Pick Resident")
+        navBarSetup(title: "Procedure")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -42,7 +42,13 @@ class techevalprocedureController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            self.navigationController?.performSegue(withIdentifier: "tech1", sender: self)
+        default:
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     

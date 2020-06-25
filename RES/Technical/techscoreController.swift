@@ -42,7 +42,8 @@ class techscoreController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech6", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -81,6 +82,13 @@ class techscoreController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: techImprovementController())
+        
+        switch segue.identifier {
+         case "tech6":
+             segueHelper(nextVC: techpercentViewController())
+         default:
+             segueHelper(nextVC: techImprovementController())
+         }
+        
     }
 }

@@ -34,7 +34,8 @@ class procedureController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "request1", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -74,7 +75,9 @@ class procedureController: UIViewController, ViewDelegate {
         self.navigationController?.performSegue(withIdentifier: "request3", sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        segueHelper(nextVC: procedureController())
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "request1"{
+        segueHelper(nextVC: attendeeNameController())
+        }
+    }
 }

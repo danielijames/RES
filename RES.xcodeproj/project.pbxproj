@@ -20,7 +20,7 @@
 		E30642A4242C6A6600D40A78 /* clinicalTimelinessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A3242C6A6600D40A78 /* clinicalTimelinessController.swift */; };
 		E30642A6242C6B1000D40A78 /* clinicalAttireController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A5242C6B1000D40A78 /* clinicalAttireController.swift */; };
 		E30642A8242C6B7700D40A78 /* clinicalHistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A7242C6B7700D40A78 /* clinicalHistoryController.swift */; };
-		E30642AA242C6B8D00D40A78 /* clicicalPhysicalExamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A9242C6B8D00D40A78 /* clicicalPhysicalExamController.swift */; };
+		E30642AA242C6B8D00D40A78 /* clinicalPhysicalExamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642A9242C6B8D00D40A78 /* clinicalPhysicalExamController.swift */; };
 		E30642AC242C6BA700D40A78 /* clinicalPlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642AB242C6BA700D40A78 /* clinicalPlanController.swift */; };
 		E30642AE242C6BC500D40A78 /* clinicalDiagnosisController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642AD242C6BC500D40A78 /* clinicalDiagnosisController.swift */; };
 		E30642B0242C6BE000D40A78 /* clinicalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30642AF242C6BE000D40A78 /* clinicalPresentationController.swift */; };
@@ -32,7 +32,6 @@
 		E30CF814238F72CD00CC7E04 /* finalEvaluationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */; };
 		E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322B6E1236FAF17008C2B1F /* evaluationData.swift */; };
 		E33113DC248E859F00FF5D70 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E33113DB248E7BFF00FF5D70 /* GoogleService-Info.plist */; };
-		E33113DF249FC40300FF5D70 /* PassKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33113DE249FC40300FF5D70 /* PassKit.framework */; };
 		E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AB2443724A00F9FBAF /* GraphView.swift */; };
 		E345A0AE244372B500F9FBAF /* graphViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0AD244372B500F9FBAF /* graphViewContoller.swift */; };
 		E345A0B42443EFBE00F9FBAF /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345A0B32443EFBE00F9FBAF /* CellView.swift */; };
@@ -78,7 +77,7 @@
 		E30642A3242C6A6600D40A78 /* clinicalTimelinessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalTimelinessController.swift; sourceTree = "<group>"; };
 		E30642A5242C6B1000D40A78 /* clinicalAttireController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalAttireController.swift; sourceTree = "<group>"; };
 		E30642A7242C6B7700D40A78 /* clinicalHistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalHistoryController.swift; sourceTree = "<group>"; };
-		E30642A9242C6B8D00D40A78 /* clicicalPhysicalExamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clicicalPhysicalExamController.swift; sourceTree = "<group>"; };
+		E30642A9242C6B8D00D40A78 /* clinicalPhysicalExamController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalPhysicalExamController.swift; sourceTree = "<group>"; };
 		E30642AB242C6BA700D40A78 /* clinicalPlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalPlanController.swift; sourceTree = "<group>"; };
 		E30642AD242C6BC500D40A78 /* clinicalDiagnosisController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalDiagnosisController.swift; sourceTree = "<group>"; };
 		E30642AF242C6BE000D40A78 /* clinicalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clinicalPresentationController.swift; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 		E30CF813238F72CD00CC7E04 /* finalEvaluationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finalEvaluationController.swift; sourceTree = "<group>"; };
 		E322B6E1236FAF17008C2B1F /* evaluationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = evaluationData.swift; sourceTree = "<group>"; };
 		E33113DB248E7BFF00FF5D70 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E33113DE249FC40300FF5D70 /* PassKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PassKit.framework; path = System/Library/Frameworks/PassKit.framework; sourceTree = SDKROOT; };
 		E345A0AB2443724A00F9FBAF /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		E345A0AD244372B500F9FBAF /* graphViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphViewContoller.swift; sourceTree = "<group>"; };
 		E345A0B32443EFBE00F9FBAF /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E33113DF249FC40300FF5D70 /* PassKit.framework in Frameworks */,
 				1C1E0D2A56F1D0BB8E0491DF /* Pods_RES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,7 +170,7 @@
 				E30642A3242C6A6600D40A78 /* clinicalTimelinessController.swift */,
 				E30642A5242C6B1000D40A78 /* clinicalAttireController.swift */,
 				E30642A7242C6B7700D40A78 /* clinicalHistoryController.swift */,
-				E30642A9242C6B8D00D40A78 /* clicicalPhysicalExamController.swift */,
+				E30642A9242C6B8D00D40A78 /* clinicalPhysicalExamController.swift */,
 				E30642AB242C6BA700D40A78 /* clinicalPlanController.swift */,
 				E30642AD242C6BC500D40A78 /* clinicalDiagnosisController.swift */,
 				E30642AF242C6BE000D40A78 /* clinicalPresentationController.swift */,
@@ -284,7 +281,6 @@
 		E3F61D7D235B7022007F48D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E33113DE249FC40300FF5D70 /* PassKit.framework */,
 				88735C91C2DE104ED4AD1FA9 /* Pods_RES.framework */,
 			);
 			name = Frameworks;
@@ -487,7 +483,7 @@
 				E30642AE242C6BC500D40A78 /* clinicalDiagnosisController.swift in Sources */,
 				E345A0AC2443724A00F9FBAF /* GraphView.swift in Sources */,
 				E3A1388D23A3EE8E008BF160 /* techdateSelectorView.swift in Sources */,
-				E30642AA242C6B8D00D40A78 /* clicicalPhysicalExamController.swift in Sources */,
+				E30642AA242C6B8D00D40A78 /* clinicalPhysicalExamController.swift in Sources */,
 				E3F61D56235A1915007F48D5 /* AppDelegate.swift in Sources */,
 				E322B6E2236FAF17008C2B1F /* evaluationData.swift in Sources */,
 				E306429E242C62C300D40A78 /* clinicaldateController.swift in Sources */,

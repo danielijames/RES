@@ -34,7 +34,8 @@ class dateSelectorView: UIViewController {
     }
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "request2", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -62,6 +63,12 @@ class dateSelectorView: UIViewController {
         evaluationData.shared.date = String(dateCorrected!)
              
         self.navigationController?.performSegue(withIdentifier: "request4", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "request2" {
+            segueHelper(nextVC: procedureController())
+        }
     }
     
 }

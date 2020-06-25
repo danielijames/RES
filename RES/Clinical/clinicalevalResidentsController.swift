@@ -42,7 +42,7 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -80,7 +80,9 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "clin2"{
         segueHelper(nextVC: clinicalsettingController())
+        }
     }
     
     

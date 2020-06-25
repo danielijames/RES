@@ -37,7 +37,8 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -76,6 +77,13 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: techevalprocedureController())
+        switch segue.identifier {
+        case "typeEvalFilter":
+            break
+        case "tech2":
+            segueHelper(nextVC: techevalprocedureController())
+        default:
+            break
+        }
     }
 }

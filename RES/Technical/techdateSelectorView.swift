@@ -35,7 +35,8 @@ class techdateSelectorView: UIViewController {
     }
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech2", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -65,7 +66,13 @@ class techdateSelectorView: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         segueHelper(nextVC: techcasedifficultyController())
+        switch segue.identifier {
+        case "tech2":
+            segueHelper(nextVC: techevalprocedureController())
+        default:
+            segueHelper(nextVC: techcasedifficultyController())
+        }
+         
      }
     
 }

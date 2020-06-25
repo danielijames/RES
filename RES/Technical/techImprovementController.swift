@@ -49,7 +49,8 @@ class techImprovementController: UIViewController, ViewDelegate {
     
     @objc func popController(){
         gradingTechnicalData.shared.improvements.removeAll()
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "tech6", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -103,6 +104,13 @@ class techImprovementController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: techcommentsController())
+        
+        switch segue.identifier {
+         case "tech7":
+             segueHelper(nextVC: techscoreController())
+         default:
+             segueHelper(nextVC: techcommentsController())
+         }
+        
     }
 }

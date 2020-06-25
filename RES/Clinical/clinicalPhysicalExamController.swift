@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class clicicalPhysicalExamController: UIViewController, ViewDelegate {
+class clinicalPhysicalExamController: UIViewController, ViewDelegate {
     let screenView = VariadicView()
     
     override func loadView() {
@@ -39,7 +39,8 @@ class clicicalPhysicalExamController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin6", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -75,6 +76,12 @@ class clicicalPhysicalExamController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: clinicalPlanController())
+        
+        switch segue.identifier {
+        case "clin6":
+            segueHelper(nextVC: clinicalHistoryController())
+        default:
+            segueHelper(nextVC: clinicalPlanController())
+        }
     }
 }
