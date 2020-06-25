@@ -117,4 +117,8 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         self.view.endEditing(true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: techImprovementController())
+    }
+    
 }

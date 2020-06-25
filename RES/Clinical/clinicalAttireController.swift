@@ -39,7 +39,8 @@ class clinicalAttireController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin4", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -75,6 +76,11 @@ class clinicalAttireController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: clinicalHistoryController())
+        switch segue.identifier {
+        case "clin4":
+            segueHelper(nextVC: clinicalTimelinessController())
+        default:
+            segueHelper(nextVC: clinicalHistoryController())
+        }
     }
 }
