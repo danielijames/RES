@@ -40,7 +40,14 @@ class clinicalsettingController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            self.navigationController?.performSegue(withIdentifier: "clin1", sender: self)
+        default:
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -86,9 +93,14 @@ class clinicalsettingController: UIViewController, ViewDelegate {
         switch segue.identifier {
         case "clin3":
             segueHelper(nextVC: clinicaldateController())
-        default:
+        case "clin1":
+            segueHelper(nextVC: clinicalevalResidentsController())
+        case "clin4":
             segueHelper(nextVC: clinicalTimelinessController())
+        default:
+            break
         }
+        
         
     }
 }

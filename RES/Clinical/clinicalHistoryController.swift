@@ -39,7 +39,8 @@ class clinicalHistoryController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin5", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -71,6 +72,16 @@ class clinicalHistoryController: UIViewController, ViewDelegate {
     
     func continueToNextScreen(indexPath: IndexPath) {
         gradingClinicalData.shared.history = Array[indexPath.row]
-        self.navigationController?.pushViewController(clicicalPhysicalExamController(), animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin7", sender: self)
+//        self.navigationController?.pushViewController(clinicalPhysicalExamController(), animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "clin5":
+            segueHelper(nextVC: clinicalAttireController())
+        default:
+            segueHelper(nextVC: clinicalPhysicalExamController())
+        }
     }
 }

@@ -42,7 +42,13 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            self.navigationController?.performSegue(withIdentifier: "tech4", sender: self)
+        default:
+            self.navigationController?.performSegue(withIdentifier: "tech2", sender: self)
+        }
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -80,6 +86,13 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: techpreparationviewController())
+        switch segue.identifier {
+        case "tech4":
+            segueHelper(nextVC: techdateSelectorView())
+        case "tech2":
+            segueHelper(nextVC: techevalprocedureController())
+        default:
+            segueHelper(nextVC: techpreparationviewController())
+        }
     }
 }

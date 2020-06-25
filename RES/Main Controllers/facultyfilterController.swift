@@ -57,7 +57,8 @@ class facultyfilterController: UIViewController {
             }
             
             @objc func popController(){
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
                 ApplicationState.sharedState.LoggedIn = false
             }
         

@@ -10,11 +10,14 @@ import Foundation
 import FirebaseDatabase
 import MessageUI
 
-public func performSubmission(vc: UIViewController) {
+public func performSubmission(vc: UIViewController, completion: ()->()) {
     let alert = UIAlertController(title: "Evaluation Submitted", message: "Congratulations on submitting an evaluation!", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak vc] (_) in
         
-        vc?.navigationController?.popToViewController((vc?.navigationController?.viewControllers[1])!, animated: true)
+  
+    vc?.navigationController?.performSegue(withIdentifier: "facultySegue", sender: vc)
+  
+//        vc?.navigationController?.popToViewController((vc?.navigationController?.viewControllers[1])!, animated: true)
     }))
     
     
@@ -24,18 +27,16 @@ public func performSubmission(vc: UIViewController) {
     vc.present(alert, animated: true)
 }
 
-public func performSubmissionWithEmail(vc: UIViewController, attendeeName: String, date: String) {
+public func performSubmissionWithEmail(vc: UIViewController, attendeeName: String, date: String, completion: ()->()) {
     
     let defaults = UserDefaults.standard
     let count: Int = defaults.value(forKey: "BadgeCount") as! Int
     UIApplication.shared.applicationIconBadgeNumber = (count - 1)
-    //           self.present(alert, animated: true)
-    
-    
+ 
     let emailTitle = "Reccommending remediation for \(attendeeName)"
     let messageBody = "Reccommended remediation for \(attendeeName) prompted by evaluation grade given on date \(date) which was unsatisfactory"
-    //        let toRecipents = ["rgriffincook@yahoo.com, drheathg@gmail.com"]
-    let toRecipents = ["rgriffincook@yahoo.com"]
+    let toRecipents = ["rgriffincook@yahoo.com", "drheathg@gmail.com"]
+//    let toRecipents = ["rgriffincook@yahoo.com"]
     let mc: MFMailComposeViewController = MFMailComposeViewController()
     
     mc.mailComposeDelegate = vc as? MFMailComposeViewControllerDelegate
@@ -44,7 +45,7 @@ public func performSubmissionWithEmail(vc: UIViewController, attendeeName: Strin
     mc.setToRecipients(toRecipents)
     
     vc.navigationController?.present(mc, animated: true, completion: {
-        vc.navigationController?.popToViewController((vc.navigationController?.viewControllers[1])!, animated: true)
+        vc.navigationController?.performSegue(withIdentifier: "facultySegue", sender: vc)
     })
     
 }
@@ -69,6 +70,7 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         navBarSetup(title: "Comment & Submit")
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -90,7 +92,8 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
     }
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "clin11", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -123,9 +126,13 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
             
             self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeClinicalMemory()
+            }
         } else {
-            performSubmission(vc: self)
+            performSubmission(vc: self){
+            wipeClinicalMemory()
+            }
         }
     }
 
@@ -153,13 +160,21 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
 
            self.ref.child("Faculty/\(username)").child("Ungraded Requests").child(String(selectedEval)).removeValue()
             
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date) {
+            wipeClinicalMemory()
+            }
             } else {
-            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date)
+            performSubmissionWithEmail(vc: self, attendeeName: attendeeName, date: date) {
+            wipeClinicalMemory()
+            }
         }
     
 
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segueHelper(nextVC: clinicalScoreController())
     }
     
 }

@@ -40,7 +40,14 @@ class clinicalTimelinessController: UIViewController, ViewDelegate{
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        switch ApplicationState.sharedState.isOnUnpromptedPath {
+        case true:
+            self.navigationController?.performSegue(withIdentifier: "clin3", sender: self)
+        default:
+            self.navigationController?.performSegue(withIdentifier: "clin2", sender: self)
+        }
+        
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -76,6 +83,14 @@ class clinicalTimelinessController: UIViewController, ViewDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: clinicalAttireController())
+        switch segue.identifier {
+        case "clin3":
+            segueHelper(nextVC: clinicaldateController())
+        case "clin2":
+        segueHelper(nextVC: clinicalsettingController())
+        default:
+            segueHelper(nextVC: clinicalAttireController())
+        }
+        
     }
 }

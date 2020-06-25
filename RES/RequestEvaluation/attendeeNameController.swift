@@ -41,7 +41,8 @@ class attendeeNameController: UIViewController, ViewDelegate {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "studentSegue", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -79,6 +80,12 @@ class attendeeNameController: UIViewController, ViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segueHelper(nextVC: procedureController())
+        switch segue.identifier {
+        case "studentSegue":
+            break
+        default:
+            segueHelper(nextVC: procedureController())
+        }
+        
     }
 }

@@ -51,7 +51,7 @@ class techevalController: UITableViewController {
     }
     
     @objc func popController(){
-    self.navigationController?.popViewController(animated: true)
+    self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func logoutNow(){
@@ -141,7 +141,7 @@ class techevalController: UITableViewController {
         self.navigationController?.performSegue(withIdentifier: "typeEvalFilter", sender: self)
     }
     
-    func retrieveDataUngradedRequests(path: String) {
+    public func retrieveDataUngradedRequests(path: String) {
         let ref = Database.database().reference()
         DispatchQueue.main.async {
             ref.child(path).observe(.value) { (data) in
@@ -197,6 +197,4 @@ extension DataSnapshot {
           return Data()
       }
   }
-    
-    
 }

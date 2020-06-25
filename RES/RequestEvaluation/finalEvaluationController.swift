@@ -52,7 +52,8 @@ class finalEvaluationController: UIViewController {
     
     
     @objc func popController(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.performSegue(withIdentifier: "request3", sender: self)
+//        self.navigationController?.popViewController(animated: true)
         ApplicationState.sharedState.LoggedIn = false
     }
     
@@ -87,4 +88,5 @@ class finalEvaluationController: UIViewController {
             
         }
     }
+    
 }

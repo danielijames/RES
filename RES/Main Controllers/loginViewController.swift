@@ -31,9 +31,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     let ref = Database.database().reference()
     
     @IBAction func loginButton(_ sender: Any) {
-        super.view.addSubview(loading)
-        checkForFacultyAndStudents()
-        
         self.typeOfUser = segmentController.selectedSegmentIndex == 0 ? "Resident" : "Faculty"
 
         
@@ -46,7 +43,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }
-            super.view.addSubview(loading)
              checkForFacultyAndStudents()
              errorLabel.isHidden = false
              DispatchQueue.main.async {
@@ -59,7 +55,6 @@ class loginViewController: UIViewController, UITextFieldDelegate {
                 ApplicationState.sharedState.LoggedIn = true
                 return
             }
-            super.view.addSubview(loading)
             checkForFacultyAndStudents()
             errorLabel.isHidden = false
             DispatchQueue.main.async {
@@ -109,13 +104,10 @@ class loginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func checkForFacultyAndStudents() {
-            
-//            let tuple = (self.loginInfoStudent.count, self.loginInfoFaculty.count)
-            let currentType = self.typeOfUser
-            switch currentType{
-            case "Student":
+            switch self.typeOfUser{
+            case "Resident":
                 self.retrieveData(path: "Residents")
-            case "Instructor":
+            case "Faculty":
                 self.retrieveDataFaculty(path: "Faculty")
             default:
                 self.loading.removeFromSuperview()
