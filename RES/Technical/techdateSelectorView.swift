@@ -16,7 +16,7 @@ class techdateSelectorView: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker! {
         didSet{
             datePicker.calendar = .current
-            datePicker.datePickerMode = .dateAndTime
+            datePicker.timeZone = TimeZone(abbreviation: "GMT")
             datePicker.timeZone = .current
         }
     }

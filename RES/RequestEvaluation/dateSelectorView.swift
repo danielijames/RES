@@ -15,7 +15,7 @@ class dateSelectorView: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker! {
         didSet{
-            datePicker.calendar.timeZone = .autoupdatingCurrent
+            datePicker.timeZone = TimeZone(abbreviation: "GMT")
             datePicker.calendar = .autoupdatingCurrent
             datePicker.datePickerMode = .dateAndTime
         }
@@ -57,7 +57,7 @@ class dateSelectorView: UIViewController {
     
     @IBAction func finalButton(_ sender: Any) {
         self.date = datePicker.date.description
-        
+        datePicker.timeZone = TimeZone(abbreviation: "GMT")
         let dateCorrected = self.date?.prefix(19)
         
         evaluationData.shared.date = String(dateCorrected!)

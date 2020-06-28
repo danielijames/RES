@@ -17,6 +17,7 @@ class clinicaldateController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker! {
         didSet{
             datePicker.calendar = .current
+            datePicker.timeZone = TimeZone(abbreviation: "GMT")
             datePicker.datePickerMode = .dateAndTime
         }
     }
