@@ -15,7 +15,7 @@ class CellView: UICollectionViewCell {
     var FacultyName = UILabel()
     var procedure = UILabel()
     var date = UILabel()
-    var evalType = UILabel()
+    var score = UILabel()
     var ClickME = UILabel()
     var card = UIView()
 
@@ -68,7 +68,7 @@ class CellView: UICollectionViewCell {
         
         addLabel(labelName: procedure, topContraint: 80)
         addLabel(labelName: date, topContraint: 110)
-        addLabel(labelName: evalType, topContraint: 140)
+        addLabel(labelName: score, topContraint: 140)
         addLabel(labelName: ClickME, topContraint: 220)
     }
 
