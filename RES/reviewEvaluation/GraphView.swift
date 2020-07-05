@@ -153,7 +153,7 @@ class GraphView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
             cell.date.text = cellData[indexPath.row].date
             cell.procedure.text = cellData[indexPath.row].procedure
             cell.FacultyName.text = cellData[indexPath.row].FacultyName
-            cell.evalType.text = cellData[indexPath.row].evalType
+            cell.score.text = "Score: " + (cellData[indexPath.row].score ?? "No Score Provided")
             beautifyCell(cell: cell)
             return cell
         }
@@ -178,7 +178,19 @@ class GraphView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         cell.layer.borderWidth = 5
         cell.ClickME.font = .boldSystemFont(ofSize: 24)
         cell.ClickME.textColor = .white
-        cell.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        
+        switch cell.score.text {
+        case "Score: 1":
+            cell.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        case "Score: 2":
+            cell.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        case "Score: 3":
+            cell.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        default:
+            cell.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        }
+        
+        
         cell.isUserInteractionEnabled = true
     }
     
