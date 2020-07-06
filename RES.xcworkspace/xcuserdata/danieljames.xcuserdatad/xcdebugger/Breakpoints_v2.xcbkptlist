@@ -228,5 +228,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "05C3B3E5-78E7-406F-A82C-70579EEBEF1A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RES/Clinical/clinicalScoreController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "retrieveData(path:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E56858A-4475-4250-85AA-81B1C36F85FA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RES/Clinical/clinicalScoreController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "retrieveData(path:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5E56858A-4475-4250-85AA-81B1C36F85FA - cf2302968a328bb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RES.clinicalScoreController.retrieveData(path: Swift.String) -&gt; ()"
+                  moduleName = "RES"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danieljames/Desktop/RES/RES/Clinical/clinicalScoreController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "5E56858A-4475-4250-85AA-81B1C36F85FA - bd4309b21c2fc98d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in RES.clinicalScoreController.retrieveData(path: Swift.String) -&gt; ()"
+                  moduleName = "RES"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/danieljames/Desktop/RES/RES/Clinical/clinicalScoreController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "191">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
