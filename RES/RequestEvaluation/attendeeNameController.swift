@@ -30,7 +30,7 @@ class attendeeNameController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Faculty")
+        navBarSetup(title: "Select Evaluator")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -67,7 +67,7 @@ class attendeeNameController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Which faculty member would you like to evaluate you?"
+        return "Select Faculty Evaluator"
     }
     
     func getContentArray() -> Array<String> {

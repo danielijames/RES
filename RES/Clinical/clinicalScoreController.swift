@@ -23,7 +23,7 @@ class clinicalScoreController: UIViewController, ViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.retrieveData(path: "Faculty/Clinical/Score")
+        self.retrieveData(path: "Clinical/Score")
         
         screenView.delegate = self
         screenView.table.delegate = screenView
@@ -57,7 +57,7 @@ class clinicalScoreController: UIViewController, ViewDelegate {
             guard let value = data.value as? [String: Any] else { return }
             
             for each in value {
-                self.Array.append(each.key)
+                self.Array.append(String(each.key.first!))
             }
             self.screenView.table.reloadData()
         }

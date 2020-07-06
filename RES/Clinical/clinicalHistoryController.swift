@@ -22,7 +22,7 @@ class clinicalHistoryController: UIViewController, ViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.retrieveData(path: "Faculty/Clinical/History")
+        self.retrieveData(path: "Clinical/History")
         
         screenView.delegate = self
         screenView.table.delegate = screenView
