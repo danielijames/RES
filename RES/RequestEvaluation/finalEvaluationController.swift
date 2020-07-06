@@ -36,7 +36,7 @@ class finalEvaluationController: UIViewController {
         self.attendeeName = attendeeName
         self.graded = "false"
         
-        submittalText.text = "\(username) requesting an evaluation for \(procedure) from \(attendeeName) on \(date)."
+        submittalText.text = "You are requesting an evaluation from \(attendeeName) for the \(procedure) done on \(date)."
     }
     
     override func viewDidLoad() {
