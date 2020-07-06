@@ -14,10 +14,16 @@ class filterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       navBarSetup(title: "Request or Review Evaluations")
+       navBarSetup(title: "Evaluation Home")
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
         })
+        
+        BackButton(vc: self, selector: #selector(goBack), closure: nil)
+    }
+    
+    @objc func goBack(){
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     

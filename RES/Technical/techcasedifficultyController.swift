@@ -44,7 +44,7 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     @objc func popController(){
         switch ApplicationState.sharedState.isOnUnpromptedPath {
         case true:
-            self.navigationController?.performSegue(withIdentifier: "tech4", sender: self)
+            self.navigationController?.performSegue(withIdentifier: "tech3", sender: self)
         default:
             self.navigationController?.performSegue(withIdentifier: "tech2", sender: self)
         }
@@ -87,7 +87,7 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "tech4":
+        case "tech3":
             segueHelper(nextVC: techdateSelectorView())
         case "tech2":
             segueHelper(nextVC: techevalprocedureController())
