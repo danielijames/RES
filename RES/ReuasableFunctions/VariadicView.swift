@@ -70,6 +70,12 @@ class VariadicView: UIView, UITableViewDelegate, UITableViewDataSource {
         return delegate?.getTitle()
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let viewCasted = view as? UILabel else {return}
+        viewCasted.numberOfLines = 0
+        viewCasted.lineBreakMode = .byWordWrapping
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
         cell.textLabel?.text = delegate?.getContentArray()[indexPath.row]

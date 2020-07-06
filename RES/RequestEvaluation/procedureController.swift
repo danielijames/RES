@@ -23,7 +23,7 @@ class procedureController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Procedure")
+        navBarSetup(title: "Select Procedure")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -60,7 +60,7 @@ class procedureController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "For which procedure?"
+        return "Procedures"
     }
     
     func getContentArray() -> Array<String> {
