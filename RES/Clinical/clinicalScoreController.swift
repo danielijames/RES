@@ -57,7 +57,7 @@ class clinicalScoreController: UIViewController, ViewDelegate {
             guard let value = data.value as? [String: Any] else { return }
             
             for each in value {
-                self.Array.append(String(each.key.first!))
+                self.Array.append(String(each.key))
             }
             self.screenView.table.reloadData()
         }
