@@ -60,7 +60,7 @@ class techscoreController: UIViewController, ViewDelegate {
             guard let value = data.value as? [String: Any] else { return }
             
             value.forEach { (values) in
-                self.Array.append(String(values.key.first!))
+                self.Array.append(String(values.key))
             }
     
             self.screenView.table.reloadData()

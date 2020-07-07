@@ -153,7 +153,7 @@ class GraphView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
             cell.date.text = cellData[indexPath.row].date
             cell.procedure.text = cellData[indexPath.row].procedure
             cell.FacultyName.text = cellData[indexPath.row].FacultyName
-            cell.score.text = "Score: " + (cellData[indexPath.row].score ?? "No Score Provided")
+            cell.score.text = "Score: " + (cellData[indexPath.row].score?.first?.description ?? "No Score Provided")
             beautifyCell(cell: cell)
             return cell
         }
