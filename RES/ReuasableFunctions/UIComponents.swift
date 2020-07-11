@@ -15,6 +15,21 @@ extension UIViewController {
 
     }
     
+    func sortItems(value: [String: Any]) -> [Dictionary<String, Any>.Element]{
+        let values = value.sorted { (valueOne, valueTwo) -> Bool in
+            guard let valueTwo = valueTwo.value as? Int else {return false}
+            guard let valueOne = valueOne.value as? Int else {return false}
+            
+            if valueTwo > valueOne{
+                return true
+            }
+            
+            return false
+        }
+        
+        return values
+    }
+    
     
     func logoutButton(vc: UIViewController, selector: Selector, closure: (()->Void)?){
         let bgview = UIBarButtonItem.init(title: "Logout", style: .done, target: self, action: selector)
@@ -29,10 +44,7 @@ extension UIViewController {
         bbview.tintColor = .black
         vc.navigationItem.leftBarButtonItem = bbview
     }
-    
-    
-    
-    
+ 
     
     func navBarSetup(title: String){
     self.navigationController?.navigationBar.isHidden = false
