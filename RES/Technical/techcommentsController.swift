@@ -50,6 +50,7 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func submitAction(_ sender: Any) {
+        
         gradingTechnicalData.shared.additionalComments = commentsText.text
         
         guard let attendeeName = gradingTechnicalData.shared.attendeeName else {return}
@@ -63,6 +64,14 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         guard let comments = gradingTechnicalData.shared.additionalComments else {return}
         guard let username = evaluationData.shared.userName else {return}
         guard let evalType = gradingTechnicalData.shared.evalType else {return}
+        
+        
+        if let state = ApplicationState.sharedState.isOnUnpromptedPath {
+            if state == true {
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("attendeeName").setValue(username)
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("date").setValue(date)
+           }
+        }
         
         
         self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "procedure": procedure, "date":date, "caseDifficulty":caseDifficulty, "preparation":preparation, "percent":percent, "score":score, "improvements":improvements, "comments":comments,"evalType": evalType, "FacultyName": username])
@@ -95,6 +104,12 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         guard let comments = gradingTechnicalData.shared.additionalComments else {return}
         guard let username = evaluationData.shared.userName else {return}
         
+        if let state = ApplicationState.sharedState.isOnUnpromptedPath {
+            if state == true {
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("attendeeName").setValue(username)
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("date").setValue(date)
+           }
+        }
         
         self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "procedure": procedure, "date":date, "caseDifficulty":caseDifficulty, "preparation":preparation, "percent":percent, "score":score, "improvements":improvements, "comments":comments])
         
