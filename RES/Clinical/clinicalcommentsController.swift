@@ -121,6 +121,13 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         
         guard let username = evaluationData.shared.userName else {return}
         
+        if let state = ApplicationState.sharedState.isOnUnpromptedPath {
+            if state == true {
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("attendeeName").setValue(username)
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("date").setValue(date)
+           }
+        }
+        
         self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String, "FacultyName": username])
         
         if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
@@ -153,6 +160,13 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         guard let evalType = gradingClinicalData.shared.evalType else {return}
         
         guard let username = evaluationData.shared.userName else {return}
+        
+        if let state = ApplicationState.sharedState.isOnUnpromptedPath {
+            if state == true {
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("attendeeName").setValue(username)
+            self.ref.child("Residents/\(String(describing: attendeeName))").child("Requested Evaluations").child(date).child("date").setValue(date)
+           }
+        }
           
         self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String])
            

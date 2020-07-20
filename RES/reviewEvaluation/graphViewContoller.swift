@@ -55,7 +55,7 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
         let gradedCount = self.retrievedData?.count ?? 0
         let sentCount = self.sentData?.count ?? 0
         screenView.TotalLabel.text = """
-                🟢      Sent: \(sentCount)
+                🟢      Total: \(sentCount)
                 🔵      Graded: \(gradedCount)
         """
         return (Sent: CGFloat(sentCount), Graded: CGFloat(gradedCount))

@@ -59,8 +59,10 @@ class techscoreController: UIViewController, ViewDelegate {
         ref.child(path).observe(.value) { (data) in
             guard let value = data.value as? [String: Any] else { return }
             
-            value.forEach { (values) in
-                self.Array.append(String(values.key))
+            let values = self.sortItems(value: value)
+            
+            for each in values {
+                self.Array.append(each.key)
             }
     
             self.screenView.table.reloadData()
