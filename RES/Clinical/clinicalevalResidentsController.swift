@@ -71,7 +71,8 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
     }
     
     func getContentArray() -> Array<String> {
-        return self.Array
+        let arraySorted = self.Array.sorted {$0 < $1}
+        return arraySorted
     }
     
     func continueToNextScreen(indexPath: IndexPath) {
