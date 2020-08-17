@@ -54,9 +54,8 @@ class techevalResidentsController: UIViewController, ViewDelegate {
         ref.child(path).observe(.value) { (data) in
             guard let value = data.value as? [String: Any] else { return }
             
-            let values = self.sortItems(value: value)
-            
-            for each in values {
+            let valuesSorted = value.sorted {$0.key < $1.key}
+            for each in valuesSorted {
                 self.Array.append(each.key)
             }
             self.screenView.table.reloadData()
@@ -69,8 +68,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     }
     
     func getContentArray() -> Array<String> {
-        let arraySorted = self.Array.sorted {$0 < $1}
-        return arraySorted
+        return self.Array
     }
     
     func continueToNextScreen(indexPath: IndexPath) {

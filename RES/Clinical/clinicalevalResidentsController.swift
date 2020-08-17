@@ -58,7 +58,8 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
         ref.child(path).observe(.value) { (data) in
             guard let value = data.value as? [String: Any] else { return }
             
-            for each in value {
+            let valuesSorted = value.sorted {$0.key < $1.key}
+            for each in valuesSorted {
                 self.Array.append(each.key)
             }
             self.screenView.table.reloadData()
@@ -71,8 +72,7 @@ class clinicalevalResidentsController: UIViewController, ViewDelegate {
     }
     
     func getContentArray() -> Array<String> {
-        let arraySorted = self.Array.sorted {$0 < $1}
-        return arraySorted
+        return self.Array
     }
     
     func continueToNextScreen(indexPath: IndexPath) {
