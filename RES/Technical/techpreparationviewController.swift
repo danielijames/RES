@@ -31,7 +31,7 @@ class techpreparationviewController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Preparation")
+        navBarSetup(title: "Case Preparation")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -70,7 +70,7 @@ class techpreparationviewController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Preparation Results?"
+        return "Case Preparation"
     }
     
     func getContentArray() -> Array<String> {

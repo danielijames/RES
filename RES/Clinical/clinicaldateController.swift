@@ -26,7 +26,7 @@ class clinicaldateController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.date = datePicker.date.description
-        navBarSetup(title: "Pick Date")
+        navBarSetup(title: "Date of Procedure")
         
             logoutButton(vc: self, selector: #selector(logoutNow), closure: {
                 ApplicationState.sharedState.LoggedIn = false

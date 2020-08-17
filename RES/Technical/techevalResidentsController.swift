@@ -28,7 +28,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
         screenView.delegate = self
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
-        navBarSetup(title: "Pick Resident")
+        navBarSetup(title: "Residents")
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
         })
@@ -64,7 +64,7 @@ class techevalResidentsController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "For which Resident?"
+        return "Select Resident"
     }
     
     func getContentArray() -> Array<String> {

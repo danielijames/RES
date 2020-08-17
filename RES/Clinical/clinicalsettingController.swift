@@ -29,7 +29,7 @@ class clinicalsettingController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "What Setting?")
+        navBarSetup(title: "Clinical Setting")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -72,7 +72,7 @@ class clinicalsettingController: UIViewController, ViewDelegate {
      }
     
     func getTitle() -> String! {
-        return "Setting"
+        return "Clinical Setting"
     }
     
     func getContentArray() -> Array<String> {

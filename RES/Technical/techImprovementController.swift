@@ -80,7 +80,7 @@ class techImprovementController: UIViewController, ViewDelegate {
     }
     
     func getTitle() -> String! {
-        return "Improvements Needed?"
+        return "Improvements Needed"
     }
     
     func getContentArray() -> Array<String> {

@@ -30,7 +30,7 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
         retrieveData(path: "Residents/\(username)/Graded Evaluations")
         retrieveDataTwo(path: "Residents/\(username)/Requested Evaluations")
         
-        navBarSetup(title: "Monitor Your Evaluations")
+        navBarSetup(title: "Resident Evaluation")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false

@@ -65,7 +65,7 @@ class clinicalHistoryController: UIViewController, ViewDelegate {
     }
     
     func getTitle() -> String! {
-        return "What is the History?"
+        return "History of Present Illness"
     }
     
     func getContentArray() -> Array<String> {

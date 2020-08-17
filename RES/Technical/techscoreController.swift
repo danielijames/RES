@@ -71,7 +71,7 @@ class techscoreController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Score?"
+        return "Overall Score"
     }
     
     func getContentArray() -> Array<String> {

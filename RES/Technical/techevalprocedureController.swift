@@ -75,7 +75,7 @@ class techevalprocedureController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Which Procedure?"
+        return "Select Procedure"
     }
     
     func getContentArray() -> Array<String> {

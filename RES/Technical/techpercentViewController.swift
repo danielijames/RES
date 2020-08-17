@@ -70,7 +70,7 @@ class techpercentViewController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Percent?"
+        return "Percent of case performed by the resident"
     }
     
     func getContentArray() -> Array<String> {

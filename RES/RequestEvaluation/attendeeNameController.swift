@@ -30,7 +30,7 @@ class attendeeNameController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Select Evaluator")
+        navBarSetup(title: "Select Faculty Evaluator")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false

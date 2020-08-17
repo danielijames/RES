@@ -31,7 +31,7 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
         screenView.table.delegate = screenView
         screenView.table.dataSource = screenView
         
-        navBarSetup(title: "Difficulty")
+        navBarSetup(title: "Case Difficulty")
         
         logoutButton(vc: self, selector: #selector(logoutNow), closure: {
             ApplicationState.sharedState.LoggedIn = false
@@ -75,7 +75,7 @@ class techcasedifficultyController: UIViewController, ViewDelegate {
     
     
     func getTitle() -> String! {
-        return "Case Difficulty?"
+        return "Case Difficulty"
     }
     
     func getContentArray() -> Array<String> {

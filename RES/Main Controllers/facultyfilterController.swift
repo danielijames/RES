@@ -47,7 +47,7 @@ class facultyfilterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navBarSetup(title: "What Type of Evaluation?")
+        navBarSetup(title: "Select Type of Evaluation")
         
             logoutButton(vc: self, selector: #selector(logoutNow), closure: {
                 ApplicationState.sharedState.LoggedIn = false
