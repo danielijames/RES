@@ -16,8 +16,6 @@ public func performSubmission(vc: UIViewController, completion: ()->()) {
         
   
     vc?.navigationController?.performSegue(withIdentifier: "facultySegue", sender: vc)
-  
-//        vc?.navigationController?.popToViewController((vc?.navigationController?.viewControllers[1])!, animated: true)
     }))
     
     
@@ -50,22 +48,40 @@ public func performSubmissionWithEmail(vc: UIViewController, attendeeName: Strin
     
 }
 
-class clinicalcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate, UITextFieldDelegate{
+class clinicalcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate{
     
     let ref = Database.database().reference()
-    @IBOutlet weak var commentsText: UITextView!
-    @IBOutlet weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var textField: UITextView! {
         didSet{
-            textField.delegate = self
+            let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: 200, height: 40)))
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneBtn = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissKeyboard))
+            toolbar.setItems([flexSpace, doneBtn], animated: true)
+                
+            
+            textField.layer.borderWidth = 2.5
+            textField.layer.borderColor = UIColor.black.cgColor
+            textField.layer.cornerRadius = 7.5
+            textField.inputAccessoryView = toolbar
         }
     }
-    @IBOutlet weak var dismissBoard: UIButton!
-    
-    
-    @IBAction func dismissBoard(_ sender: Any) {
+
+    @objc func dismissKeyboard(){
         self.view.endEditing(true)
-        self.dismissBoard.isHidden = true
+    }
+
+    func textViewDidBeginEditing(_ textView: UITextView) {
+                UIView.animate(withDuration: 0.3) {
+                    self.textField.frame.origin.y = 20
+                    self.helpLabel.isHidden = true
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.helpLabel.isHidden = false
+        self.textField.frame.origin.y = 200
     }
     
     override func viewDidLoad() {
@@ -78,9 +94,6 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
         })
         BackButton(vc: self, selector: #selector(popController), closure: nil)
         
-    }
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.dismissBoard.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +117,7 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
     
     
     @IBAction func submitAction(_ sender: Any) {
-        gradingClinicalData.shared.additionalComments = commentsText.text
+        gradingClinicalData.shared.additionalComments = textField.text
         
         guard let attendeeName = gradingClinicalData.shared.attendeeName else {return}
         guard let setting = gradingClinicalData.shared.setting else {return}
@@ -128,7 +141,7 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
            }
         }
         
-        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String, "FacultyName": username])
+        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":textField.text as String, "FacultyName": username])
         
         if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
             
@@ -144,7 +157,7 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
     }
 
     @IBAction func finishWithRemediation(_ sender: Any) {
-        gradingClinicalData.shared.additionalComments = commentsText.text
+        gradingClinicalData.shared.additionalComments = textField.text
           
         guard let attendeeName = gradingClinicalData.shared.attendeeName else {return}
         guard let setting = gradingClinicalData.shared.setting else {return}
@@ -168,7 +181,7 @@ class clinicalcommentsController: UIViewController, MFMailComposeViewControllerD
            }
         }
           
-        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":commentsText.text as String])
+        self.ref.child("Residents/\(attendeeName)").child("Graded Evaluations").child(date).updateChildValues(["graded": "true", "physicalExam": physicalExam, "date":date, "setting":setting, "timing":timing, "attire":attire, "history":history, "plan":plan,"diagnosis":diagnosis,"presentation":presentation,"score":score,"evalType":evalType,"comments":textField.text as String])
            
            if let selectedEval = gradingTechnicalData.shared.selectedEvalDate {
 

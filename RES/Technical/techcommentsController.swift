@@ -10,17 +10,41 @@ import UIKit
 import FirebaseDatabase
 import MessageUI
 
-class techcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
-    @IBOutlet weak var dismissButton: UIButton!
+class techcommentsController: UIViewController, MFMailComposeViewControllerDelegate, UITextViewDelegate {
+
+    @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var textField: UITextView!{
-        didSet{
-            textField.delegate = self
+            didSet{
+                let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: 200, height: 40)))
+                let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+                let doneBtn = UIBarButtonItem(title: "Dismiss", style: .done, target: self, action: #selector(dismissKeyboard))
+                toolbar.setItems([flexSpace, doneBtn], animated: true)
+                    
+                
+                textField.layer.borderWidth = 2.5
+                textField.layer.borderColor = UIColor.black.cgColor
+                textField.layer.cornerRadius = 7.5
+                textField.inputAccessoryView = toolbar
+            }
         }
-    }
-    
+
+        @objc func dismissKeyboard(){
+            self.view.endEditing(true)
+        }
+
+        func textViewDidBeginEditing(_ textView: UITextView) {
+                    UIView.animate(withDuration: 0.3) {
+                        self.textField.frame.origin.y = 20
+                        self.helpLabel.isHidden = true
+            }
+        }
+        
+        func textViewDidEndEditing(_ textView: UITextView) {
+            self.helpLabel.isHidden = false
+            self.textField.frame.origin.y = 200
+        }
     let ref = Database.database().reference()
-    @IBOutlet weak var commentsText: UITextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarSetup(title: "Comment & Submit")
@@ -40,18 +64,11 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
         self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @IBAction func dismissKeyboard(_ sender: Any) {
-        self.view.endEditing(true)
-        self.dismissButton.isHidden = true
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.dismissButton.isHidden = false
-    }
+  
     
     @IBAction func submitAction(_ sender: Any) {
         
-        gradingTechnicalData.shared.additionalComments = commentsText.text
+        gradingTechnicalData.shared.additionalComments = textField.text
         
         guard let attendeeName = gradingTechnicalData.shared.attendeeName else {return}
         guard let procedure = gradingTechnicalData.shared.procedure else {return}
@@ -91,7 +108,7 @@ class techcommentsController: UIViewController, MFMailComposeViewControllerDeleg
     }
     
     @IBAction func finishWithRemediation(_ sender: Any) {
-        gradingTechnicalData.shared.additionalComments = commentsText.text
+        gradingTechnicalData.shared.additionalComments = textField.text
         
         guard let attendeeName = gradingTechnicalData.shared.attendeeName else {return}
         guard let procedure = gradingTechnicalData.shared.procedure else {return}
