@@ -83,7 +83,9 @@ class graphViewContoller: UIViewController, GraphViewDelegate {
     
     func decodeData() {
         let retrievedData = try! JSONDecoder().decode([gradingCritereon].self, from: self.data!.listToJSON)
+//        let values = retrievedData.sorted {$0.date < $1.date}
         self.retrievedData = retrievedData
+        
         self.screenView.collection.reloadData()
         
     }

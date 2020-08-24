@@ -58,7 +58,6 @@ class techdateSelectorView: UIViewController {
     
     @IBAction func finalButton(_ sender: Any) {
         self.date = datePicker.date.description
-        
         let dateCorrected = self.date?.prefix(19)
         
         gradingTechnicalData.shared.date = String(dateCorrected!)

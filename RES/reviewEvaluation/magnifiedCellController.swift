@@ -13,6 +13,7 @@ class magnifiedCellController: UITableViewController {
     
     var EvaluationDate: String!
     var categories = [String]()
+    static var indexPathOfComments: IndexPath?
 
      override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.categories.count
@@ -21,15 +22,34 @@ class magnifiedCellController: UITableViewController {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myResultsCell", for: indexPath)
         cell.textLabel?.text = self.categories[indexPath.row]
+        if cell.textLabel?.text?.prefix(3).description == "com" {
+            cell.textLabel?.text = cell.textLabel?.text
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.contentMode = .top
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
+            cell.textLabel?.lineBreakMode = .byWordWrapping
+            cell.textLabel?.textAlignment = .left
+            
+            if let text = cell.textLabel?.text?.count, text < 50 {
+              magnifiedCellController.indexPathOfComments = nil
+            } else {
+              magnifiedCellController.indexPathOfComments = indexPath
+            }
+        } else {
+            cell.backgroundView = nil
+            magnifiedCellController.indexPathOfComments = nil
+        }
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = .black
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if indexPath == magnifiedCellController.indexPathOfComments {
+            return 400
+        }
+        return 120
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,8 +73,9 @@ class magnifiedCellController: UITableViewController {
                ref.child(path).observe(.value) { (data) in
                 guard let values = data.value as? [String:Any] else {return}
                 //dropping the boolean isGraded value
+                let valuesSorted = values.sorted {$0.key < $1.key}
 
-                for i in values{
+                for i in valuesSorted{
                     if i.value is String {
                         let newValue: String = i.value as! String
                         self.categories.append(i.key + ": \n" + newValue)
